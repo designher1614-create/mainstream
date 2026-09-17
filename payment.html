@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payment — MAINSTREAM™</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f5ef;
+  color:#111;
+}
+
+.nav{
+  height:72px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 4%;
+  border-bottom:1px solid #ddd;
+  gap:40px;
+}
+
+.brand img{
+  width:145px;
+}
+
+.nav nav{
+  display:flex;
+  gap:30px;
+  flex:1;
+  justify-content:center;
+}
+
+.nav nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.cart-btn{
+  background:#ffd21c;
+  border:0;
+  padding:12px 20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.checkout-page{
+  max-width:1050px;
+  margin:45px auto;
+  padding:0 25px;
+}
+
+.steps{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  margin-bottom:45px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.steps .active{
+  border-bottom:3px solid #ffd21c;
+  padding-bottom:8px;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:65% 35%;
+  gap:35px;
+}
+
+.box,
+.summary{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:30px;
+}
+
+h1{
+  font-size:30px;
+  margin:0 0 30px;
+}
+
+h2{
+  font-size:18px;
+  margin:0 0 25px;
+}
+
+.payment-option{
+  border:1px solid #ccc;
+  padding:18px;
+  margin-bottom:12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.payment-option.active{
+  border:2px solid #111;
+}
+
+.payment-option input{
+  accent-color:#111;
+}
+
+.payment-title{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.payment-sub{
+  font-size:11px;
+  color:#777;
+  margin-top:4px;
+}
+
+.card-fields{
+  display:none;
+  margin-top:20px;
+}
+
+.card-fields.show{
+  display:block;
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.field input{
+  width:100%;
+  height:46px;
+  border:1px solid #ccc;
+  padding:0 12px;
+  font-size:14px;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.pay-button{
+  width:100%;
+  height:52px;
+  background:#ffd21c;
+  border:0;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#111;
+  font-size:12px;
+  text-decoration:underline;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid #eee;
+  font-size:13px;
+}
+
+.total{
+  font-size:17px;
+  font-weight:bold;
+  padding-top:20px;
+}
+
+.security{
+  margin-top:25px;
+  padding:15px;
+  background:#f7f5ef;
+  font-size:11px;
+  line-height:1.6;
+}
+
+@media(max-width:800px){
+
+  .nav{
+    height:64px;
+    padding:0 18px;
+  }
+
+  .brand img{
+    width:115px;
+  }
+
+  .nav nav{
+    display:none;
+  }
+
+  .cart-btn{
+    margin-left:auto;
+    padding:10px 14px;
+    font-size:11px;
+  }
+
+  .checkout-page{
+    margin:30px auto;
+    padding:0 16px;
+  }
+
+  .steps{
+    gap:15px;
+    font-size:10px;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW DROP</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
+
+  <button class="cart-btn" onclick="goCart()">
+    CART <span id="cartCount">0</span>
+  </button>
+
+</header>
+
+
+<main class="checkout-page">
+
+  <div class="steps">
+    <span>1. SHIPPING</span>
+    <span class="active">2. PAYMENT</span>
+    <span>3. CONFIRMATION</span>
+  </div>
+
+
+  <div class="layout">
+
+    <section class="box">
+
+      <h1>PAYMENT METHOD</h1>
+
+      <form id="paymentForm">
+
+        <label class="payment-option active">
+
+          <input
+            type="radio"
+            name="payment"
+            value="card"
+            checked
+          >
+
+          <div>
+            <div class="payment-title">
+              CREDIT / DEBIT CARD
+            </div>
+
+            <div class="payment-sub">
+              Visa • Mastercard • RuPay
+            </div>
+          </div>
+
+        </label>
+
+
+        <div id="cardFields" class="card-fields show">
+
+          <div class="field">
+
+            <label>CARD NUMBER</label>
+
+            <input
+              id="cardNumber"
+              type="text"
+              inputmode="numeric"
+              maxlength="19"
+              placeholder="1234 5678 9012 3456"
+              required
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>CARD HOLDER NAME</label>
+
+            <input
+              id="cardName"
+              type="text"
+              placeholder="NAME ON CARD"
+              required
+            >
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="field">
+
+              <label>EXPIRY DATE</label>
+
+              <input
+                id="expiry"
+                type="text"
+                maxlength="5"
+                placeholder="MM/YY"
+                required
+              >
+
+            </div>
+
+
+            <div class="field">
+
+              <label>CVV</label>
+
+              <input
+                id="cvv"
+                type="password"
+                inputmode="numeric"
+                maxlength="4"
+                placeholder="•••"
+                required
+              >
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <label class="payment-option">
+
+          <input
+            type="radio"
+            name="payment"
+            value="upi"
+          >
+
+          <div>
+
+            <div class="payment-title">
+              UPI
+            </div>
+
+            <div class="payment-sub">
+              Google Pay • PhonePe • Paytm
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <label class="payment-option">
+
+          <input
+            type="radio"
+            name="payment"
+            value="cod"
+          >
+
+          <div>
+
+            <div class="payment-title">
+              CASH ON DELIVERY
+            </div>
+
+            <div class="payment-sub">
+              Pay when your order arrives
+            </div>
+
+          </div>
+
+        </label>
+
+
+        <button
+          class="pay-button"
+          type="submit"
+        >
+          PLACE ORDER →
+        </button>
+
+      </form>
+
+
+      <a class="back" href="shipping.html">
+        ← BACK TO SHIPPING
+      </a>
+
+      <div class="security">
+        🔒 Your payment information is protected.
+        This demo checkout does not process real payments.
+      </div>
+
+    </section>
+
+
+    <aside class="summary">
+
+      <h2>ORDER SUMMARY</h2>
+
+      <div id="items"></div>
+
+      <div class="summary-row">
+
+        <span>Shipping</span>
+
+        <strong>₹0</strong>
+
+      </div>
+
+      <div class="summary-row total">
+
+        <span>TOTAL</span>
+
+        <strong id="total">₹0</strong>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script>
+
+const cart =
+  JSON.parse(
+    localStorage.getItem("mainstreamCart")
+  ) || [];
+
+
+/* CART COUNT */
+
+const count =
+  cart.reduce(
+    (total,item) =>
+      total + item.quantity,
+    0
+  );
+
+document.getElementById("cartCount")
+  .textContent = count;
+
+
+/* ORDER SUMMARY */
+
+let total = 0;
+
+const items =
+  document.getElementById("items");
+
+
+if(cart.length === 0){
+
+  items.innerHTML =
+    "<p>Your cart is empty.</p>";
+
+}else{
+
+  items.innerHTML =
+    cart.map(item => {
+
+      const price =
+        parseInt(
+          item.price.replace(/[^\d]/g,"")
+        );
+
+      total +=
+        price * item.quantity;
+
+      return `
+        <div class="summary-row">
+
+          <span>
+            ${item.name} × ${item.quantity}
+          </span>
+
+          <strong>
+            ₹${price * item.quantity}
+          </strong>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+
+document.getElementById("total")
+  .textContent = "₹" + total;
+
+
+/* PAYMENT OPTIONS */
+
+const options =
+  document.querySelectorAll(
+    'input[name="payment"]'
+  );
+
+options.forEach(option => {
+
+  option.addEventListener("change",()=>{
+
+    document
+      .querySelectorAll(".payment-option")
+      .forEach(box =>
+        box.classList.remove("active")
+      );
+
+    option
+      .closest(".payment-option")
+      .classList.add("active");
+
+
+    const cardFields =
+      document.getElementById("cardFields");
+
+    const cardInputs =
+      cardFields.querySelectorAll("input");
+
+
+    if(option.value === "card"){
+
+      cardFields.classList.add("show");
+
+      cardInputs.forEach(input =>
+        input.required = true
+      );
+
+    }else{
+
+      cardFields.classList.remove("show");
+
+      cardInputs.forEach(input =>
+        input.required = false
+      );
+
+    }
+
+  });
+
+});
+
+
+/* CARD NUMBER FORMAT */
+
+document
+  .getElementById("cardNumber")
+  .addEventListener("input",function(){
+
+    let value =
+      this.value
+        .replace(/\D/g,"")
+        .substring(0,16);
+
+    value =
+      value.match(/.{1,4}/g)?.join(" ")
+      || "";
+
+    this.value = value;
+
+  });
+
+
+/* EXPIRY FORMAT */
+
+document
+  .getElementById("expiry")
+  .addEventListener("input",function(){
+
+    let value =
+      this.value
+        .replace(/\D/g,"")
+        .substring(0,4);
+
+    if(value.length > 2){
+
+      value =
+        value.substring(0,2)
+        + "/"
+        + value.substring(2);
+
+    }
+
+    this.value = value;
+
+  });
+
+
+/* PLACE ORDER */
+
+document
+  .getElementById("paymentForm")
+  .addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+
+    if(cart.length === 0){
+
+      alert("Your cart is empty.");
+
+      return;
+
+    }
+
+
+    const method =
+      document.querySelector(
+        'input[name="payment"]:checked'
+      ).value;
+
+
+    localStorage.setItem(
+      "mainstreamPayment",
+      JSON.stringify({
+        method:method
+      })
+    );
+
+
+    window.location.href =
+      "confirmation.html";
+
+  });
+
+
+function goCart(){
+
+  window.location.href =
+    "cart.html";
+
+}
+
+</script>
+
+</body>
+</html>
