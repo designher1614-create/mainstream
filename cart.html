@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Cart — MAINSTREAM™</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f5ef;
+  color:#111;
+}
+
+/* HEADER */
+
+.nav{
+  height:72px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 4%;
+  border-bottom:1px solid #ddd;
+  gap:40px;
+}
+
+.brand img{
+  width:145px;
+}
+
+.nav nav{
+  display:flex;
+  gap:30px;
+  flex:1;
+  justify-content:center;
+}
+
+.nav nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.cart-btn{
+  background:#ffd21c;
+  border:0;
+  padding:12px 20px;
+  font-weight:bold;
+}
+
+/* CART */
+
+.cart-page{
+  max-width:1200px;
+  margin:55px auto;
+  padding:0 30px;
+}
+
+.cart-title{
+  font-size:32px;
+  margin-bottom:35px;
+}
+
+.cart-layout{
+  display:grid;
+  grid-template-columns:65% 35%;
+  gap:40px;
+}
+
+/* ITEMS */
+
+.cart-items{
+  background:#fff;
+  border:1px solid #ddd;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:130px 1fr auto;
+  gap:25px;
+  align-items:center;
+  padding:22px;
+  border-bottom:1px solid #ddd;
+}
+
+.cart-item:last-child{
+  border-bottom:0;
+}
+
+.cart-item img{
+  width:130px;
+  height:150px;
+  object-fit:contain;
+  background:#eee;
+}
+
+.cart-info h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+
+.cart-info p{
+  margin:5px 0;
+  color:#666;
+  font-size:13px;
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  margin-top:15px;
+}
+
+.qty button{
+  width:32px;
+  height:32px;
+  border:1px solid #ccc;
+  background:#fff;
+  cursor:pointer;
+}
+
+.qty span{
+  width:40px;
+  text-align:center;
+}
+
+.remove{
+  border:0;
+  background:none;
+  text-decoration:underline;
+  font-size:11px;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+/* SUMMARY */
+
+.summary{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:28px;
+  height:max-content;
+}
+
+.summary h2{
+  margin:0 0 25px;
+  font-size:20px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.total{
+  font-size:18px;
+  font-weight:bold;
+  padding-top:20px;
+}
+
+.checkout{
+  width:100%;
+  height:50px;
+  background:#ffd21c;
+  border:0;
+  font-weight:bold;
+  margin-top:25px;
+  cursor:pointer;
+}
+
+.continue{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#111;
+  font-size:12px;
+  text-decoration:underline;
+}
+
+/* EMPTY */
+
+.empty{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:60px 20px;
+  text-align:center;
+}
+
+.empty h2{
+  margin-bottom:10px;
+}
+
+.empty a{
+  display:inline-block;
+  margin-top:20px;
+  background:#ffd21c;
+  padding:14px 28px;
+  color:#111;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav{
+    height:64px;
+    padding:0 18px;
+  }
+
+  .brand img{
+    width:115px;
+  }
+
+  .nav nav{
+    display:none;
+  }
+
+  .cart-btn{
+    margin-left:auto;
+    padding:10px 14px;
+    font-size:11px;
+  }
+
+  .cart-page{
+    margin:30px auto;
+    padding:0 16px;
+  }
+
+  .cart-title{
+    font-size:27px;
+  }
+
+  .cart-layout{
+    grid-template-columns:1fr;
+  }
+
+  .cart-item{
+    grid-template-columns:90px 1fr;
+    gap:15px;
+    padding:15px;
+  }
+
+  .cart-item img{
+    width:90px;
+    height:110px;
+  }
+
+  .cart-item > strong{
+    grid-column:2;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW DROP</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
+
+  <button class="cart-btn">
+    CART <span id="headerCount">0</span>
+  </button>
+
+</header>
+
+
+<main class="cart-page">
+
+  <h1 class="cart-title">
+    YOUR CART
+  </h1>
+
+  <div id="cartContent"></div>
+
+</main>
+
+
+<script>
+
+let cart =
+  JSON.parse(
+    localStorage.getItem("mainstreamCart")
+  ) || [];
+
+
+/* SAVE */
+
+function saveCart(){
+
+  localStorage.setItem(
+    "mainstreamCart",
+    JSON.stringify(cart)
+  );
+
+  renderCart();
+
+}
+
+
+/* COUNT */
+
+function updateCount(){
+
+  const count =
+    cart.reduce(
+      (total,item) =>
+        total + item.quantity,
+      0
+    );
+
+  document.getElementById("headerCount")
+    .textContent = count;
+
+}
+
+
+/* REMOVE */
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
+  saveCart();
+
+}
+
+
+/* QUANTITY */
+
+function changeQuantity(index,amount){
+
+  cart[index].quantity += amount;
+
+  if(cart[index].quantity < 1){
+    cart[index].quantity = 1;
+  }
+
+  saveCart();
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+  if(cart.length === 0){
+
+    alert("Your cart is empty.");
+
+    return;
+
+  }
+
+  window.location.href =
+    "shipping.html";
+
+}
+
+
+/* RENDER */
+
+function renderCart(){
+
+  const container =
+    document.getElementById("cartContent");
+
+  updateCount();
+
+
+  if(cart.length === 0){
+
+    container.innerHTML = `
+
+      <div class="empty">
+
+        <h2>Your cart is empty</h2>
+
+        <p>
+          Discover the latest MAINSTREAM™ collection.
+        </p>
+
+        <a href="shop.html">
+          CONTINUE SHOPPING
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let subtotal = 0;
+
+
+  cart.forEach(item => {
+
+    const price =
+      parseInt(
+        item.price.replace(/[^\d]/g,"")
+      );
+
+    subtotal +=
+      price * item.quantity;
+
+  });
+
+
+  container.innerHTML = `
+
+    <div class="cart-layout">
+
+      <div class="cart-items">
+
+        ${cart.map((item,index)=>`
+
+          <div class="cart-item">
+
+            <img
+              src="${item.image}"
+              alt="${item.name}"
+            >
+
+            <div class="cart-info">
+
+              <h3>
+                ${item.name}
+              </h3>
+
+              <p>
+                MAINSTREAM™
+              </p>
+
+              <p>
+                ${item.price}
+              </p>
+
+              <div class="qty">
+
+                <button
+                  onclick="changeQuantity(${index},-1)"
+                >
+                  −
+                </button>
+
+                <span>
+                  ${item.quantity}
+                </span>
+
+                <button
+                  onclick="changeQuantity(${index},1)"
+                >
+                  +
+                </button>
+
+              </div>
+
+              <button
+                class="remove"
+                onclick="removeItem(${index})"
+              >
+                REMOVE
+              </button>
+
+            </div>
+
+            <strong>
+              ₹${price * item.quantity}
+            </strong>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+
+      <aside class="summary">
+
+        <h2>
+          ORDER SUMMARY
+        </h2>
+
+        <div class="summary-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <strong>
+            ₹${subtotal}
+          </strong>
+
+        </div>
+
+        <div class="summary-row">
+
+          <span>
+            Shipping
+          </span>
+
+          <strong>
+            ₹0
+          </strong>
+
+        </div>
+
+        <div class="summary-row total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            ₹${subtotal}
+          </strong>
+
+        </div>
+
+        <button
+          class="checkout"
+          onclick="checkout()"
+        >
+          PROCEED TO CHECKOUT
+        </button>
+
+        <a
+          class="continue"
+          href="shop.html"
+        >
+          CONTINUE SHOPPING
+        </a>
+
+      </aside>
+
+    </div>
+
+  `;
+
+}
+
+
+renderCart();
+
+</script>
+
+</body>
+</html>
