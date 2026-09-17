@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shipping — MAINSTREAM™</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f5ef;
+  color:#111;
+}
+
+.nav{
+  height:72px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 4%;
+  border-bottom:1px solid #ddd;
+  gap:40px;
+}
+
+.brand img{
+  width:145px;
+}
+
+.nav nav{
+  display:flex;
+  gap:30px;
+  flex:1;
+  justify-content:center;
+}
+
+.nav nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.cart-btn{
+  background:#ffd21c;
+  border:0;
+  padding:12px 20px;
+  font-weight:bold;
+}
+
+.checkout-page{
+  max-width:1050px;
+  margin:45px auto;
+  padding:0 25px;
+}
+
+.steps{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  margin-bottom:45px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.steps .active{
+  border-bottom:3px solid #ffd21c;
+  padding-bottom:8px;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:65% 35%;
+  gap:35px;
+}
+
+.form-box,
+.summary{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:30px;
+}
+
+h1{
+  font-size:30px;
+  margin:0 0 30px;
+}
+
+h2{
+  font-size:18px;
+  margin:0 0 25px;
+}
+
+.field{
+  margin-bottom:18px;
+}
+
+.field label{
+  display:block;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:7px;
+}
+
+.field input,
+.field select{
+  width:100%;
+  height:46px;
+  border:1px solid #ccc;
+  padding:0 12px;
+  font-size:14px;
+  background:#fff;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.continue{
+  width:100%;
+  height:50px;
+  background:#ffd21c;
+  border:0;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#111;
+  font-size:12px;
+  text-decoration:underline;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  padding:13px 0;
+  border-bottom:1px solid #eee;
+  font-size:13px;
+}
+
+.total{
+  font-size:17px;
+  font-weight:bold;
+  padding-top:20px;
+}
+
+@media(max-width:800px){
+
+  .nav{
+    height:64px;
+    padding:0 18px;
+  }
+
+  .brand img{
+    width:115px;
+  }
+
+  .nav nav{
+    display:none;
+  }
+
+  .cart-btn{
+    margin-left:auto;
+    padding:10px 14px;
+    font-size:11px;
+  }
+
+  .checkout-page{
+    margin:30px auto;
+    padding:0 16px;
+  }
+
+  .steps{
+    gap:15px;
+    font-size:10px;
+  }
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW DROP</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
+
+  <button class="cart-btn" onclick="goCart()">
+    CART <span id="cartCount">0</span>
+  </button>
+
+</header>
+
+
+<main class="checkout-page">
+
+  <div class="steps">
+    <span class="active">1. SHIPPING</span>
+    <span>2. PAYMENT</span>
+    <span>3. CONFIRMATION</span>
+  </div>
+
+
+  <div class="layout">
+
+    <section class="form-box">
+
+      <h1>SHIPPING DETAILS</h1>
+
+      <form id="shippingForm">
+
+        <div class="row">
+
+          <div class="field">
+            <label>FIRST NAME</label>
+            <input id="firstName" required>
+          </div>
+
+          <div class="field">
+            <label>LAST NAME</label>
+            <input id="lastName" required>
+          </div>
+
+        </div>
+
+
+        <div class="field">
+          <label>EMAIL ADDRESS</label>
+          <input id="email" type="email" required>
+        </div>
+
+
+        <div class="field">
+          <label>PHONE NUMBER</label>
+          <input id="phone" type="tel" required>
+        </div>
+
+
+        <div class="field">
+          <label>ADDRESS</label>
+          <input id="address" required>
+        </div>
+
+
+        <div class="row">
+
+          <div class="field">
+            <label>CITY</label>
+            <input id="city" required>
+          </div>
+
+          <div class="field">
+            <label>PINCODE</label>
+            <input id="pincode" required>
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>STATE</label>
+
+          <select id="state" required>
+
+            <option value="">
+              SELECT STATE
+            </option>
+
+            <option>Tamil Nadu</option>
+            <option>Kerala</option>
+            <option>Karnataka</option>
+            <option>Andhra Pradesh</option>
+            <option>Telangana</option>
+            <option>Maharashtra</option>
+            <option>Delhi</option>
+            <option>Other</option>
+
+          </select>
+
+        </div>
+
+
+        <button class="continue" type="submit">
+          CONTINUE TO PAYMENT →
+        </button>
+
+      </form>
+
+      <a class="back" href="cart.html">
+        ← BACK TO CART
+      </a>
+
+    </section>
+
+
+    <aside class="summary">
+
+      <h2>ORDER SUMMARY</h2>
+
+      <div id="items"></div>
+
+      <div class="summary-row">
+        <span>Shipping</span>
+        <strong>₹0</strong>
+      </div>
+
+      <div class="summary-row total">
+        <span>TOTAL</span>
+        <strong id="total">₹0</strong>
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script>
+
+const cart =
+  JSON.parse(
+    localStorage.getItem("mainstreamCart")
+  ) || [];
+
+
+/* COUNT */
+
+const count =
+  cart.reduce(
+    (total,item) =>
+      total + item.quantity,
+    0
+  );
+
+document.getElementById("cartCount")
+  .textContent = count;
+
+
+/* SUMMARY */
+
+let total = 0;
+
+const items =
+  document.getElementById("items");
+
+if(cart.length === 0){
+
+  items.innerHTML =
+    "<p>Your cart is empty.</p>";
+
+}else{
+
+  items.innerHTML =
+    cart.map(item => {
+
+      const price =
+        parseInt(
+          item.price.replace(/[^\d]/g,"")
+        );
+
+      total +=
+        price * item.quantity;
+
+      return `
+        <div class="summary-row">
+          <span>
+            ${item.name} × ${item.quantity}
+          </span>
+          <strong>
+            ₹${price * item.quantity}
+          </strong>
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+document.getElementById("total")
+  .textContent = "₹" + total;
+
+
+/* SAVE SHIPPING */
+
+document
+  .getElementById("shippingForm")
+  .addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const shipping = {
+
+      firstName:
+        document.getElementById("firstName").value,
+
+      lastName:
+        document.getElementById("lastName").value,
+
+      email:
+        document.getElementById("email").value,
+
+      phone:
+        document.getElementById("phone").value,
+
+      address:
+        document.getElementById("address").value,
+
+      city:
+        document.getElementById("city").value,
+
+      pincode:
+        document.getElementById("pincode").value,
+
+      state:
+        document.getElementById("state").value
+
+    };
+
+
+    localStorage.setItem(
+      "mainstreamShipping",
+      JSON.stringify(shipping)
+    );
+
+
+    window.location.href =
+      "payment.html";
+
+  });
+
+
+function goCart(){
+
+  window.location.href =
+    "cart.html";
+
+}
+
+</script>
+
+</body>
+</html>
