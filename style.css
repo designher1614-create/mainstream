@@ -792,3 +792,28 @@ footer{
     gap:10px;
   }
   }
+/* MOBILE MENU */
+@media (max-width: 700px) {
+  .nav {
+    position: relative;
+  }
+
+  .nav.menu-open .links {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 24px;
+    background: #080808;
+    border-top: 1px solid #333;
+    z-index: 999;
+  }
+
+  .nav.menu-open .links a {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+  }
+}
