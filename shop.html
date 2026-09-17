@@ -1,269 +1,302 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Shop — MAINSTREAM™</title>
 
+<link rel="stylesheet" href="style.css">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-font-family:Arial,sans-serif;
-background:#f5f3ed;
-color:#080808;
+.search-area{
+  display:flex;
+  justify-content:center;
+  margin:25px auto 10px;
+  max-width:600px;
+  padding:0 20px;
 }
 
-header{
-height:75px;
-background:#080808;
-color:white;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 6%;
-position:sticky;
-top:0;
-z-index:10;
+.search-box{
+  display:flex;
+  width:100%;
+  background:#fff;
+  border:1px solid #111;
 }
 
-.logo{
-background:#ffe000;
-padding:10px 16px;
+.search-box input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:15px;
+  font-size:14px;
+  background:#fff;
 }
 
-.logo img{
-width:150px;
-display:block;
+.search-box button{
+  width:55px;
+  border:0;
+  background:#ffd21c;
+  font-size:22px;
+  cursor:pointer;
 }
 
-nav{
-display:flex;
-gap:28px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-font-size:13px;
-font-weight:bold;
-}
-
-.cart{
-color:#080808;
-background:#ffe000;
-padding:12px 18px;
-font-weight:bold;
-text-decoration:none;
-}
-
-.shop{
-padding:70px 6%;
-}
-
-.shop-title{
-text-align:center;
-margin-bottom:50px;
-}
-
-.shop-title p{
-font-size:12px;
-letter-spacing:3px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.shop-title h1{
-font-size:clamp(42px,8vw,90px);
-line-height:.9;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-}
-
-.product{
-background:white;
-overflow:hidden;
-}
-
-.product img{
-width:100%;
-aspect-ratio:4/5;
-object-fit:cover;
-display:block;
-transition:.4s;
-}
-
-.product:hover img{
-transform:scale(1.04);
-}
-
-.info{
-padding:20px;
-}
-
-.info h2{
-font-size:18px;
-margin-bottom:8px;
-}
-
-.info p{
-color:#666;
-font-size:13px;
-margin-bottom:12px;
-}
-
-.price{
-font-weight:bold;
-font-size:18px;
-margin-bottom:16px;
-}
-
-.buy{
-display:block;
-width:100%;
-padding:14px;
-background:#080808;
-color:white;
-border:0;
-font-weight:bold;
-text-align:center;
-text-decoration:none;
-cursor:pointer;
-}
-
-.buy:hover{
-background:#ffe000;
-color:#080808;
-}
-
-footer{
-margin-top:60px;
-background:#080808;
-color:white;
-padding:40px 6%;
-text-align:center;
-}
-
-@media(max-width:800px){
-nav{display:none}
-
-.products{
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-}
-
-.shop{
-padding:45px 4%;
-}
-
-.info{
-padding:14px;
-}
-
-.info h2{
-font-size:15px;
-}
-
-.logo img{
-width:120px;
-}
-}
-
-@media(max-width:500px){
-.products{
-grid-template-columns:1fr;
-}
+.no-results{
+  text-align:center;
+  padding:60px 20px;
+  font-size:16px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<header class="nav">
 
-<a href="index.html" class="logo">
-<img src="mainstream-logo.png" alt="MAINSTREAM™">
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
 
-<nav>
-<a href="index.html">HOME</a>
-<a href="shop.html">SHOP</a>
-<a href="index.html#story">OUR STORY</a>
-<a href="index.html#contact">CONTACT</a>
-</nav>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a class="active" href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW ARRIVALS</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
 
-<a href="#" class="cart">CART 🛒</a>
+  <button class="cart-btn" onclick="openCart()">
+    CART <span id="cartCount">0</span>
+  </button>
 
 </header>
 
-<main class="shop">
 
-<div class="shop-title">
-<p>MAINSTREAM™ / COLLECTION</p>
-<h1>THE DROP.</h1>
-</div>
+<main class="shop-page">
 
-<div class="products">
+  <div class="shop-head">
 
-<article class="product">
-<img src="product-1.jpg">
-<div class="info">
-<h2>MAX / 03 TEE</h2>
-<p>Black · Oversized Fit</p>
-<div class="price">₹999</div>
-<a href="product.html" class="buy">VIEW PRODUCT</a>
-</div>
-</article>
+    <p class="eyebrow">
+      MAINSTREAM™ / COLLECTION
+    </p>
 
-<article class="product">
-<img src="product-2.jpg">
-<div class="info">
-<h2>LEWIS / 44 TEE</h2>
-<p>Black · Oversized Fit</p>
-<div class="price">₹999</div>
-<a href="product.html" class="buy">VIEW PRODUCT</a>
-</div>
-</article>
+    <h1>
+      THE COLLECTION
+    </h1>
 
-<article class="product">
-<img src="product-3.jpg">
-<div class="info">
-<h2>CHARLES / 16 TEE</h2>
-<p>Black · Oversized Fit</p>
-<div class="price">₹999</div>
-<a href="product.html" class="buy">VIEW PRODUCT</a>
-</div>
-</article>
+    <p>
+      Elevated essentials, designed for everyday distinction.
+    </p>
 
-<article class="product">
-<img src="product-4.jpg">
-<div class="info">
-<h2>LANDO / 01 TEE</h2>
-<p>Black · Oversized Fit</p>
-<div class="price">₹999</div>
-<a href="product.html" class="buy">VIEW PRODUCT</a>
-</div>
-</article>
+  </div>
 
-<article class="product">
-<img src="product-5.jpg">
-<div class="info">
-<h2>OSCAR / 81 TEE</h2>
-<p>Black · Oversized Fit</p>
-<div class="price">₹999</div>
-<a href="product.html" class="buy">VIEW PRODUCT</a>
-</div>
-</article>
 
-</div>
+  <!-- SEARCH -->
+
+  <div class="search-area">
+
+    <div class="search-box">
+
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search dresses, tees, hoodies..."
+        autocomplete="off"
+      >
+
+      <button onclick="searchProducts()">
+        🔍
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- FILTERS -->
+
+  <div class="filters">
+
+    <button class="filter active" data-filter="all">
+      ALL
+    </button>
+
+    <button class="filter" data-filter="tees">
+      TEES
+    </button>
+
+    <button class="filter" data-filter="hoodies">
+      HOODIES
+    </button>
+
+    <button class="filter" data-filter="outerwear">
+      OUTERWEAR
+    </button>
+
+  </div>
+
+
+  <!-- PRODUCTS -->
+
+  <section
+    class="product-grid"
+    id="products">
+  </section>
+
 </main>
 
-<footer>
-MAINSTREAM™ — WEAR THE MAIN.
-</footer>
+
+<!-- CART -->
+
+<aside class="cart" id="cart">
+
+  <div class="cart-head">
+
+    <h2>
+      YOUR BAG
+    </h2>
+
+    <button onclick="closeCart()">
+      ×
+    </button>
+
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-foot">
+
+    <div>
+
+      <span>
+        Subtotal
+      </span>
+
+      <strong id="subtotal">
+        ₹0
+      </strong>
+
+    </div>
+
+    <button
+      class="checkout"
+      onclick="checkout()">
+      PROCEED TO CHECKOUT
+    </button>
+
+  </div>
+
+</aside>
+
+
+<div
+  class="overlay"
+  id="overlay"
+  onclick="closeCart()">
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* SEARCH */
+
+function searchProducts(){
+
+  const input =
+    document.getElementById("searchInput");
+
+  const search =
+    input.value.toLowerCase().trim();
+
+  const productCards =
+    document.querySelectorAll(".product");
+
+  let found = 0;
+
+
+  productCards.forEach(card => {
+
+    const name =
+      card.querySelector("h3")
+        ?.textContent
+        .toLowerCase() || "";
+
+    if(
+      search === "" ||
+      name.includes(search)
+    ){
+
+      card.style.display = "";
+
+      found++;
+
+    }else{
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+
+  let message =
+    document.getElementById("noResults");
+
+
+  if(found === 0){
+
+    if(!message){
+
+      message =
+        document.createElement("div");
+
+      message.id = "noResults";
+
+      message.className =
+        "no-results";
+
+      message.textContent =
+        "No products found.";
+
+      document
+        .getElementById("products")
+        .appendChild(message);
+
+    }
+
+  }else{
+
+    if(message){
+      message.remove();
+    }
+
+  }
+
+}
+
+
+/* SEARCH WHILE TYPING */
+
+document
+  .getElementById("searchInput")
+  .addEventListener("input", searchProducts);
+
+
+/* ENTER KEY */
+
+document
+  .getElementById("searchInput")
+  .addEventListener("keydown",function(event){
+
+    if(event.key === "Enter"){
+      searchProducts();
+    }
+
+  });
+
+</script>
 
 </body>
-  </html>
+</html>
