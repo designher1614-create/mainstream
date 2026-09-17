@@ -68,13 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
           <h3>${product.name}</h3>
           <strong>${product.price}</strong>
         </div>
-        <button class="add" onclick="addToCart(${products.indexOf(product)})">
-          ADD TO CART
-        </button>
+        <div class="product-actions">
+  <button class="view-product" onclick="viewProduct(${products.indexOf(product)})">
+    VIEW PRODUCT
+  </button>
+
+  <button class="add" onclick="addToCart(${products.indexOf(product)})">
+    ADD TO CART
+  </button>
+</div>
       </article>
     `).join("");
   }
-
+window.viewProduct = function(index) {
+  localStorage.setItem("selectedProduct", JSON.stringify(products[index]));
+  window.location.href = "product.html";
+};
   window.addToCart = function(index) {
 
     const product = products[index];
