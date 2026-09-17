@@ -156,10 +156,9 @@ let current = 0;
 const heroCounter = document.getElementById("heroCounter");
 
 setInterval(() => {
-
   const next = (current + 1) % heroImages.length;
-  const nextImage = document.createElement("img");
 
+  const nextImage = document.createElement("img");
   nextImage.src = heroImages[next];
 
   nextImage.style.position = "absolute";
@@ -167,27 +166,26 @@ setInterval(() => {
   nextImage.style.width = "100%";
   nextImage.style.height = "100%";
   nextImage.style.objectFit = "cover";
-  nextImage.style.transform = "translateX(100%)";
-  nextImage.style.transition =
-    "transform 0.9s cubic-bezier(.22,.61,.36,1)";
+  nextImage.style.opacity = "0";
+  nextImage.style.transition = "opacity 0.8s ease";
 
   heroCard.appendChild(nextImage);
 
   requestAnimationFrame(() => {
-    currentImage.style.transform = "translateX(-100%)";
-    nextImage.style.transform = "translateX(0)";
+    currentImage.style.opacity = "0";
+    nextImage.style.opacity = "1";
   });
 
   setTimeout(() => {
     current = next;
-    heroCounter.textContent = String(current + 1).padStart(2, "0") + " / 05";
     currentImage.src = heroImages[current];
-    currentImage.style.transform = "translateX(0)";
+    currentImage.style.opacity = "1";
     nextImage.remove();
-  }, 900);
+
+    heroCounter.textContent = String(current + 1).padStart(2, "0") + " / 05";
+  }, 800);
 
 }, 3000);
-
 
 document.querySelectorAll(".add").forEach(button => {
 
