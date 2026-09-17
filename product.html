@@ -6,9 +6,7 @@
 <title>Product — MAINSTREAM™</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
@@ -17,7 +15,6 @@ body{
   color:#111;
 }
 
-/* HEADER */
 .nav{
   height:72px;
   background:#fff;
@@ -30,7 +27,6 @@ body{
 
 .brand img{
   width:145px;
-  height:auto;
 }
 
 .nav nav{
@@ -44,7 +40,7 @@ body{
   color:#111;
   text-decoration:none;
   font-size:12px;
-  font-weight:600;
+  font-weight:bold;
 }
 
 .cart-btn{
@@ -55,7 +51,6 @@ body{
   cursor:pointer;
 }
 
-/* PRODUCT PAGE */
 .product-page{
   max-width:1200px;
   margin:45px auto;
@@ -75,6 +70,7 @@ body{
 }
 
 /* GALLERY */
+
 .gallery{
   display:grid;
   grid-template-columns:80px 1fr;
@@ -90,7 +86,7 @@ body{
 .thumbs img{
   width:72px;
   height:88px;
-  object-fit:cover;
+  object-fit:contain;
   background:#eee;
   cursor:pointer;
   border:1px solid #ddd;
@@ -102,19 +98,46 @@ body{
 
 .main-image{
   background:#eee;
+  min-height:620px;
   display:flex;
   align-items:center;
   justify-content:center;
-  min-height:620px;
+  overflow:hidden;
+  perspective:1000px;
+  cursor:grab;
+  touch-action:none;
+  position:relative;
+}
+
+.main-image:active{
+  cursor:grabbing;
 }
 
 .main-image img{
-  width:100%;
-  height:620px;
+  width:90%;
+  height:600px;
   object-fit:contain;
+  user-select:none;
+  -webkit-user-drag:none;
+  transform-style:preserve-3d;
+  transition:transform .15s ease-out;
 }
 
-/* PRODUCT INFO */
+.rotate-hint{
+  position:absolute;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:9px 14px;
+  border-radius:20px;
+  font-size:11px;
+  pointer-events:none;
+}
+
+/* INFO */
+
 .info{
   padding:15px 10px;
 }
@@ -136,7 +159,6 @@ body{
   margin:22px 0 10px;
 }
 
-/* COLORS */
 .colors{
   display:flex;
   gap:12px;
@@ -150,19 +172,10 @@ body{
   cursor:pointer;
 }
 
-.black{
-  background:#111;
-}
+.black{background:#111}
+.white{background:#fff}
+.cream{background:#e9dfc8}
 
-.white{
-  background:#fff;
-}
-
-.cream{
-  background:#e9dfc8;
-}
-
-/* SIZES */
 .sizes{
   display:flex;
   gap:10px;
@@ -182,7 +195,6 @@ body{
   color:#fff;
 }
 
-/* QUANTITY */
 .quantity{
   display:flex;
   align-items:center;
@@ -203,7 +215,6 @@ body{
   text-align:center;
 }
 
-/* BUTTONS */
 .actions{
   display:flex;
   flex-direction:column;
@@ -226,7 +237,6 @@ body{
   border:1px solid #111;
 }
 
-/* DETAILS */
 .details{
   border-top:1px solid #ddd;
   margin-top:30px;
@@ -236,11 +246,11 @@ body{
 }
 
 /* MOBILE */
+
 @media(max-width:800px){
 
   .nav{
     height:64px;
-    gap:15px;
     padding:0 18px;
   }
 
@@ -283,7 +293,7 @@ body{
   }
 
   .main-image img{
-    height:430px;
+    height:420px;
   }
 
   .info h1{
@@ -295,7 +305,6 @@ body{
 
 <body>
 
-<!-- HEADER -->
 <header class="nav">
 
   <a class="brand" href="index.html">
@@ -317,7 +326,6 @@ body{
 </header>
 
 
-<!-- PRODUCT -->
 <main class="product-page">
 
   <div class="breadcrumb">
@@ -326,19 +334,32 @@ body{
 
   <div class="product-layout">
 
-    <!-- IMAGE GALLERY -->
+    <!-- PRODUCT IMAGE -->
+
     <div class="gallery">
 
       <div class="thumbs" id="thumbs"></div>
 
-      <div class="main-image">
-        <img id="mainImage" src="" alt="MAINSTREAM Product">
+      <div class="main-image" id="viewer">
+
+        <img
+          id="mainImage"
+          src=""
+          alt="MAINSTREAM Product"
+          draggable="false"
+        >
+
+        <div class="rotate-hint">
+          ↔ DRAG TO ROTATE
+        </div>
+
       </div>
 
     </div>
 
 
     <!-- PRODUCT INFORMATION -->
+
     <div class="info">
 
       <h1 id="productName">
@@ -350,59 +371,63 @@ body{
       </div>
 
 
-      <!-- COLOR -->
       <div class="label">
         COLOR
       </div>
 
       <div class="colors">
 
-        <button class="color black"
-                onclick="selectColor(this)">
+        <button
+          class="color black"
+          onclick="selectColor(this)">
         </button>
 
-        <button class="color white"
-                onclick="selectColor(this)">
+        <button
+          class="color white"
+          onclick="selectColor(this)">
         </button>
 
-        <button class="color cream"
-                onclick="selectColor(this)">
+        <button
+          class="color cream"
+          onclick="selectColor(this)">
         </button>
 
       </div>
 
 
-      <!-- SIZE -->
       <div class="label">
         SIZE
       </div>
 
       <div class="sizes">
 
-        <button class="size"
-                onclick="selectSize(this)">
+        <button
+          class="size"
+          onclick="selectSize(this)">
           S
         </button>
 
-        <button class="size active"
-                onclick="selectSize(this)">
+        <button
+          class="size active"
+          onclick="selectSize(this)">
           M
         </button>
 
-        <button class="size"
-                onclick="selectSize(this)">
+        <button
+          class="size"
+          onclick="selectSize(this)">
           L
         </button>
 
-        <button class="size"
-                onclick="selectSize(this)">
+        <button
+          class="size"
+          onclick="selectSize(this)">
           XL
         </button>
 
       </div>
 
 
-      <!-- QUANTITY -->
       <div class="label">
         QUANTITY
       </div>
@@ -424,23 +449,23 @@ body{
       </div>
 
 
-      <!-- ACTIONS -->
       <div class="actions">
 
-        <button class="add-cart"
-                onclick="addProductToCart()">
+        <button
+          class="add-cart"
+          onclick="addProductToCart()">
           ADD TO CART
         </button>
 
-        <button class="buy-now"
-                onclick="buyNow()">
+        <button
+          class="buy-now"
+          onclick="buyNow()">
           BUY NOW
         </button>
 
       </div>
 
 
-      <!-- DETAILS -->
       <div class="details">
 
         <strong>PRODUCT DETAILS</strong>
@@ -474,30 +499,28 @@ body{
 
 <script>
 
-/* GET SELECTED PRODUCT */
+/* SELECTED PRODUCT */
 
 const product =
-  JSON.parse(localStorage.getItem("selectedProduct")) || {
-
+  JSON.parse(
+    localStorage.getItem("selectedProduct")
+  ) || {
     name:"MAINSTREAM TEE",
-
     price:"₹999",
-
     image:"product-1.jpg"
-
   };
 
 
-/* SHOW PRODUCT */
+/* PRODUCT INFO */
 
-document.getElementById("productName").textContent =
-  product.name;
+document.getElementById("productName")
+  .textContent = product.name;
 
-document.getElementById("productPrice").textContent =
-  product.price;
+document.getElementById("productPrice")
+  .textContent = product.price;
 
-document.getElementById("mainImage").src =
-  product.image;
+document.getElementById("mainImage")
+  .src = product.image;
 
 
 /* THUMBNAILS */
@@ -505,32 +528,21 @@ document.getElementById("mainImage").src =
 const thumbs =
   document.getElementById("thumbs");
 
-const images = [
-
-  product.image,
-  product.image,
-  product.image,
-  product.image
-
-];
-
-images.forEach((image,index)=>{
+for(let i = 0; i < 4; i++){
 
   const img =
     document.createElement("img");
 
-  img.src = image;
+  img.src = product.image;
 
-  if(index === 0){
-
+  if(i === 0){
     img.classList.add("active");
-
   }
 
-  img.onclick = ()=>{
+  img.onclick = function(){
 
-    document.getElementById("mainImage").src =
-      image;
+    document.getElementById("mainImage")
+      .src = product.image;
 
     document
       .querySelectorAll(".thumbs img")
@@ -544,7 +556,105 @@ images.forEach((image,index)=>{
 
   thumbs.appendChild(img);
 
-});
+}
+
+
+/* 360 STYLE DRAG */
+
+const viewer =
+  document.getElementById("viewer");
+
+const mainImage =
+  document.getElementById("mainImage");
+
+let dragging = false;
+let startX = 0;
+let rotation = 0;
+
+
+viewer.addEventListener(
+  "pointerdown",
+  function(event){
+
+    dragging = true;
+
+    startX = event.clientX;
+
+    viewer.setPointerCapture(event.pointerId);
+
+    mainImage.style.transition = "none";
+
+  }
+);
+
+
+viewer.addEventListener(
+  "pointermove",
+  function(event){
+
+    if(!dragging) return;
+
+    const movement =
+      event.clientX - startX;
+
+    rotation += movement * 0.7;
+
+    if(rotation > 35){
+      rotation = 35;
+    }
+
+    if(rotation < -35){
+      rotation = -35;
+    }
+
+    const scale =
+      1 - Math.abs(rotation) / 180;
+
+    mainImage.style.transform =
+      "perspective(900px) " +
+      "rotateY(" + rotation + "deg) " +
+      "scaleX(" + scale + ")";
+
+    startX = event.clientX;
+
+  }
+);
+
+
+viewer.addEventListener(
+  "pointerup",
+  function(){
+
+    dragging = false;
+
+    mainImage.style.transition =
+      "transform .35s ease";
+
+    mainImage.style.transform =
+      "perspective(900px) rotateY(0deg) scaleX(1)";
+
+    rotation = 0;
+
+  }
+);
+
+
+viewer.addEventListener(
+  "pointercancel",
+  function(){
+
+    dragging = false;
+
+    mainImage.style.transition =
+      "transform .35s ease";
+
+    mainImage.style.transform =
+      "perspective(900px) rotateY(0deg) scaleX(1)";
+
+    rotation = 0;
+
+  }
+);
 
 
 /* QUANTITY */
@@ -556,9 +666,7 @@ function changeQty(amount){
   quantity += amount;
 
   if(quantity < 1){
-
     quantity = 1;
-
   }
 
   document.getElementById("quantity")
@@ -710,220 +818,7 @@ function goToCart(){
 }
 
 
-/* INITIAL COUNT */
-
-updateCartCount();
-
-</script>
-
-</body>
-</html>.black{background:#111}
-.white{background:#fff}
-.cream{background:#e9dfc8}
-
-.sizes{display:flex;gap:10px}
-.size{width:48px;height:42px;background:#fff;border:1px solid #ccc;font-weight:bold;cursor:pointer}
-.size.active{background:#111;color:#fff}
-
-.quantity{display:flex;align-items:center;margin-bottom:22px}
-.quantity button{width:42px;height:40px;border:1px solid #ccc;background:#fff;font-size:18px}
-.quantity span{width:45px;text-align:center}
-
-.actions{display:flex;flex-direction:column;gap:10px}
-.actions button{height:48px;font-weight:bold;cursor:pointer}
-.add-cart{background:#ffd21c;border:0}
-.buy-now{background:#fff;border:1px solid #111}
-
-.details{border-top:1px solid #ddd;margin-top:30px;padding-top:20px;font-size:13px;line-height:1.7}
-
-@media(max-width:800px){
-.nav{gap:15px}
-.nav nav{display:none}
-.product-layout{grid-template-columns:1fr}
-.gallery{grid-template-columns:60px 1fr}
-.main-image,.main-image img{min-height:430px;height:430px}
-}
-</style>
-</head>
-
-<body>
-
-<header class="nav">
-  <a class="brand" href="index.html">
-    <img src="mainstream-logo.png" alt="MAINSTREAM™">
-  </a>
-
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="index.html#new">NEW DROP</a>
-    <a href="index.html#story">ABOUT</a>
-    <a href="index.html#contact">CONTACT</a>
-  </nav>
-
-  <button class="cart-btn" onclick="openCart()">
-    CART <span id="cartCount">0</span>
-  </button>
-</header>
-
-<main class="product-page">
-
-  <div class="breadcrumb">
-    Home → Shop → Product
-  </div>
-
-  <div class="product-layout">
-
-    <div class="gallery">
-
-      <div class="thumbs" id="thumbs"></div>
-
-      <div class="main-image">
-        <img id="mainImage" src="" alt="Product">
-      </div>
-
-    </div>
-
-    <div class="info">
-
-      <h1 id="productName">MAINSTREAM TEE</h1>
-
-      <div class="price" id="productPrice">₹999</div>
-
-      <div class="label">COLOR</div>
-
-      <div class="colors">
-        <button class="color black"></button>
-        <button class="color white"></button>
-        <button class="color cream"></button>
-      </div>
-
-      <div class="label">SIZE</div>
-
-      <div class="sizes">
-        <button class="size">S</button>
-        <button class="size active">M</button>
-        <button class="size">L</button>
-        <button class="size">XL</button>
-      </div>
-
-      <div class="label">QUANTITY</div>
-
-      <div class="quantity">
-        <button onclick="changeQty(-1)">−</button>
-        <span id="quantity">1</span>
-        <button onclick="changeQty(1)">+</button>
-      </div>
-
-      <div class="actions">
-        <button class="add-cart" onclick="addProductToCart()">
-          ADD TO CART
-        </button>
-
-        <button class="buy-now" onclick="buyNow()">
-          BUY NOW
-        </button>
-      </div>
-
-      <div class="details">
-        <strong>PRODUCT DETAILS</strong><br>
-        Premium cotton construction with a clean MAINSTREAM™ finish.
-        Designed for everyday comfort and effortless streetwear style.
-      </div>
-
-    </div>
-
-  </div>
-
-</main>
-
-<script src="script.js"></script>
-
-<script>
-
-const product =
-  JSON.parse(localStorage.getItem("selectedProduct")) || {
-    name:"MAINSTREAM TEE",
-    price:"₹999",
-    image:"product-1.jpg"
-  };
-
-document.getElementById("productName").textContent = product.name;
-document.getElementById("productPrice").textContent = product.price;
-document.getElementById("mainImage").src = product.image;
-
-const thumbs = document.getElementById("thumbs");
-
-const images = [
-  product.image,
-  product.image,
-  product.image,
-  product.image
-];
-
-images.forEach((image,index)=>{
-  const img=document.createElement("img");
-  img.src=image;
-
-  if(index===0) img.classList.add("active");
-
-  img.onclick=()=>{
-    document.getElementById("mainImage").src=image;
-
-    document.querySelectorAll(".thumbs img")
-      .forEach(x=>x.classList.remove("active"));
-
-    img.classList.add("active");
-  };
-
-  thumbs.appendChild(img);
-});
-
-let quantity=1;
-
-function changeQty(amount){
-  quantity+=amount;
-
-  if(quantity<1) quantity=1;
-
-  document.getElementById("quantity").textContent=quantity;
-}
-
-function addProductToCart(){
-
-  for(let i=0;i<quantity;i++){
-    const existing=cart.find(item=>item.name===product.name);
-
-    if(existing){
-      existing.quantity++;
-    }else{
-      cart.push({
-        name:product.name,
-        price:product.price,
-        image:product.image,
-        quantity:1
-      });
-    }
-  }
-
-  saveCart();
-
-  alert("Added to your bag!");
-}
-
-function buyNow(){
-  addProductToCart();
-  window.location.href="cart.html";
-}
-
-document.querySelectorAll(".size").forEach(button=>{
-  button.onclick=()=>{
-    document.querySelectorAll(".size")
-      .forEach(x=>x.classList.remove("active"));
-
-    button.classList.add("active");
-  };
-});
+/* START */
 
 updateCartCount();
 
