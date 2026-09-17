@@ -245,11 +245,11 @@ currentImage.style.transition =
   "transform 0.9s cubic-bezier(.22,.61,.36,1), opacity 0.9s ease";
 
 let current = 0;
+const heroCounter = document.getElementById("heroCounter");
 
 setInterval(() => {
 
   const next = (current + 1) % heroImages.length;
-
   const nextImage = document.createElement("img");
 
   nextImage.src = heroImages[next];
@@ -272,6 +272,7 @@ setInterval(() => {
 
   setTimeout(() => {
     current = next;
+    heroCounter.textContent = String(current + 1).padStart(2, "0") + " / 05";
     currentImage.src = heroImages[current];
     currentImage.style.transform = "translateX(0)";
     nextImage.remove();
