@@ -259,4 +259,227 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("overlay");
 
     if (cartBox) {
-      cartBox.classList.remove("
+      cartBox.classList.remove("open");
+    }
+
+    if (overlay) {
+      overlay.classList.remove("show");
+    }
+
+  };
+
+
+  /* =========================
+     RENDER CART
+  ========================= */
+
+  function renderCart() {
+
+    const container = document.getElementById("cartItems");
+
+    const totalElement = document.getElementById("cartTotal");
+
+    if (!container) return;
+
+
+    container.innerHTML = "";
+
+
+    if (cart.length === 0) {
+
+      container.innerHTML = `
+        <p style="
+          padding:30px 0;
+          text-align:center;
+          letter-spacing:1px;
+        ">
+          YOUR CART IS EMPTY
+        </p>
+      `;
+
+      if (totalElement) {
+        totalElement.textContent = "₹0";
+      }
+
+      return;
+
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(item => {
+
+      const quantity = Number(item.quantity || 1);
+
+      const price = Number(item.price || 0);
+
+      total += price * quantity;
+
+
+      const itemElement = document.createElement("div");
+
+      itemElement.className = "cart-item";
+
+
+      itemElement.innerHTML = `
+
+        <img
+          src="${item.image}"
+          alt="${item.name}"
+        >
+
+        <div>
+
+          <strong>${item.name}</strong>
+
+          <p>₹${price}</p>
+
+          <div class="quantity-controls">
+
+            <button onclick="changeQuantity(${item.id}, -1)">
+              −
+            </button>
+
+            <span>${quantity}</span>
+
+            <button onclick="changeQuantity(${item.id}, 1)">
+              +
+            </button>
+
+          </div>
+
+          <button
+            class="remove-item"
+            onclick="removeFromCart(${item.id})"
+          >
+            REMOVE
+          </button>
+
+        </div>
+      `;
+
+
+      container.appendChild(itemElement);
+
+    });
+
+
+    if (totalElement) {
+      totalElement.textContent =
+        "₹" + total.toLocaleString("en-IN");
+    }
+
+  }
+
+
+  /* =========================
+     CHANGE QUANTITY
+  ========================= */
+
+  window.changeQuantity = function(id, change) {
+
+    const item = cart.find(product => product.id === id);
+
+    if (!item) return;
+
+
+    item.quantity += change;
+
+
+    if (item.quantity <= 0) {
+
+      cart = cart.filter(product => product.id !== id);
+
+    }
+
+
+    saveCart();
+
+    renderCart();
+
+  };
+
+
+  /* =========================
+     REMOVE FROM CART
+  ========================= */
+
+  window.removeFromCart = function(id) {
+
+    cart = cart.filter(item => item.id !== id);
+
+    saveCart();
+
+    renderCart();
+
+  };
+
+
+  /* =========================
+     CHECKOUT
+  ========================= */
+
+  window.checkout = function() {
+
+    if (cart.length === 0) {
+
+      alert("Your cart is empty.");
+
+      return;
+
+    }
+
+    window.location.href = "shipping.html";
+
+  };
+
+
+  /* =========================
+     SEARCH
+  ========================= */
+
+  window.searchProducts = function() {
+
+    const searchTerm = prompt(
+      "SEARCH MAINSTREAM PRODUCTS"
+    );
+
+    if (searchTerm === null) return;
+
+
+    const term = searchTerm
+      .trim()
+      .toLowerCase();
+
+
+    if (!term) {
+
+      renderProducts(products);
+
+      return;
+
+    }
+
+
+    const results = products.filter(product =>
+      product.name.toLowerCase().includes(term) ||
+      product.category.toLowerCase().includes(term)
+    );
+
+
+    renderProducts(results);
+
+  };
+
+
+  /* =========================
+     INITIAL LOAD
+  ========================= */
+
+  renderProducts();
+
+  updateCartCount();
+
+});
