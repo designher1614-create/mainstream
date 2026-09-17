@@ -227,14 +227,37 @@
 
 
 <script>
-document.querySelectorAll('.add').forEach(button => {
+const heroImages = [
+  "product-1.jpg",
+  "product-2.jpg",
+  "product-3.jpg",
+  "product-4.jpg",
+  "product-5.jpg"
+];
 
-  button.addEventListener('click', () => {
+const heroImage = document.querySelector(".hero-card img");
+let heroIndex = 0;
 
-    button.textContent = 'ADDED ✓';
+setInterval(() => {
+  heroImage.style.opacity = "0";
+
+  setTimeout(() => {
+    heroIndex = (heroIndex + 1) % heroImages.length;
+    heroImage.src = heroImages[heroIndex];
+    heroImage.style.opacity = "1";
+  }, 400);
+
+}, 3000);
+
+
+document.querySelectorAll(".add").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    button.textContent = "ADDED ✓";
 
     setTimeout(() => {
-      button.textContent = 'ADD TO CART';
+      button.textContent = "ADD TO CART";
     }, 1200);
 
   });
