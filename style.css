@@ -145,6 +145,9 @@ h1{
 .hero-card img{
   display:block;
   width:100%;
+    transition:transform .8s
+    cubic-bezier(.22,.61,.36,1), opacity .8s
+    ease;
 }
 
 .hero-tag{
