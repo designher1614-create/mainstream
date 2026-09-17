@@ -235,17 +235,47 @@ const heroImages = [
   "product-5.jpg"
 ];
 
-const heroImage = document.querySelector(".hero-card img");
-let heroIndex = 0;
+const heroCard = document.querySelector(".hero-card");
+const currentImage = heroCard.querySelector("img");
+
+heroCard.style.position = "relative";
+heroCard.style.overflow = "hidden";
+
+currentImage.style.transition =
+  "transform 0.9s cubic-bezier(.22,.61,.36,1), opacity 0.9s ease";
+
+let current = 0;
 
 setInterval(() => {
-  heroImage.style.opacity = "0";
+
+  const next = (current + 1) % heroImages.length;
+
+  const nextImage = document.createElement("img");
+
+  nextImage.src = heroImages[next];
+
+  nextImage.style.position = "absolute";
+  nextImage.style.inset = "0";
+  nextImage.style.width = "100%";
+  nextImage.style.height = "100%";
+  nextImage.style.objectFit = "cover";
+  nextImage.style.transform = "translateX(100%)";
+  nextImage.style.transition =
+    "transform 0.9s cubic-bezier(.22,.61,.36,1)";
+
+  heroCard.appendChild(nextImage);
+
+  requestAnimationFrame(() => {
+    currentImage.style.transform = "translateX(-100%)";
+    nextImage.style.transform = "translateX(0)";
+  });
 
   setTimeout(() => {
-    heroIndex = (heroIndex + 1) % heroImages.length;
-    heroImage.src = heroImages[heroIndex];
-    heroImage.style.opacity = "1";
-  }, 400);
+    current = next;
+    currentImage.src = heroImages[current];
+    currentImage.style.transform = "translateX(0)";
+    nextImage.remove();
+  }, 900);
 
 }, 3000);
 
