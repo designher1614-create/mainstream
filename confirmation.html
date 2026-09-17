@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Order Confirmed — MAINSTREAM™</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f5ef;
+  color:#111;
+}
+
+.nav{
+  height:72px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 4%;
+  border-bottom:1px solid #ddd;
+  gap:40px;
+}
+
+.brand img{
+  width:145px;
+}
+
+.nav nav{
+  display:flex;
+  gap:30px;
+  flex:1;
+  justify-content:center;
+}
+
+.nav nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.cart-btn{
+  background:#ffd21c;
+  border:0;
+  padding:12px 20px;
+  font-weight:bold;
+}
+
+.confirmation{
+  max-width:850px;
+  margin:70px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+.check{
+  width:80px;
+  height:80px;
+  margin:0 auto 25px;
+  border-radius:50%;
+  background:#ffd21c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  font-weight:bold;
+}
+
+h1{
+  font-size:38px;
+  margin:0 0 12px;
+}
+
+.message{
+  color:#666;
+  font-size:14px;
+  margin-bottom:40px;
+}
+
+.order-box{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:30px;
+  text-align:left;
+}
+
+.order-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding-bottom:20px;
+  margin-bottom:20px;
+}
+
+.order-header h2{
+  margin:0;
+  font-size:18px;
+}
+
+.order-number{
+  font-size:12px;
+  color:#666;
+}
+
+.item{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:15px 0;
+  border-bottom:1px solid #eee;
+}
+
+.item img{
+  width:75px;
+  height:90px;
+  object-fit:contain;
+  background:#eee;
+}
+
+.item-info{
+  flex:1;
+}
+
+.item-info h3{
+  margin:0 0 7px;
+  font-size:14px;
+}
+
+.item-info p{
+  margin:3px 0;
+  color:#777;
+  font-size:12px;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  padding-top:22px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:35px;
+}
+
+.actions a{
+  padding:14px 25px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.shop{
+  background:#ffd21c;
+  color:#111;
+}
+
+.home{
+  background:#111;
+  color:#fff;
+}
+
+.note{
+  margin-top:30px;
+  font-size:12px;
+  color:#777;
+  line-height:1.6;
+}
+
+@media(max-width:800px){
+
+  .nav{
+    height:64px;
+    padding:0 18px;
+  }
+
+  .brand img{
+    width:115px;
+  }
+
+  .nav nav{
+    display:none;
+  }
+
+  .cart-btn{
+    margin-left:auto;
+    padding:10px 14px;
+    font-size:11px;
+  }
+
+  .confirmation{
+    margin:40px auto;
+  }
+
+  h1{
+    font-size:29px;
+  }
+
+  .order-box{
+    padding:20px;
+  }
+
+  .actions{
+    flex-direction:column;
+  }
+
+  .actions a{
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW DROP</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
+
+  <button class="cart-btn" onclick="goCart()">
+    CART <span id="cartCount">0</span>
+  </button>
+
+</header>
+
+
+<main class="confirmation">
+
+  <div class="check">
+    ✓
+  </div>
+
+  <h1>
+    ORDER CONFIRMED
+  </h1>
+
+  <p class="message">
+    Thank you for shopping with MAINSTREAM™.
+    Your order has been successfully placed.
+  </p>
+
+
+  <section class="order-box">
+
+    <div class="order-header">
+
+      <h2>
+        ORDER DETAILS
+      </h2>
+
+      <span class="order-number" id="orderNumber">
+        ORDER #MS000000
+      </span>
+
+    </div>
+
+
+    <div id="items"></div>
+
+
+    <div class="total">
+
+      <span>
+        TOTAL
+      </span>
+
+      <strong id="total">
+        ₹0
+      </strong>
+
+    </div>
+
+  </section>
+
+
+  <div class="actions">
+
+    <a class="shop" href="shop.html">
+      CONTINUE SHOPPING
+    </a>
+
+    <a class="home" href="index.html">
+      BACK TO HOME
+    </a>
+
+  </div>
+
+
+  <p class="note">
+    This is a demo order confirmation.
+    No real payment has been processed.
+  </p>
+
+</main>
+
+
+<script>
+
+const cart =
+  JSON.parse(
+    localStorage.getItem("mainstreamCart")
+  ) || [];
+
+
+/* CART COUNT */
+
+const count =
+  cart.reduce(
+    (total,item) =>
+      total + item.quantity,
+    0
+  );
+
+document.getElementById("cartCount")
+  .textContent = count;
+
+
+/* ORDER NUMBER */
+
+const randomNumber =
+  Math.floor(
+    100000 + Math.random() * 900000
+  );
+
+document.getElementById("orderNumber")
+  .textContent =
+    "ORDER #MS" + randomNumber;
+
+
+/* ITEMS */
+
+const items =
+  document.getElementById("items");
+
+let total = 0;
+
+
+if(cart.length === 0){
+
+  items.innerHTML =
+    "<p>Your order details are unavailable.</p>";
+
+}else{
+
+  items.innerHTML =
+    cart.map(item => {
+
+      const price =
+        parseInt(
+          item.price.replace(/[^\d]/g,"")
+        );
+
+      total +=
+        price * item.quantity;
+
+      return `
+
+        <div class="item">
+
+          <img
+            src="${item.image}"
+            alt="${item.name}"
+          >
+
+          <div class="item-info">
+
+            <h3>
+              ${item.name}
+            </h3>
+
+            <p>
+              MAINSTREAM™
+            </p>
+
+            <p>
+              Quantity: ${item.quantity}
+            </p>
+
+          </div>
+
+          <strong>
+            ₹${price * item.quantity}
+          </strong>
+
+        </div>
+
+      `;
+
+    }).join("");
+
+}
+
+
+document.getElementById("total")
+  .textContent = "₹" + total;
+
+
+/* CLEAR CART AFTER ORDER */
+
+localStorage.removeItem("mainstreamCart");
+
+
+function goCart(){
+
+  window.location.href =
+    "cart.html";
+
+}
+
+</script>
+
+</body>
+</html>
