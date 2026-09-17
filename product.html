@@ -6,35 +6,718 @@
 <title>Product — MAINSTREAM™</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f7f5ef;color:#111}
-.nav{height:72px;background:#fff;display:flex;align-items:center;padding:0 4%;border-bottom:1px solid #ddd;gap:40px}
-.brand img{width:145px;height:auto}
-.nav nav{display:flex;gap:30px;flex:1;justify-content:center}
-.nav nav a{color:#111;text-decoration:none;font-size:12px;font-weight:600}
-.cart-btn{background:#ffd21c;border:0;padding:12px 20px;font-weight:bold;cursor:pointer}
+*{
+  box-sizing:border-box;
+}
 
-.product-page{max-width:1200px;margin:45px auto;padding:0 30px}
-.breadcrumb{font-size:12px;color:#777;margin-bottom:25px}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f7f5ef;
+  color:#111;
+}
 
-.product-layout{display:grid;grid-template-columns:55% 45%;gap:50px}
+/* HEADER */
+.nav{
+  height:72px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 4%;
+  border-bottom:1px solid #ddd;
+  gap:40px;
+}
 
-.gallery{display:grid;grid-template-columns:80px 1fr;gap:18px}
-.thumbs{display:flex;flex-direction:column;gap:12px}
-.thumbs img{width:72px;height:88px;object-fit:cover;background:#eee;cursor:pointer;border:1px solid #ddd}
-.thumbs img.active{border:2px solid #111}
+.brand img{
+  width:145px;
+  height:auto;
+}
 
-.main-image{background:#eee;display:flex;align-items:center;justify-content:center;min-height:620px}
-.main-image img{width:100%;height:620px;object-fit:contain}
+.nav nav{
+  display:flex;
+  gap:30px;
+  flex:1;
+  justify-content:center;
+}
 
-.info{padding:15px 10px}
-.info h1{font-size:32px;margin:0 0 12px}
-.price{font-size:22px;font-weight:bold;margin-bottom:30px}
+.nav nav a{
+  color:#111;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:600;
+}
 
-.label{font-size:12px;font-weight:bold;margin:22px 0 10px}
-.colors{display:flex;gap:12px}
-.color{width:28px;height:28px;border-radius:50%;border:2px solid #222;cursor:pointer}
-.black{background:#111}
+.cart-btn{
+  background:#ffd21c;
+  border:0;
+  padding:12px 20px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* PRODUCT PAGE */
+.product-page{
+  max-width:1200px;
+  margin:45px auto;
+  padding:0 30px;
+}
+
+.breadcrumb{
+  font-size:12px;
+  color:#777;
+  margin-bottom:25px;
+}
+
+.product-layout{
+  display:grid;
+  grid-template-columns:55% 45%;
+  gap:50px;
+}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:18px;
+}
+
+.thumbs{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.thumbs img{
+  width:72px;
+  height:88px;
+  object-fit:cover;
+  background:#eee;
+  cursor:pointer;
+  border:1px solid #ddd;
+}
+
+.thumbs img.active{
+  border:2px solid #111;
+}
+
+.main-image{
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:620px;
+}
+
+.main-image img{
+  width:100%;
+  height:620px;
+  object-fit:contain;
+}
+
+/* PRODUCT INFO */
+.info{
+  padding:15px 10px;
+}
+
+.info h1{
+  font-size:32px;
+  margin:0 0 12px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+  margin-bottom:30px;
+}
+
+.label{
+  font-size:12px;
+  font-weight:bold;
+  margin:22px 0 10px;
+}
+
+/* COLORS */
+.colors{
+  display:flex;
+  gap:12px;
+}
+
+.color{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  border:2px solid #222;
+  cursor:pointer;
+}
+
+.black{
+  background:#111;
+}
+
+.white{
+  background:#fff;
+}
+
+.cream{
+  background:#e9dfc8;
+}
+
+/* SIZES */
+.sizes{
+  display:flex;
+  gap:10px;
+}
+
+.size{
+  width:48px;
+  height:42px;
+  background:#fff;
+  border:1px solid #ccc;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.size.active{
+  background:#111;
+  color:#fff;
+}
+
+/* QUANTITY */
+.quantity{
+  display:flex;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.quantity button{
+  width:42px;
+  height:40px;
+  border:1px solid #ccc;
+  background:#fff;
+  font-size:18px;
+  cursor:pointer;
+}
+
+.quantity span{
+  width:45px;
+  text-align:center;
+}
+
+/* BUTTONS */
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.actions button{
+  height:48px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.add-cart{
+  background:#ffd21c;
+  border:0;
+}
+
+.buy-now{
+  background:#fff;
+  border:1px solid #111;
+}
+
+/* DETAILS */
+.details{
+  border-top:1px solid #ddd;
+  margin-top:30px;
+  padding-top:20px;
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+  .nav{
+    height:64px;
+    gap:15px;
+    padding:0 18px;
+  }
+
+  .brand img{
+    width:115px;
+  }
+
+  .nav nav{
+    display:none;
+  }
+
+  .cart-btn{
+    margin-left:auto;
+    padding:10px 14px;
+    font-size:11px;
+  }
+
+  .product-page{
+    margin:25px auto;
+    padding:0 16px;
+  }
+
+  .product-layout{
+    grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .gallery{
+    grid-template-columns:60px 1fr;
+    gap:12px;
+  }
+
+  .thumbs img{
+    width:55px;
+    height:68px;
+  }
+
+  .main-image{
+    min-height:430px;
+  }
+
+  .main-image img{
+    height:430px;
+  }
+
+  .info h1{
+    font-size:26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="nav">
+
+  <a class="brand" href="index.html">
+    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+  </a>
+
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="index.html#new">NEW DROP</a>
+    <a href="index.html#story">ABOUT</a>
+    <a href="index.html#contact">CONTACT</a>
+  </nav>
+
+  <button class="cart-btn" onclick="goToCart()">
+    CART <span id="cartCount">0</span>
+  </button>
+
+</header>
+
+
+<!-- PRODUCT -->
+<main class="product-page">
+
+  <div class="breadcrumb">
+    Home → Shop → Product
+  </div>
+
+  <div class="product-layout">
+
+    <!-- IMAGE GALLERY -->
+    <div class="gallery">
+
+      <div class="thumbs" id="thumbs"></div>
+
+      <div class="main-image">
+        <img id="mainImage" src="" alt="MAINSTREAM Product">
+      </div>
+
+    </div>
+
+
+    <!-- PRODUCT INFORMATION -->
+    <div class="info">
+
+      <h1 id="productName">
+        MAINSTREAM TEE
+      </h1>
+
+      <div class="price" id="productPrice">
+        ₹999
+      </div>
+
+
+      <!-- COLOR -->
+      <div class="label">
+        COLOR
+      </div>
+
+      <div class="colors">
+
+        <button class="color black"
+                onclick="selectColor(this)">
+        </button>
+
+        <button class="color white"
+                onclick="selectColor(this)">
+        </button>
+
+        <button class="color cream"
+                onclick="selectColor(this)">
+        </button>
+
+      </div>
+
+
+      <!-- SIZE -->
+      <div class="label">
+        SIZE
+      </div>
+
+      <div class="sizes">
+
+        <button class="size"
+                onclick="selectSize(this)">
+          S
+        </button>
+
+        <button class="size active"
+                onclick="selectSize(this)">
+          M
+        </button>
+
+        <button class="size"
+                onclick="selectSize(this)">
+          L
+        </button>
+
+        <button class="size"
+                onclick="selectSize(this)">
+          XL
+        </button>
+
+      </div>
+
+
+      <!-- QUANTITY -->
+      <div class="label">
+        QUANTITY
+      </div>
+
+      <div class="quantity">
+
+        <button onclick="changeQty(-1)">
+          −
+        </button>
+
+        <span id="quantity">
+          1
+        </span>
+
+        <button onclick="changeQty(1)">
+          +
+        </button>
+
+      </div>
+
+
+      <!-- ACTIONS -->
+      <div class="actions">
+
+        <button class="add-cart"
+                onclick="addProductToCart()">
+          ADD TO CART
+        </button>
+
+        <button class="buy-now"
+                onclick="buyNow()">
+          BUY NOW
+        </button>
+
+      </div>
+
+
+      <!-- DETAILS -->
+      <div class="details">
+
+        <strong>PRODUCT DETAILS</strong>
+
+        <br><br>
+
+        Premium cotton construction with a clean
+        MAINSTREAM™ finish.
+
+        Designed for everyday comfort and effortless
+        streetwear style.
+
+        <br><br>
+
+        ✓ Premium Quality
+        <br>
+        ✓ Modern Design
+        <br>
+        ✓ Everyday Comfort
+        <br>
+        ✓ Racing-Inspired Style
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+
+<script>
+
+/* GET SELECTED PRODUCT */
+
+const product =
+  JSON.parse(localStorage.getItem("selectedProduct")) || {
+
+    name:"MAINSTREAM TEE",
+
+    price:"₹999",
+
+    image:"product-1.jpg"
+
+  };
+
+
+/* SHOW PRODUCT */
+
+document.getElementById("productName").textContent =
+  product.name;
+
+document.getElementById("productPrice").textContent =
+  product.price;
+
+document.getElementById("mainImage").src =
+  product.image;
+
+
+/* THUMBNAILS */
+
+const thumbs =
+  document.getElementById("thumbs");
+
+const images = [
+
+  product.image,
+  product.image,
+  product.image,
+  product.image
+
+];
+
+images.forEach((image,index)=>{
+
+  const img =
+    document.createElement("img");
+
+  img.src = image;
+
+  if(index === 0){
+
+    img.classList.add("active");
+
+  }
+
+  img.onclick = ()=>{
+
+    document.getElementById("mainImage").src =
+      image;
+
+    document
+      .querySelectorAll(".thumbs img")
+      .forEach(x =>
+        x.classList.remove("active")
+      );
+
+    img.classList.add("active");
+
+  };
+
+  thumbs.appendChild(img);
+
+});
+
+
+/* QUANTITY */
+
+let quantity = 1;
+
+function changeQty(amount){
+
+  quantity += amount;
+
+  if(quantity < 1){
+
+    quantity = 1;
+
+  }
+
+  document.getElementById("quantity")
+    .textContent = quantity;
+
+}
+
+
+/* SIZE */
+
+function selectSize(button){
+
+  document
+    .querySelectorAll(".size")
+    .forEach(x =>
+      x.classList.remove("active")
+    );
+
+  button.classList.add("active");
+
+}
+
+
+/* COLOR */
+
+function selectColor(button){
+
+  document
+    .querySelectorAll(".color")
+    .forEach(x =>
+      x.style.outline = "none"
+    );
+
+  button.style.outline =
+    "3px solid #ffd21c";
+
+}
+
+
+/* CART COUNT */
+
+function updateCartCount(){
+
+  const cart =
+    JSON.parse(
+      localStorage.getItem("mainstreamCart")
+    ) || [];
+
+  const count =
+    cart.reduce(
+      (total,item) =>
+        total + item.quantity,
+      0
+    );
+
+  document.getElementById("cartCount")
+    .textContent = count;
+
+}
+
+
+/* ADD TO CART */
+
+function addProductToCart(){
+
+  const cart =
+    JSON.parse(
+      localStorage.getItem("mainstreamCart")
+    ) || [];
+
+
+  const existing =
+    cart.find(
+      item =>
+        item.name === product.name
+    );
+
+
+  if(existing){
+
+    existing.quantity += quantity;
+
+  }else{
+
+    cart.push({
+
+      name:product.name,
+
+      price:product.price,
+
+      image:product.image,
+
+      quantity:quantity
+
+    });
+
+  }
+
+
+  localStorage.setItem(
+    "mainstreamCart",
+    JSON.stringify(cart)
+  );
+
+
+  updateCartCount();
+
+
+  const button =
+    document.querySelector(".add-cart");
+
+  button.textContent =
+    "✓ ADDED TO BAG";
+
+
+  setTimeout(()=>{
+
+    button.textContent =
+      "ADD TO CART";
+
+  },1200);
+
+}
+
+
+/* BUY NOW */
+
+function buyNow(){
+
+  addProductToCart();
+
+  setTimeout(()=>{
+
+    window.location.href =
+      "cart.html";
+
+  },300);
+
+}
+
+
+/* CART */
+
+function goToCart(){
+
+  window.location.href =
+    "cart.html";
+
+}
+
+
+/* INITIAL COUNT */
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>.black{background:#111}
 .white{background:#fff}
 .cream{background:#e9dfc8}
 
