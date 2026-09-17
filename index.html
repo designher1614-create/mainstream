@@ -149,41 +149,25 @@ const currentImage = heroCard.querySelector("img");
 heroCard.style.position = "relative";
 heroCard.style.overflow = "hidden";
 
-currentImage.style.transition =
-  "transform 0.9s cubic-bezier(.22,.61,.36,1), opacity 0.9s ease";
+currentImage.style.opacity = "1";
+currentImage.style.transition = "opacity 0.6s ease";
 
 let current = 0;
 const heroCounter = document.getElementById("heroCounter");
 
 setInterval(() => {
-  const next = (current + 1) % heroImages.length;
-
-  const nextImage = document.createElement("img");
-  nextImage.src = heroImages[next];
-
-  nextImage.style.position = "absolute";
-  nextImage.style.inset = "0";
-  nextImage.style.width = "100%";
-  nextImage.style.height = "100%";
-  nextImage.style.objectFit = "cover";
-  nextImage.style.opacity = "0";
-  nextImage.style.transition = "opacity 0.8s ease";
-
-  heroCard.appendChild(nextImage);
-
-  requestAnimationFrame(() => {
-    currentImage.style.opacity = "0";
-    nextImage.style.opacity = "1";
-  });
+  currentImage.style.opacity = "0";
 
   setTimeout(() => {
-    current = next;
-    currentImage.src = heroImages[current];
-    currentImage.style.opacity = "1";
-    nextImage.remove();
+    current = (current + 1) % heroImages.length;
 
-    heroCounter.textContent = String(current + 1).padStart(2, "0") + " / 05";
-  }, 800);
+    currentImage.src = heroImages[current];
+
+    heroCounter.textContent =
+      String(current + 1).padStart(2, "0") + " / 05";
+
+    currentImage.style.opacity = "1";
+  }, 600);
 
 }, 3000);
 
