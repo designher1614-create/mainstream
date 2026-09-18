@@ -1,154 +1,141 @@
 <!doctype html>
 <html lang="en">
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Payment — MAINSTREAM™</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-  margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f7f5ef;
-  color:#111;
+  background:#f4f4f1;
+  color:#070707;
 }
 
-.nav{
-  height:72px;
+.header{
   background:#fff;
-  display:flex;
-  align-items:center;
-  padding:0 4%;
   border-bottom:1px solid #ddd;
-  gap:40px;
-}
-
-.brand img{
-  width:145px;
-}
-
-.nav nav{
+  padding:20px 5%;
   display:flex;
-  gap:30px;
-  flex:1;
-  justify-content:center;
+  justify-content:space-between;
+  align-items:center;
 }
 
-.nav nav a{
-  color:#111;
+.logo{
+  width:190px;
+  max-width:45vw;
+}
+
+.back{
+  color:#070707;
   text-decoration:none;
   font-size:12px;
   font-weight:bold;
+  letter-spacing:1px;
 }
 
-.cart-btn{
-  background:#ffd21c;
-  border:0;
-  padding:12px 20px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.checkout-page{
-  max-width:1050px;
-  margin:45px auto;
-  padding:0 25px;
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 5%;
 }
 
 .steps{
-  display:flex;
-  justify-content:center;
-  gap:35px;
-  margin-bottom:45px;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
+  letter-spacing:3px;
+  margin-bottom:20px;
 }
 
-.steps .active{
-  border-bottom:3px solid #ffd21c;
-  padding-bottom:8px;
+h1{
+  font-size:clamp(45px,8vw,80px);
+  line-height:.85;
+  letter-spacing:-4px;
+  margin-bottom:45px;
 }
 
 .layout{
   display:grid;
-  grid-template-columns:65% 35%;
-  gap:35px;
+  grid-template-columns:1.4fr .8fr;
+  gap:50px;
 }
 
-.box,
+.payment-box,
 .summary{
   background:#fff;
-  border:1px solid #ddd;
   padding:30px;
 }
 
-h1{
-  font-size:30px;
-  margin:0 0 30px;
-}
-
 h2{
-  font-size:18px;
-  margin:0 0 25px;
+  font-size:22px;
+  margin-bottom:30px;
+  letter-spacing:1px;
 }
 
 .payment-option{
   border:1px solid #ccc;
-  padding:18px;
-  margin-bottom:12px;
+  padding:20px;
+  margin-bottom:15px;
   cursor:pointer;
-  display:flex;
-  align-items:center;
-  gap:12px;
 }
 
-.payment-option.active{
-  border:2px solid #111;
+.payment-option:hover{
+  border-color:#070707;
+}
+
+.payment-option label{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:16px;
 }
 
 .payment-option input{
-  accent-color:#111;
+  width:20px;
+  height:20px;
 }
 
-.payment-title{
-  font-weight:bold;
-  font-size:14px;
-}
-
-.payment-sub{
-  font-size:11px;
-  color:#777;
-  margin-top:4px;
-}
-
-.card-fields{
-  display:none;
+.payment-details{
   margin-top:20px;
-}
-
-.card-fields.show{
-  display:block;
+  padding:20px;
+  background:#f4f4f1;
 }
 
 .field{
   margin-bottom:18px;
 }
 
-.field label{
+label{
   display:block;
   font-size:11px;
   font-weight:bold;
-  margin-bottom:7px;
+  letter-spacing:1px;
+  margin-bottom:8px;
 }
 
-.field input{
+input[type="text"],
+input[type="number"]{
   width:100%;
-  height:46px;
-  border:1px solid #ccc;
-  padding:0 12px;
-  font-size:14px;
+  padding:15px;
+  border:1px solid #bbb;
+  background:#fff;
+  font-size:15px;
+  outline:none;
+}
+
+input:focus{
+  border:2px solid #070707;
 }
 
 .row{
@@ -157,530 +144,132 @@ h2{
   gap:15px;
 }
 
-.pay-button{
+.place-order{
   width:100%;
-  height:52px;
-  background:#ffd21c;
+  margin-top:20px;
+  padding:20px;
   border:0;
-  font-weight:bold;
+  background:#ffe000;
+  color:#070707;
+  font-size:15px;
+  font-weight:900;
+  letter-spacing:1px;
   cursor:pointer;
-  margin-top:10px;
 }
 
-.back{
-  display:block;
-  text-align:center;
-  margin-top:18px;
-  color:#111;
-  font-size:12px;
-  text-decoration:underline;
+.place-order:active{
+  transform:scale(.99);
+}
+
+.summary-item{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:15px 0;
+  border-bottom:1px solid #ddd;
+  font-size:13px;
 }
 
 .summary-row{
   display:flex;
   justify-content:space-between;
-  padding:13px 0;
-  border-bottom:1px solid #eee;
-  font-size:13px;
+  padding:16px 0;
 }
 
 .total{
-  font-size:17px;
+  border-top:1px solid #070707;
+  margin-top:10px;
+  font-size:20px;
   font-weight:bold;
-  padding-top:20px;
 }
 
-.security{
+.note{
   margin-top:25px;
-  padding:15px;
-  background:#f7f5ef;
-  font-size:11px;
+  padding:18px;
+  background:#f4f4f1;
+  font-size:13px;
   line-height:1.6;
 }
 
 @media(max-width:800px){
 
-  .nav{
-    height:64px;
-    padding:0 18px;
-  }
-
-  .brand img{
-    width:115px;
-  }
-
-  .nav nav{
-    display:none;
-  }
-
-  .cart-btn{
-    margin-left:auto;
-    padding:10px 14px;
-    font-size:11px;
-  }
-
-  .checkout-page{
-    margin:30px auto;
-    padding:0 16px;
-  }
-
-  .steps{
-    gap:15px;
-    font-size:10px;
-  }
-
   .layout{
     grid-template-columns:1fr;
+    gap:25px;
+  }
+
+  .payment-box,
+  .summary{
+    padding:22px;
   }
 
   .row{
     grid-template-columns:1fr;
   }
+
+  h1{
+    font-size:60px;
+  }
+
 }
+
 </style>
+
 </head>
 
 <body>
 
-<header class="nav">
 
-  <a class="brand" href="index.html">
-    <img src="mainstream-logo.png" alt="MAINSTREAM™">
+<header class="header">
+
+  <a href="index.html">
+
+    <img
+      src="mainstream-logo.png"
+      class="logo"
+      alt="MAINSTREAM™"
+    >
+
   </a>
 
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="index.html#new">NEW DROP</a>
-    <a href="index.html#story">ABOUT</a>
-    <a href="index.html#contact">CONTACT</a>
-  </nav>
-
-  <button class="cart-btn" onclick="goCart()">
-    CART <span id="cartCount">0</span>
-  </button>
+  <a href="shipping.html" class="back">
+    ← BACK TO SHIPPING
+  </a>
 
 </header>
 
 
-<main class="checkout-page">
+<main class="container">
 
   <div class="steps">
-    <span>1. SHIPPING</span>
-    <span class="active">2. PAYMENT</span>
-    <span>3. CONFIRMATION</span>
+    01 CART &nbsp; / &nbsp; 02 SHIPPING &nbsp; / &nbsp; 03 PAYMENT
   </div>
+
+  <h1>
+    PAYMENT
+  </h1>
 
 
   <div class="layout">
 
-    <section class="box">
 
-      <h1>PAYMENT METHOD</h1>
+    <!-- PAYMENT -->
+
+    <section class="payment-box">
+
+      <h2>CHOOSE PAYMENT METHOD</h2>
+
 
       <form id="paymentForm">
 
-        <label class="payment-option active">
 
-          <input
-            type="radio"
-            name="payment"
-            value="card"
-            checked
-          >
+        <!-- CARD -->
 
-          <div>
-            <div class="payment-title">
-              CREDIT / DEBIT CARD
-            </div>
+        <div class="payment-option">
 
-            <div class="payment-sub">
-              Visa • Mastercard • RuPay
-            </div>
-          </div>
-
-        </label>
-
-
-        <div id="cardFields" class="card-fields show">
-
-          <div class="field">
-
-            <label>CARD NUMBER</label>
+          <label>
 
             <input
-              id="cardNumber"
-              type="text"
-              inputmode="numeric"
-              maxlength="19"
-              placeholder="1234 5678 9012 3456"
-              required
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>CARD HOLDER NAME</label>
-
-            <input
-              id="cardName"
-              type="text"
-              placeholder="NAME ON CARD"
-              required
-            >
-
-          </div>
-
-
-          <div class="row">
-
-            <div class="field">
-
-              <label>EXPIRY DATE</label>
-
-              <input
-                id="expiry"
-                type="text"
-                maxlength="5"
-                placeholder="MM/YY"
-                required
-              >
-
-            </div>
-
-
-            <div class="field">
-
-              <label>CVV</label>
-
-              <input
-                id="cvv"
-                type="password"
-                inputmode="numeric"
-                maxlength="4"
-                placeholder="•••"
-                required
-              >
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <label class="payment-option">
-
-          <input
-            type="radio"
-            name="payment"
-            value="upi"
-          >
-
-          <div>
-
-            <div class="payment-title">
-              UPI
-            </div>
-
-            <div class="payment-sub">
-              Google Pay • PhonePe • Paytm
-            </div>
-
-          </div>
-
-        </label>
-
-
-        <label class="payment-option">
-
-          <input
-            type="radio"
-            name="payment"
-            value="cod"
-          >
-
-          <div>
-
-            <div class="payment-title">
-              CASH ON DELIVERY
-            </div>
-
-            <div class="payment-sub">
-              Pay when your order arrives
-            </div>
-
-          </div>
-
-        </label>
-
-
-        <button
-          class="pay-button"
-          type="submit"
-        >
-          PLACE ORDER →
-        </button>
-
-      </form>
-
-
-      <a class="back" href="shipping.html">
-        ← BACK TO SHIPPING
-      </a>
-
-      <div class="security">
-        🔒 Your payment information is protected.
-        This demo checkout does not process real payments.
-      </div>
-
-    </section>
-
-
-    <aside class="summary">
-
-      <h2>ORDER SUMMARY</h2>
-
-      <div id="items"></div>
-
-      <div class="summary-row">
-
-        <span>Shipping</span>
-
-        <strong>₹0</strong>
-
-      </div>
-
-      <div class="summary-row total">
-
-        <span>TOTAL</span>
-
-        <strong id="total">₹0</strong>
-
-      </div>
-
-    </aside>
-
-  </div>
-
-</main>
-
-
-<script>
-
-const cart =
-  JSON.parse(
-    localStorage.getItem("mainstreamCart")
-  ) || [];
-
-
-/* CART COUNT */
-
-const count =
-  cart.reduce(
-    (total,item) =>
-      total + item.quantity,
-    0
-  );
-
-document.getElementById("cartCount")
-  .textContent = count;
-
-
-/* ORDER SUMMARY */
-
-let total = 0;
-
-const items =
-  document.getElementById("items");
-
-
-if(cart.length === 0){
-
-  items.innerHTML =
-    "<p>Your cart is empty.</p>";
-
-}else{
-
-  items.innerHTML =
-    cart.map(item => {
-
-      const price =
-        parseInt(
-          item.price.replace(/[^\d]/g,"")
-        );
-
-      total +=
-        price * item.quantity;
-
-      return `
-        <div class="summary-row">
-
-          <span>
-            ${item.name} × ${item.quantity}
-          </span>
-
-          <strong>
-            ₹${price * item.quantity}
-          </strong>
-
-        </div>
-      `;
-
-    }).join("");
-
-}
-
-
-document.getElementById("total")
-  .textContent = "₹" + total;
-
-
-/* PAYMENT OPTIONS */
-
-const options =
-  document.querySelectorAll(
-    'input[name="payment"]'
-  );
-
-options.forEach(option => {
-
-  option.addEventListener("change",()=>{
-
-    document
-      .querySelectorAll(".payment-option")
-      .forEach(box =>
-        box.classList.remove("active")
-      );
-
-    option
-      .closest(".payment-option")
-      .classList.add("active");
-
-
-    const cardFields =
-      document.getElementById("cardFields");
-
-    const cardInputs =
-      cardFields.querySelectorAll("input");
-
-
-    if(option.value === "card"){
-
-      cardFields.classList.add("show");
-
-      cardInputs.forEach(input =>
-        input.required = true
-      );
-
-    }else{
-
-      cardFields.classList.remove("show");
-
-      cardInputs.forEach(input =>
-        input.required = false
-      );
-
-    }
-
-  });
-
-});
-
-
-/* CARD NUMBER FORMAT */
-
-document
-  .getElementById("cardNumber")
-  .addEventListener("input",function(){
-
-    let value =
-      this.value
-        .replace(/\D/g,"")
-        .substring(0,16);
-
-    value =
-      value.match(/.{1,4}/g)?.join(" ")
-      || "";
-
-    this.value = value;
-
-  });
-
-
-/* EXPIRY FORMAT */
-
-document
-  .getElementById("expiry")
-  .addEventListener("input",function(){
-
-    let value =
-      this.value
-        .replace(/\D/g,"")
-        .substring(0,4);
-
-    if(value.length > 2){
-
-      value =
-        value.substring(0,2)
-        + "/"
-        + value.substring(2);
-
-    }
-
-    this.value = value;
-
-  });
-
-
-/* PLACE ORDER */
-
-document
-  .getElementById("paymentForm")
-  .addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-
-    if(cart.length === 0){
-
-      alert("Your cart is empty.");
-
-      return;
-
-    }
-
-
-    const method =
-      document.querySelector(
-        'input[name="payment"]:checked'
-      ).value;
-
-
-    localStorage.setItem(
-      "mainstreamPayment",
-      JSON.stringify({
-        method:method
-      })
-    );
-
-
-    window.location.href =
-      "confirmation.html";
-
-  });
-
-
-function goCart(){
-
-  window.location.href =
-    "cart.html";
-
-}
-
-</script>
-
-</body>
-</html>
+              type="radio"
+              name="payment"
+              value
