@@ -1563,5 +1563,31 @@ function selectHomeProduct(id){
 }
 
    </script>
+   <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const productGrid = document.querySelector(
+    ".home-products .product-grid"
+  );
+
+  if(productGrid){
+
+    const viewAll = document.createElement("div");
+
+    viewAll.className = "view-all-home";
+
+    viewAll.innerHTML = `
+      <a href="shop.html">
+        VIEW ALL PRODUCTS →
+      </a>
+    `;
+
+    productGrid.after(viewAll);
+  }
+
+});
+
+   </script>
 </body>
 </html>
