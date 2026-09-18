@@ -70,7 +70,336 @@
 
 </section>
 
+<!-- =========================
+     NEW DROP PRODUCTS
+========================= -->
 
+<section class="home-products" id="new">
+
+  <div class="home-products-heading">
+    <div>
+      <span>MAINSTREAM™ / NEW DROP</span>
+      <h2>THE RACING EDIT.</h2>
+    </div>
+
+    <a href="shop.html">
+      VIEW ALL →
+    </a>
+  </div>
+
+  <div class="home-product-grid">
+
+    <!-- MAX -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('MAX / 03 TEE',999,'max.jpg')">
+
+      <div class="home-product-image">
+        <span>01</span>
+        <img src="max.jpg" alt="MAX / 03 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>MAX / 03 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- LEWIS -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('LEWIS / 44 TEE',999,'lewis.jpg')">
+
+      <div class="home-product-image">
+        <span>02</span>
+        <img src="lewis.jpg" alt="LEWIS / 44 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>LEWIS / 44 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- CHARLES -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('CHARLES / 16 TEE',999,'charles.jpg')">
+
+      <div class="home-product-image">
+        <span>03</span>
+        <img src="charles.jpg" alt="CHARLES / 16 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>CHARLES / 16 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- LANDO -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('LANDO / 01 TEE',999,'lando.jpg')">
+
+      <div class="home-product-image">
+        <span>04</span>
+        <img src="lando.jpg" alt="LANDO / 01 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>LANDO / 01 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- OSCAR -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('OSCAR / 81 TEE',999,'oscar.jpg')">
+
+      <div class="home-product-image">
+        <span>05</span>
+        <img src="oscar.jpg" alt="OSCAR / 81 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>OSCAR / 81 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- GEORGE -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('GEORGE / 63 TEE',999,'george.jpg')">
+
+      <div class="home-product-image">
+        <span>06</span>
+        <img src="george.jpg" alt="GEORGE / 63 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>GEORGE / 63 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+
+    <!-- KIMI -->
+    <a class="home-product" href="product.html"
+       onclick="saveHomeProduct('KIMI / 12 TEE',999,'kimi.jpg')">
+
+      <div class="home-product-image">
+        <span>07</span>
+        <img src="kimi.jpg" alt="KIMI / 12 TEE">
+      </div>
+
+      <div class="home-product-info">
+        <h3>KIMI / 12 TEE</h3>
+        <p>₹999</p>
+      </div>
+
+    </a>
+
+  </div>
+
+  <div class="home-shop-button">
+    <a href="shop.html">SHOP THE FULL COLLECTION →</a>
+  </div>
+
+</section>
+
+
+<style>
+
+/* =========================
+   HOME PRODUCTS
+========================= */
+
+.home-products{
+  background:#f4f4f1;
+  padding:90px 4%;
+  overflow:hidden;
+}
+
+.home-products-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:45px;
+}
+
+.home-products-heading span{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:3px;
+}
+
+.home-products-heading h2{
+  font-size:clamp(40px,7vw,90px);
+  line-height:.9;
+  margin-top:15px;
+  letter-spacing:-4px;
+  font-weight:900;
+}
+
+.home-products-heading a{
+  color:#070707;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  border-bottom:2px solid #070707;
+  padding-bottom:8px;
+}
+
+.home-product-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.home-product{
+  color:#070707;
+  text-decoration:none;
+  display:block;
+}
+
+.home-product-image{
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background:#ddd;
+}
+
+.home-product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:
+    transform .8s cubic-bezier(.2,.7,.2,1),
+    filter .5s ease;
+}
+
+.home-product:hover .home-product-image img{
+  transform:scale(1.08);
+  filter:brightness(.9);
+}
+
+.home-product-image span{
+  position:absolute;
+  top:14px;
+  left:14px;
+  z-index:2;
+  background:#ffe000;
+  padding:8px 11px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.home-product-info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 2px;
+}
+
+.home-product-info h3{
+  font-size:13px;
+  letter-spacing:1px;
+}
+
+.home-product-info p{
+  font-size:13px;
+  font-weight:900;
+}
+
+.home-shop-button{
+  text-align:center;
+  margin-top:55px;
+}
+
+.home-shop-button a{
+  display:inline-block;
+  background:#ffe000;
+  color:#070707;
+  text-decoration:none;
+  padding:18px 35px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:2px;
+  transition:.3s;
+}
+
+.home-shop-button a:hover{
+  background:#070707;
+  color:#fff;
+  transform:translateY(-4px);
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+  .home-product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .home-products{
+    padding:65px 18px;
+  }
+
+  .home-products-heading{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:25px;
+  }
+
+  .home-products-heading h2{
+    font-size:46px;
+    letter-spacing:-2px;
+  }
+
+  .home-product-info{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+function saveHomeProduct(name,price,image){
+
+  localStorage.setItem(
+    "selectedProduct",
+    JSON.stringify({
+      name:name,
+      price:"₹"+price,
+      image:image
+    })
+  );
+
+}
+
+</script>
 <section id="story" class="story">
 
   <div class="story-title">
