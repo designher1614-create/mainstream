@@ -834,6 +834,36 @@ body::before{
   }
 
    }
+   /* SHOW ONLY 4 PRODUCTS ON HOME PAGE */
+
+.products-section .product-grid .product-card:nth-child(n+5){
+  display:none !important;
+}
+
+/* VIEW ALL BUTTON */
+
+.products-section .view-all-home{
+  display:flex;
+  justify-content:center;
+  margin-top:45px;
+  margin-bottom:20px;
+}
+
+.products-section .view-all-home a{
+  display:inline-block;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  padding:18px 35px;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.products-section .view-all-home a:hover{
+  background:#ffe000;
+  color:#111;
+}
 </style>
 </head>
 
