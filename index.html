@@ -954,6 +954,32 @@ body::before{
   width:100% !important;
   min-width:0 !important;
 }
+   /* FORCE HOME PRODUCTS INTO 2 COLUMNS */
+.products-section .product-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.products-section .product-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.products-section .product-image {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.products-section .product-image img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
 </style>
 </head>
 
