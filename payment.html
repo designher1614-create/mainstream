@@ -820,27 +820,78 @@ function placeOrder(){
 
 
   const payment = {
+  method:
+    selectedPayment === "cod"
+      ? "Cash on Delivery"
+      : selectedPayment === "upi"
+      ? "UPI"
+      : "Card",
 
-    method:
-      selectedPayment === "cod"
-        ? "Cash on Delivery"
-        : "Card",
+  amount: total,
+  status: "pending"
+};
 
-    amount:total
+localStorage.setItem(
+  "mainstreamPayment",
+  JSON.stringify(payment)
+);
 
-  };
+// Basic payment verification
+if (selectedPayment === "card") {
 
+  const cardNumber =
+    document.getElementById("cardNumber")?.value.trim();
+
+  const expiry =
+    document.getElementById("expiry")?.value.trim();
+
+  const cvv =
+    document.getElementById("cvv")?.value.trim();
+
+  const cardName =
+    document.getElementById("cardName")?.value.trim();
+
+  if (
+    !cardNumber ||
+    !expiry ||
+    !cvv ||
+    !cardName ||
+    cardNumber.replace(/\s/g, "").length < 12 ||
+    cvv.length < 3
+  ) {
+    alert("Please enter valid card details.");
+    return;
+  }
+
+}
+
+if (selectedPayment === "upi") {
+
+  const upiId =
+    document.getElementById("upiId")?.value.trim();
+
+  if (!upiId || !upiId.includes("@")) {
+    alert("Please enter a valid UPI ID.");
+    return;
+  }
+
+}
+
+// Verification screen
+alert("Verifying your payment...");
+
+setTimeout(() => {
+
+  payment.status = "verified";
 
   localStorage.setItem(
     "mainstreamPayment",
     JSON.stringify(payment)
   );
 
+  window.location.href = "confirmation.html";
 
-  window.location.href =
-    "confirmation.html";
-
-}
+}, 2000);
 
 </script>
 
