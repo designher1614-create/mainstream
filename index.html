@@ -282,7 +282,7 @@ nav a:hover::after{
 
 .product-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:20px;
 }
 
@@ -634,6 +634,206 @@ body::before{
     object-fit:contain !important;
     background:transparent !important;
 }
+/* =========================
+   HOMEPAGE PRODUCTS
+========================= */
+
+.home-products{
+  background:#f4f4f1;
+  padding:90px 4vw;
+}
+
+.products-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-bottom:45px;
+}
+
+.products-heading h2{
+  font-size:clamp(45px,7vw,90px);
+  line-height:.9;
+  letter-spacing:-4px;
+  margin:15px 0 0;
+  font-weight:1000;
+}
+
+.eyebrow{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:4px;
+  margin:0;
+}
+
+.view-all{
+  color:#111;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:1px;
+  border-bottom:2px solid #111;
+  padding-bottom:7px;
+}
+
+
+/* 2 COLUMNS = 2 PRODUCTS PER ROW */
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:35px;
+}
+
+
+/* PRODUCT CARD */
+
+.product-card{
+  background:transparent;
+  overflow:hidden;
+}
+
+
+/* FULL IMAGE */
+
+.product-image{
+  width:100%;
+  background:transparent;
+  overflow:hidden;
+  line-height:0;
+}
+
+.product-image img{
+  width:100%;
+  height:auto;
+  min-height:500px;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .5s ease;
+}
+
+
+/* IMAGE HOVER */
+
+.product-card:hover .product-image img{
+  transform:scale(1.03);
+}
+
+
+/* PRODUCT DETAILS */
+
+.product-info{
+  background:#fff;
+  padding:25px;
+}
+
+.product-info h3{
+  margin:0 0 12px;
+  font-size:18px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.product-info p{
+  margin:0 0 22px;
+  font-size:17px;
+  font-weight:700;
+}
+
+
+/* SHOP BUTTON */
+
+.product-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#ffe000;
+  color:#111;
+  text-decoration:none;
+  padding:16px 22px;
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+
+/* VIEW ALL BOTTOM */
+
+.view-all-bottom{
+  text-align:center;
+  margin-top:55px;
+}
+
+.view-all-bottom a{
+  display:inline-block;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  padding:20px 40px;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .home-products{
+    padding:60px 18px;
+  }
+
+  .products-heading{
+    display:block;
+  }
+
+  .products-heading h2{
+    font-size:48px;
+    letter-spacing:-3px;
+  }
+
+  .view-all{
+    display:inline-block;
+    margin-top:25px;
+  }
+
+  .product-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .product-image img{
+    min-height:0;
+    height:auto;
+    object-fit:cover;
+  }
+
+  .product-info{
+    padding:14px;
+  }
+
+  .product-info h3{
+    font-size:13px;
+    letter-spacing:.5px;
+  }
+
+  .product-info p{
+    font-size:14px;
+    margin-bottom:15px;
+  }
+
+  .product-button{
+    width:100%;
+    padding:12px 10px;
+    font-size:10px;
+  }
+
+  .view-all-bottom{
+    margin-top:35px;
+  }
+
+   }
 </style>
 </head>
 
@@ -1285,6 +1485,53 @@ heroImage.addEventListener("touchend", function (e) {
 
 }, { passive: true });
 </script>
-   
+   <script>
+
+function selectHomeProduct(id){
+
+  const products = [
+
+    {
+      id:1,
+      name:"MAX / 03 TEE",
+      price:999,
+      image:"product-1.jpg"
+    },
+
+    {
+      id:2,
+      name:"LEWIS / 44 TEE",
+      price:999,
+      image:"product-2.jpg"
+    },
+
+    {
+      id:3,
+      name:"CHARLES / 16 TEE",
+      price:999,
+      image:"product-3.jpg"
+    },
+
+    {
+      id:4,
+      name:"LANDO / 01 TEE",
+      price:999,
+      image:"product-4.jpg"
+    }
+
+  ];
+
+  const product = products.find(p => p.id === id);
+
+  if(product){
+    localStorage.setItem(
+      "selectedProduct",
+      JSON.stringify(product)
+    );
+  }
+
+}
+
+   </script>
 </body>
 </html>
