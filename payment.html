@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Payment — MAINSTREAM™</title>
 
 <style>
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -23,11 +21,11 @@ body{
 
 .header{
   background:#fff;
-  border-bottom:1px solid #ddd;
   padding:20px 5%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  border-bottom:1px solid #ddd;
 }
 
 .logo{
@@ -38,15 +36,14 @@ body{
 .back{
   color:#070707;
   text-decoration:none;
-  font-size:12px;
   font-weight:bold;
-  letter-spacing:1px;
+  font-size:12px;
 }
 
 .container{
   max-width:1100px;
   margin:auto;
-  padding:60px 5%;
+  padding:55px 5%;
 }
 
 .steps{
@@ -57,8 +54,7 @@ body{
 }
 
 h1{
-  font-size:clamp(45px,8vw,80px);
-  line-height:.85;
+  font-size:70px;
   letter-spacing:-4px;
   margin-bottom:45px;
 }
@@ -66,170 +62,119 @@ h1{
 .layout{
   display:grid;
   grid-template-columns:1.4fr .8fr;
-  gap:50px;
+  gap:40px;
 }
 
-.payment-box,
-.summary{
+.box{
   background:#fff;
   padding:30px;
 }
 
 h2{
   font-size:22px;
-  margin-bottom:30px;
-  letter-spacing:1px;
+  margin-bottom:25px;
 }
 
-.payment-option{
+.option{
   border:1px solid #ccc;
   padding:20px;
   margin-bottom:15px;
-  cursor:pointer;
 }
 
-.payment-option:hover{
-  border-color:#070707;
-}
-
-.payment-option label{
+.option label{
   display:flex;
   align-items:center;
   gap:15px;
-  cursor:pointer;
   font-weight:bold;
-  font-size:16px;
+  cursor:pointer;
 }
 
-.payment-option input{
+.option input{
   width:20px;
   height:20px;
 }
 
-.payment-details{
-  margin-top:20px;
-  padding:20px;
+.card-details{
+  display:none;
   background:#f4f4f1;
+  padding:20px;
+  margin-bottom:15px;
 }
 
 .field{
-  margin-bottom:18px;
+  margin-bottom:15px;
 }
 
-label{
+.field label{
   display:block;
   font-size:11px;
   font-weight:bold;
-  letter-spacing:1px;
-  margin-bottom:8px;
+  margin-bottom:7px;
 }
 
 input[type="text"],
 input[type="number"]{
   width:100%;
-  padding:15px;
+  padding:14px;
   border:1px solid #bbb;
-  background:#fff;
   font-size:15px;
-  outline:none;
 }
 
-input:focus{
-  border:2px solid #070707;
-}
-
-.row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.place-order{
+.place{
   width:100%;
-  margin-top:20px;
-  padding:20px;
+  padding:19px;
+  margin-top:10px;
   border:0;
   background:#ffe000;
-  color:#070707;
-  font-size:15px;
   font-weight:900;
-  letter-spacing:1px;
+  font-size:15px;
   cursor:pointer;
 }
 
-.place-order:active{
-  transform:scale(.99);
-}
-
-.summary-item{
+.item{
   display:flex;
   justify-content:space-between;
-  gap:15px;
-  padding:15px 0;
+  padding:14px 0;
   border-bottom:1px solid #ddd;
   font-size:13px;
 }
 
-.summary-row{
+.total{
   display:flex;
   justify-content:space-between;
-  padding:16px 0;
-}
-
-.total{
-  border-top:1px solid #070707;
-  margin-top:10px;
+  border-top:1px solid #000;
+  margin-top:15px;
+  padding-top:20px;
   font-size:20px;
   font-weight:bold;
 }
 
 .note{
   margin-top:25px;
-  padding:18px;
+  padding:15px;
   background:#f4f4f1;
-  font-size:13px;
-  line-height:1.6;
+  font-size:12px;
+  line-height:1.5;
 }
 
 @media(max-width:800px){
-
   .layout{
-    grid-template-columns:1fr;
-    gap:25px;
-  }
-
-  .payment-box,
-  .summary{
-    padding:22px;
-  }
-
-  .row{
     grid-template-columns:1fr;
   }
 
   h1{
-    font-size:60px;
+    font-size:58px;
   }
-
 }
-
 </style>
-
 </head>
 
 <body>
 
-
 <header class="header">
 
   <a href="index.html">
-
-    <img
-      src="mainstream-logo.png"
-      class="logo"
-      alt="MAINSTREAM™"
-    >
-
+    <img src="mainstream-logo.png" class="logo" alt="MAINSTREAM™">
   </a>
 
   <a href="shipping.html" class="back">
@@ -238,38 +183,213 @@ input:focus{
 
 </header>
 
-
 <main class="container">
 
   <div class="steps">
-    01 CART &nbsp; / &nbsp; 02 SHIPPING &nbsp; / &nbsp; 03 PAYMENT
+    01 CART / 02 SHIPPING / 03 PAYMENT
   </div>
 
-  <h1>
-    PAYMENT
-  </h1>
-
+  <h1>PAYMENT</h1>
 
   <div class="layout">
 
-
-    <!-- PAYMENT -->
-
-    <section class="payment-box">
+    <section class="box">
 
       <h2>CHOOSE PAYMENT METHOD</h2>
 
-
       <form id="paymentForm">
 
-
-        <!-- CARD -->
-
-        <div class="payment-option">
-
+        <div class="option">
           <label>
+            <input type="radio" name="method" value="card">
+            CREDIT / DEBIT CARD
+          </label>
+        </div>
 
-            <input
-              type="radio"
-              name="payment"
-              value
+        <div id="cardDetails" class="card-details">
+
+          <div class="field">
+            <label>CARD NUMBER</label>
+            <input type="text" placeholder="1234 5678 9012 3456">
+          </div>
+
+          <div class="field">
+            <label>EXPIRY DATE</label>
+            <input type="text" placeholder="MM/YY">
+          </div>
+
+          <div class="field">
+            <label>CVV</label>
+            <input type="number" placeholder="123">
+          </div>
+
+        </div>
+
+        <div class="option">
+          <label>
+            <input type="radio" name="method" value="upi">
+            <span>
+              UPI
+              <small style="display:block;color:#777;margin-top:5px;">
+                Google Pay • PhonePe • Paytm
+              </small>
+            </span>
+          </label>
+        </div>
+
+        <div class="option">
+          <label>
+            <input type="radio" name="method" value="cod">
+            <span>
+              CASH ON DELIVERY
+              <small style="display:block;color:#777;margin-top:5px;">
+                Pay when your order arrives
+              </small>
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="place">
+          PLACE ORDER →
+        </button>
+
+      </form>
+
+      <div class="note">
+        🔒 Your payment information is protected.
+        This is a demo checkout and does not process real payments.
+      </div>
+
+    </section>
+
+
+    <aside class="box">
+
+      <h2>ORDER SUMMARY</h2>
+
+      <div id="items"></div>
+
+      <div class="item">
+        <span>Shipping</span>
+        <strong>₹0</strong>
+      </div>
+
+      <div class="total">
+        <span>TOTAL</span>
+        <strong id="total">₹0</strong>
+      </div>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<script>
+
+const cart =
+  JSON.parse(localStorage.getItem("mainstreamCart")) || [];
+
+const items =
+  document.getElementById("items");
+
+const totalElement =
+  document.getElementById("total");
+
+let total = 0;
+
+
+if(cart.length === 0){
+
+  items.innerHTML =
+    "<p>Your cart is empty.</p>";
+
+}else{
+
+  cart.forEach(item => {
+
+    const price =
+      Number(
+        String(item.price)
+        .replace(/[₹,]/g,"")
+      ) || 0;
+
+    const quantity =
+      Number(item.quantity) || 1;
+
+    const amount =
+      price * quantity;
+
+    total += amount;
+
+    items.innerHTML += `
+      <div class="item">
+        <span>${item.name} × ${quantity}</span>
+        <strong>₹${amount.toLocaleString("en-IN")}</strong>
+      </div>
+    `;
+
+  });
+
+}
+
+
+totalElement.textContent =
+  "₹" + total.toLocaleString("en-IN");
+
+
+/* CARD DETAILS */
+
+document
+.querySelectorAll('input[name="method"]')
+.forEach(function(option){
+
+  option.addEventListener("change",function(){
+
+    document.getElementById("cardDetails").style.display =
+      this.value === "card" ? "block" : "none";
+
+  });
+
+});
+
+
+/* PLACE ORDER */
+
+document
+.getElementById("paymentForm")
+.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  const selected =
+    document.querySelector(
+      'input[name="method"]:checked'
+    );
+
+  if(!selected){
+
+    alert("Please select a payment method.");
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    "mainstreamPayment",
+    JSON.stringify({
+      method:selected.value,
+      total:total
+    })
+  );
+
+  window.location.href =
+    "confirmation.html";
+
+});
+
+</script>
+
+</body>
+</html>
