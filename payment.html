@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Payment — MAINSTREAM™</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -94,7 +97,16 @@ h2{
   height:20px;
 }
 
-.card-details{
+.subtext{
+  display:block;
+  color:#777;
+  font-size:13px;
+  margin-top:6px;
+  font-weight:normal;
+}
+
+.card-details,
+.upi-details{
   display:none;
   background:#f4f4f1;
   padding:20px;
@@ -120,14 +132,59 @@ input[type="number"]{
   font-size:15px;
 }
 
-.place{
+.app-title{
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.apps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.app{
+  background:#fff;
+  border:1px solid #bbb;
+  padding:16px 8px;
+  text-align:center;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:12px;
+}
+
+.app.selected{
+  border:3px solid #070707;
+}
+
+.app-icon{
+  font-size:28px;
+  display:block;
+  margin-bottom:8px;
+}
+
+.pay-button{
   width:100%;
-  padding:19px;
-  margin-top:10px;
+  padding:18px;
+  margin-top:15px;
   border:0;
   background:#ffe000;
   font-weight:900;
   font-size:15px;
+  cursor:pointer;
+}
+
+.complete-button{
+  display:none;
+  width:100%;
+  padding:18px;
+  margin-top:15px;
+  border:0;
+  background:#070707;
+  color:#fff;
+  font-weight:900;
+  font-size:14px;
   cursor:pointer;
 }
 
@@ -158,6 +215,7 @@ input[type="number"]{
 }
 
 @media(max-width:800px){
+
   .layout{
     grid-template-columns:1fr;
   }
@@ -165,16 +223,31 @@ input[type="number"]{
   h1{
     font-size:58px;
   }
+
+  .apps{
+    grid-template-columns:1fr 1fr 1fr;
+  }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
 
 <header class="header">
 
   <a href="index.html">
-    <img src="mainstream-logo.png" class="logo" alt="MAINSTREAM™">
+
+    <img
+      src="mainstream-logo.png"
+      class="logo"
+      alt="MAINSTREAM™"
+    >
+
   </a>
 
   <a href="shipping.html" class="back">
@@ -182,6 +255,7 @@ input[type="number"]{
   </a>
 
 </header>
+
 
 <main class="container">
 
@@ -191,77 +265,247 @@ input[type="number"]{
 
   <h1>PAYMENT</h1>
 
+
   <div class="layout">
+
+
+    <!-- PAYMENT BOX -->
 
     <section class="box">
 
       <h2>CHOOSE PAYMENT METHOD</h2>
 
+
       <form id="paymentForm">
 
-        <div class="option">
-          <label>
-            <input type="radio" name="method" value="card">
-            CREDIT / DEBIT CARD
-          </label>
-        </div>
 
-        <div id="cardDetails" class="card-details">
-
-          <div class="field">
-            <label>CARD NUMBER</label>
-            <input type="text" placeholder="1234 5678 9012 3456">
-          </div>
-
-          <div class="field">
-            <label>EXPIRY DATE</label>
-            <input type="text" placeholder="MM/YY">
-          </div>
-
-          <div class="field">
-            <label>CVV</label>
-            <input type="number" placeholder="123">
-          </div>
-
-        </div>
+        <!-- CARD -->
 
         <div class="option">
+
           <label>
-            <input type="radio" name="method" value="upi">
+
+            <input
+              type="radio"
+              name="method"
+              value="card"
+            >
+
             <span>
+              CREDIT / DEBIT CARD
+            </span>
+
+          </label>
+
+        </div>
+
+
+        <!-- CARD DETAILS -->
+
+        <div
+          id="cardDetails"
+          class="card-details"
+        >
+
+          <div class="field">
+
+            <label>
+              CARD NUMBER
+            </label>
+
+            <input
+              type="text"
+              placeholder="1234 5678 9012 3456"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              EXPIRY DATE
+            </label>
+
+            <input
+              type="text"
+              placeholder="MM/YY"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              CVV
+            </label>
+
+            <input
+              type="number"
+              placeholder="123"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- UPI -->
+
+        <div class="option">
+
+          <label>
+
+            <input
+              type="radio"
+              name="method"
+              value="upi"
+            >
+
+            <span>
+
               UPI
-              <small style="display:block;color:#777;margin-top:5px;">
+
+              <small class="subtext">
                 Google Pay • PhonePe • Paytm
               </small>
+
             </span>
+
           </label>
+
         </div>
+
+
+        <!-- UPI APPS -->
+
+        <div
+          id="upiDetails"
+          class="upi-details"
+        >
+
+          <div class="app-title">
+            SELECT YOUR UPI APP
+          </div>
+
+
+          <div class="apps">
+
+
+            <div
+              class="app"
+              data-app="Google Pay"
+            >
+
+              <span class="app-icon">🟢</span>
+
+              Google Pay
+
+            </div>
+
+
+            <div
+              class="app"
+              data-app="PhonePe"
+            >
+
+              <span class="app-icon">🟣</span>
+
+              PhonePe
+
+            </div>
+
+
+            <div
+              class="app"
+              data-app="Paytm"
+            >
+
+              <span class="app-icon">🔵</span>
+
+              Paytm
+
+            </div>
+
+
+          </div>
+
+
+          <button
+            type="button"
+            id="upiPayButton"
+            class="pay-button"
+          >
+            PAY NOW →
+          </button>
+
+
+          <button
+            type="button"
+            id="completeButton"
+            class="complete-button"
+          >
+            I HAVE COMPLETED PAYMENT →
+          </button>
+
+        </div>
+
+
+        <!-- COD -->
 
         <div class="option">
+
           <label>
-            <input type="radio" name="method" value="cod">
+
+            <input
+              type="radio"
+              name="method"
+              value="cod"
+            >
+
             <span>
+
               CASH ON DELIVERY
-              <small style="display:block;color:#777;margin-top:5px;">
+
+              <small class="subtext">
                 Pay when your order arrives
               </small>
+
             </span>
+
           </label>
+
         </div>
 
-        <button type="submit" class="place">
+
+        <button
+          type="submit"
+          id="placeOrder"
+          class="pay-button"
+        >
           PLACE ORDER →
         </button>
 
+
       </form>
 
+
       <div class="note">
+
         🔒 Your payment information is protected.
-        This is a demo checkout and does not process real payments.
+
+        <br><br>
+
+        UPI checkout on this demo website cannot
+        automatically verify real payment status.
+
       </div>
 
     </section>
 
+
+    <!-- ORDER SUMMARY -->
 
     <aside class="box">
 
@@ -269,17 +513,28 @@ input[type="number"]{
 
       <div id="items"></div>
 
+
       <div class="item">
+
         <span>Shipping</span>
+
         <strong>₹0</strong>
+
       </div>
 
+
       <div class="total">
+
         <span>TOTAL</span>
-        <strong id="total">₹0</strong>
+
+        <strong id="total">
+          ₹0
+        </strong>
+
       </div>
 
     </aside>
+
 
   </div>
 
@@ -288,8 +543,14 @@ input[type="number"]{
 
 <script>
 
+
+/* CART */
+
 const cart =
-  JSON.parse(localStorage.getItem("mainstreamCart")) || [];
+  JSON.parse(
+    localStorage.getItem("mainstreamCart")
+  ) || [];
+
 
 const items =
   document.getElementById("items");
@@ -297,8 +558,11 @@ const items =
 const totalElement =
   document.getElementById("total");
 
+
 let total = 0;
 
+
+/* ORDER SUMMARY */
 
 if(cart.length === 0){
 
@@ -323,11 +587,21 @@ if(cart.length === 0){
 
     total += amount;
 
+
     items.innerHTML += `
+
       <div class="item">
-        <span>${item.name} × ${quantity}</span>
-        <strong>₹${amount.toLocaleString("en-IN")}</strong>
+
+        <span>
+          ${item.name} × ${quantity}
+        </span>
+
+        <strong>
+          ₹${amount.toLocaleString("en-IN")}
+        </strong>
+
       </div>
+
     `;
 
   });
@@ -339,7 +613,25 @@ totalElement.textContent =
   "₹" + total.toLocaleString("en-IN");
 
 
-/* CARD DETAILS */
+/* ELEMENTS */
+
+const cardDetails =
+  document.getElementById("cardDetails");
+
+const upiDetails =
+  document.getElementById("upiDetails");
+
+const completeButton =
+  document.getElementById("completeButton");
+
+const placeOrder =
+  document.getElementById("placeOrder");
+
+
+let selectedApp = "";
+
+
+/* PAYMENT METHOD */
 
 document
 .querySelectorAll('input[name="method"]')
@@ -347,10 +639,134 @@ document
 
   option.addEventListener("change",function(){
 
-    document.getElementById("cardDetails").style.display =
-      this.value === "card" ? "block" : "none";
+    cardDetails.style.display = "none";
+
+    upiDetails.style.display = "none";
+
+    completeButton.style.display = "none";
+
+    placeOrder.style.display = "block";
+
+
+    if(this.value === "card"){
+
+      cardDetails.style.display = "block";
+
+    }
+
+
+    if(this.value === "upi"){
+
+      upiDetails.style.display = "block";
+
+      placeOrder.style.display = "none";
+
+    }
 
   });
+
+});
+
+
+/* SELECT UPI APP */
+
+document
+.querySelectorAll(".app")
+.forEach(function(app){
+
+  app.addEventListener("click",function(){
+
+    document
+    .querySelectorAll(".app")
+    .forEach(function(x){
+
+      x.classList.remove("selected");
+
+    });
+
+
+    this.classList.add("selected");
+
+    selectedApp =
+      this.dataset.app;
+
+  });
+
+});
+
+
+/* PAY NOW */
+
+document
+.getElementById("upiPayButton")
+.addEventListener("click",function(){
+
+  if(!selectedApp){
+
+    alert(
+      "Please select Google Pay, PhonePe or Paytm."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    Replace YOURUPI@BANK with your
+    real business UPI ID when you have one.
+  */
+
+  const upiID =
+    "YOURUPI@BANK";
+
+
+  const upiURL =
+    "upi://pay?pa="
+    + encodeURIComponent(upiID)
+    + "&pn="
+    + encodeURIComponent("MAINSTREAM")
+    + "&am="
+    + total
+    + "&cu=INR";
+
+
+  window.location.href = upiURL;
+
+
+  setTimeout(function(){
+
+    completeButton.style.display =
+      "block";
+
+  },2000);
+
+});
+
+
+/* PAYMENT COMPLETED */
+
+completeButton
+.addEventListener("click",function(){
+
+  localStorage.setItem(
+    "mainstreamPayment",
+    JSON.stringify({
+
+      method:"upi",
+
+      app:selectedApp,
+
+      total:total,
+
+      status:"customer_confirmed"
+
+    })
+  );
+
+
+  window.location.href =
+    "confirmation.html";
 
 });
 
@@ -363,26 +779,44 @@ document
 
   e.preventDefault();
 
+
   const selected =
     document.querySelector(
       'input[name="method"]:checked'
     );
 
+
   if(!selected){
 
-    alert("Please select a payment method.");
+    alert(
+      "Please select a payment method."
+    );
 
     return;
 
   }
 
+
+  if(selected.value === "upi"){
+
+    return;
+
+  }
+
+
   localStorage.setItem(
     "mainstreamPayment",
     JSON.stringify({
+
       method:selected.value,
-      total:total
+
+      total:total,
+
+      status:"confirmed"
+
     })
   );
+
 
   window.location.href =
     "confirmation.html";
@@ -390,6 +824,7 @@ document
 });
 
 </script>
+
 
 </body>
 </html>
