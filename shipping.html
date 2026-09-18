@@ -573,7 +573,24 @@ document
       "payment.html";
 
   });
+// Restore previously entered delivery details
+const savedShipping = localStorage.getItem("mainstreamShipping");
 
+if (savedShipping) {
+
+  const shipping = JSON.parse(savedShipping);
+
+  Object.keys(shipping).forEach(function(key) {
+
+    const field = document.getElementById(key);
+
+    if (field) {
+      field.value = shipping[key];
+    }
+
+  });
+
+}
 </script>
 
 
