@@ -1173,38 +1173,99 @@ const heroImages = [
 
 let heroIndex = 0;
 
-const heroImage =
-  document.getElementById("heroImage");
+const heroImage = document.getElementById("heroImage");
+const heroCounter = document.getElementById("heroCounter");
 
-const heroCounter =
-  document.getElementById("heroCounter");
+function showHero(index, direction = 1) {
 
+  heroIndex = (index + heroImages.length) % heroImages.length;
 
-setInterval(function(){
+  heroImage.style.transition =
+    "transform 0.45s ease, opacity 0.45s ease";
+
+  heroImage.style.transform =
+    direction > 0
+      ? "translateX(-40px)"
+      : "translateX(40px)";
 
   heroImage.style.opacity = "0";
 
-  setTimeout(function(){
+  setTimeout(function () {
 
-    heroIndex =
-      (heroIndex + 1) %
-      heroImages.length;
-
-    heroImage.src =
-      heroImages[heroIndex];
+    heroImage.src = heroImages[heroIndex];
 
     heroCounter.textContent =
-      String(heroIndex + 1).padStart(2,"0")
-      + " / 07";
+      String(heroIndex + 1).padStart(2, "0") + " / 07";
 
-    heroImage.style.opacity = "1";
+    heroImage.style.transform =
+      direction > 0
+        ? "translateX(40px)"
+        : "translateX(-40px)";
 
-  },600);
+    setTimeout(function () {
 
-},3500);
+      heroImage.style.transform = "translateX(0)";
+      heroImage.style.opacity = "1";
 
+    }, 50);
+
+  }, 250);
+}
+
+
+/* AUTOMATIC SLIDE */
+
+let autoSlide = setInterval(function () {
+
+  showHero(heroIndex + 1, 1);
+
+}, 3500);
+
+
+/* FINGER SWIPE */
+
+let touchStartX = 0;
+
+heroImage.addEventListener("touchstart", function (e) {
+
+  touchStartX = e.changedTouches[0].screenX;
+
+  clearInterval(autoSlide);
+
+}, { passive: true });
+
+
+heroImage.addEventListener("touchend", function (e) {
+
+  const touchEndX = e.changedTouches[0].screenX;
+
+  const swipeDistance =
+    touchEndX - touchStartX;
+
+  if (Math.abs(swipeDistance) > 50) {
+
+    if (swipeDistance < 0) {
+
+      // Swipe LEFT = NEXT
+      showHero(heroIndex + 1, 1);
+
+    } else {
+
+      // Swipe RIGHT = PREVIOUS
+      showHero(heroIndex - 1, -1);
+
+    }
+
+  }
+
+  autoSlide = setInterval(function () {
+
+    showHero(heroIndex + 1, 1);
+
+  }, 3500);
+
+}, { passive: true });
 </script>
-
-
+   
 </body>
 </html>
