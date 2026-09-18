@@ -913,7 +913,34 @@ body::before{
   text-align: center;
   cursor: pointer;
 }
+/* FIX PRODUCT CARD GAP */
 
+.products-section .product-card{
+  height:auto !important;
+  min-height:0 !important;
+  display:block !important;
+}
+
+.products-section .product-image{
+  height:auto !important;
+  min-height:0 !important;
+  aspect-ratio:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.products-section .product-image img{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+.products-section .product-info{
+  margin:0 !important;
+  padding:14px !important;
+}
 </style>
 </head>
 
