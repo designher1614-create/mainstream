@@ -887,6 +887,15 @@ body::before{
    .products-section .product-grid .product-card:nth-child(n+5) {
   display: none !important;
    }
+   /* HOME PAGE - SHOW ONLY FIRST 4 PRODUCTS */
+.products-section .product-card:nth-of-type(n+5) {
+    display: none !important;
+}
+
+/* Keep VIEW ALL button visible */
+.view-all-home {
+    display: flex !important;
+}
 </style>
 </head>
 
