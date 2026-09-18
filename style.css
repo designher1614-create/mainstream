@@ -470,3 +470,189 @@ footer div>a{
     padding:55px 18px 20px;
   }
 }
+/* =========================================
+   MAINSTREAM™ PRO ANIMATION PACK
+   ========================================= */
+
+/* Smooth page entrance */
+body {
+  animation: pageReveal 0.9s ease both;
+}
+
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Premium header entrance */
+.header {
+  animation: headerReveal 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes headerReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation hover */
+.header nav a {
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.header nav a:hover {
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+
+.header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.35s ease;
+}
+
+.header nav a:hover::after {
+  width: 100%;
+}
+
+/* Hero entrance */
+.hero {
+  animation: heroReveal 1.1s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero image premium movement */
+.hero img {
+  transition:
+    transform 1.2s cubic-bezier(.22,1,.36,1),
+    opacity 0.6s ease;
+}
+
+.hero img:hover {
+  transform: scale(1.025);
+}
+
+/* Hero text stagger */
+.hero h1 {
+  animation: textUp 0.9s 0.25s cubic-bezier(.22,1,.36,1) both;
+}
+
+.hero p {
+  animation: textUp 0.9s 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+
+.hero .cta {
+  animation: textUp 0.9s 0.55s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes textUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium CTA */
+.cta {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.cta span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.cta:hover span {
+  transform: translateX(7px);
+}
+
+/* Header icons */
+.header-icons button {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.header-icons button:hover {
+  transform: translateY(-3px) scale(1.08);
+  opacity: 0.7;
+}
+
+/* Sections reveal */
+section {
+  animation: sectionReveal 1s ease both;
+}
+
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Image smooth rendering */
+img {
+  transition:
+    transform 0.6s cubic-bezier(.22,1,.36,1),
+    opacity 0.4s ease;
+}
+
+/* Premium focus */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
