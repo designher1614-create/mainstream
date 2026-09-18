@@ -1,519 +1,1210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MAINSTREAM™ — Wear The Main</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header class="header">
-  <a class="brand" href="index.html">MAINSTREAM<span>™</span></a>
-
-  <nav>
-    <a href="#shop">SHOP</a>
-    <a href="#story">OUR STORY</a>
-    <a href="#new">NEW ARRIVALS</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
-
-  <div class="header-icons">
-  <button onclick="window.location.href='shop.html#searchInput'">⌕</button>
-  <button onclick="alert('Account page coming soon!')">👤</button>
-  <button onclick="window.location.href='shop.html'">🛒</button>
-  </div>
-</header>
-
-<main>
-
-<section class="hero">
-
-  <div class="hero-copy">
-    <p class="eyebrow">MAINSTREAM™ / 2026 COLLECTION</p>
-
-    <h1>WEAR<br>THE MAIN.</h1>
-
-    <p class="hero-text">
-      Premium streetwear made for people who move different.
-      Clean silhouettes. Bold details. Your everyday uniform.
-    </p>
-
-    <a class="cta" href="shop.html">
-      SHOP NOW <span>→</span>
-    </a>
-  </div>
-
-  <div class="hero-art">
-    <div class="hero-card">
-      <img src="product-1.jpg" alt="MAINSTREAM T-shirt">
-    </div>
-
-    <div class="hero-tag">
-  NEW DROP<br>
-  <strong id="heroCounter">01 / 05</strong>
-</div>
-  </div>
-
-</section>
-
-
-<section id="new" class="drop-banner">
-
-  <div>
-    <span>NEW DROP</span>
-    <strong>THE MAINSTREAM RACING EDIT</strong>
-  </div>
-
-  <a href="#shop">EXPLORE →</a>
-
-</section>
-
-<!-- =========================
-     NEW DROP PRODUCTS
-========================= -->
-
-<section class="home-products" id="new">
-
-  <div class="home-products-heading">
-    <div>
-      <span>MAINSTREAM™ / NEW DROP</span>
-      <h2>THE RACING EDIT.</h2>
-    </div>
-
-    <a href="shop.html">
-      VIEW ALL →
-    </a>
-  </div>
-
-  <div class="home-product-grid">
-
-    <!-- MAX -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('MAX / 03 TEE',999,'max.jpg')">
-
-      <div class="home-product-image">
-        <span>01</span>
-        <img src="max.jpg" alt="MAX / 03 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>MAX / 03 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- LEWIS -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('LEWIS / 44 TEE',999,'lewis.jpg')">
-
-      <div class="home-product-image">
-        <span>02</span>
-        <img src="lewis.jpg" alt="LEWIS / 44 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>LEWIS / 44 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- CHARLES -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('CHARLES / 16 TEE',999,'charles.jpg')">
-
-      <div class="home-product-image">
-        <span>03</span>
-        <img src="charles.jpg" alt="CHARLES / 16 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>CHARLES / 16 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- LANDO -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('LANDO / 01 TEE',999,'lando.jpg')">
-
-      <div class="home-product-image">
-        <span>04</span>
-        <img src="lando.jpg" alt="LANDO / 01 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>LANDO / 01 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- OSCAR -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('OSCAR / 81 TEE',999,'oscar.jpg')">
-
-      <div class="home-product-image">
-        <span>05</span>
-        <img src="oscar.jpg" alt="OSCAR / 81 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>OSCAR / 81 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- GEORGE -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('GEORGE / 63 TEE',999,'george.jpg')">
-
-      <div class="home-product-image">
-        <span>06</span>
-        <img src="george.jpg" alt="GEORGE / 63 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>GEORGE / 63 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-
-    <!-- KIMI -->
-    <a class="home-product" href="product.html"
-       onclick="saveHomeProduct('KIMI / 12 TEE',999,'kimi.jpg')">
-
-      <div class="home-product-image">
-        <span>07</span>
-        <img src="kimi.jpg" alt="KIMI / 12 TEE">
-      </div>
-
-      <div class="home-product-info">
-        <h3>KIMI / 12 TEE</h3>
-        <p>₹999</p>
-      </div>
-
-    </a>
-
-  </div>
-
-  <div class="home-shop-button">
-    <a href="shop.html">SHOP THE FULL COLLECTION →</a>
-  </div>
-
-</section>
-
 
 <style>
 
 /* =========================
-   HOME PRODUCTS
+   RESET
 ========================= */
 
-.home-products{
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
   background:#f4f4f1;
-  padding:90px 4%;
-  overflow:hidden;
-}
-
-.home-products-heading{
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  margin-bottom:45px;
-}
-
-.home-products-heading span{
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:3px;
-}
-
-.home-products-heading h2{
-  font-size:clamp(40px,7vw,90px);
-  line-height:.9;
-  margin-top:15px;
-  letter-spacing:-4px;
-  font-weight:900;
-}
-
-.home-products-heading a{
   color:#070707;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
   text-decoration:none;
-  font-size:12px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+  height:92px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 4vw;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid #ddd;
+}
+
+.brand{
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-1.5px;
+}
+
+nav{
+  display:flex;
+  gap:35px;
+}
+
+nav a{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1.5px;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-7px;
+  width:0;
+  height:2px;
+  background:#ffe000;
+  transition:.3s;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.header-icons{
+  display:flex;
+  gap:12px;
+}
+
+.header-icons button{
+  border:0;
+  background:none;
+  font-size:22px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.header-icons button:hover{
+  transform:scale(1.2);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:calc(100vh - 92px);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  padding:70px 4vw;
+  align-items:center;
+}
+
+.hero-copy{
+  animation:heroText 1s ease forwards;
+}
+
+@keyframes heroText{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.eyebrow{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:4px;
+  margin-bottom:30px;
+}
+
+.hero h1{
+  font-size:clamp(65px,9vw,145px);
+  line-height:.82;
+  letter-spacing:-7px;
+  font-weight:1000;
+  margin-bottom:35px;
+}
+
+.hero-text{
+  max-width:560px;
+  font-size:21px;
+  line-height:1.5;
+  color:#4c4c4c;
+  margin-bottom:40px;
+}
+
+.cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:70px;
+  background:#ffe000;
+  padding:22px 30px;
+  font-size:15px;
   font-weight:900;
   letter-spacing:2px;
-  border-bottom:2px solid #070707;
-  padding-bottom:8px;
+  transition:.4s;
 }
 
-.home-product-grid{
+.cta:hover{
+  background:#070707;
+  color:#fff;
+  transform:translateY(-5px);
+}
+
+.cta span{
+  font-size:24px;
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.hero-art{
+  position:relative;
+  animation:heroImage 1.2s ease forwards;
+}
+
+@keyframes heroImage{
+  from{
+    opacity:0;
+    transform:translateX(50px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+.hero-card{
+  background:#fff;
+  overflow:hidden;
+  position:relative;
+}
+
+.hero-card img{
+  width:100%;
+  height:650px;
+  object-fit:cover;
+  display:block;
+  transition:opacity .6s ease, transform 1s ease;
+}
+
+.hero-card:hover img{
+  transform:scale(1.04);
+}
+
+.hero-tag{
+  position:absolute;
+  right:0;
+  bottom:0;
+  background:#070707;
+  color:#ffe000;
+  padding:18px 25px;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+/* =========================
+   NEW DROP
+========================= */
+
+.drop-banner{
+  background:#ffe000;
+  min-height:145px;
+  padding:30px 4vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.drop-banner span{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:4px;
+  margin-bottom:10px;
+}
+
+.drop-banner strong{
+  font-size:25px;
+  letter-spacing:-1px;
+}
+
+.drop-banner a{
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.products-section{
+  padding:100px 4vw;
+  background:#f4f4f1;
+}
+
+.products-heading{
+  margin-bottom:55px;
+}
+
+.products-heading h2{
+  font-size:clamp(60px,9vw,130px);
+  line-height:.82;
+  letter-spacing:-7px;
+  margin-top:15px;
+}
+
+/* GRID */
+
+.product-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  gap:20px;
 }
 
-.home-product{
-  color:#070707;
-  text-decoration:none;
-  display:block;
-}
+/* CARD */
 
-.home-product-image{
-  position:relative;
-  aspect-ratio:1/1;
+.product-card{
+  background:#fff;
   overflow:hidden;
-  background:#ddd;
+  position:relative;
+  opacity:0;
+  transform:translateY(50px);
+  animation:productReveal .8s ease forwards;
 }
 
-.home-product-image img{
+.product-card:nth-child(1){
+  animation-delay:.1s;
+}
+
+.product-card:nth-child(2){
+  animation-delay:.2s;
+}
+
+.product-card:nth-child(3){
+  animation-delay:.3s;
+}
+
+.product-card:nth-child(4){
+  animation-delay:.4s;
+}
+
+.product-card:nth-child(5){
+  animation-delay:.5s;
+}
+
+.product-card:nth-child(6){
+  animation-delay:.6s;
+}
+
+.product-card:nth-child(7){
+  animation-delay:.7s;
+}
+
+@keyframes productReveal{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.product-image{
+  width:100%;
+  aspect-ratio:1 / 1.15;
+  overflow:hidden;
+  background:#eee;
+}
+
+.product-image img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
-  transition:
-    transform .8s cubic-bezier(.2,.7,.2,1),
-    filter .5s ease;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
-.home-product:hover .home-product-image img{
+.product-card:hover .product-image img{
   transform:scale(1.08);
-  filter:brightness(.9);
 }
 
-.home-product-image span{
-  position:absolute;
-  top:14px;
-  left:14px;
-  z-index:2;
-  background:#ffe000;
-  padding:8px 11px;
-  font-size:10px;
-  font-weight:900;
+.product-info{
+  padding:20px;
 }
 
-.home-product-info{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 2px;
+.product-info h3{
+  font-size:15px;
+  margin-bottom:8px;
+  letter-spacing:.5px;
 }
 
-.home-product-info h3{
-  font-size:13px;
-  letter-spacing:1px;
+.price{
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:18px;
 }
 
-.home-product-info p{
-  font-size:13px;
-  font-weight:900;
-}
-
-.home-shop-button{
-  text-align:center;
-  margin-top:55px;
-}
-
-.home-shop-button a{
+.product-btn{
   display:inline-block;
   background:#ffe000;
-  color:#070707;
-  text-decoration:none;
-  padding:18px 35px;
+  padding:12px 17px;
   font-size:12px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:1px;
   transition:.3s;
 }
 
-.home-shop-button a:hover{
+.product-btn:hover{
   background:#070707;
   color:#fff;
-  transform:translateY(-4px);
+  transform:translateX(6px);
 }
 
+/* =========================
+   STORY
+========================= */
 
-/* MOBILE */
+.story{
+  background:#070707;
+  color:#fff;
+  padding:120px 4vw;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+}
+
+.story h2{
+  font-size:clamp(65px,9vw,135px);
+  line-height:.8;
+  letter-spacing:-7px;
+  margin-top:20px;
+}
+
+.story-copy{
+  align-self:end;
+  max-width:550px;
+}
+
+.story-copy p{
+  font-size:20px;
+  line-height:1.6;
+  color:#cfcfcf;
+  margin-bottom:30px;
+}
+
+.story-copy a{
+  color:#ffe000;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  background:#070707;
+  color:#fff;
+  border-top:1px solid #333;
+  padding:70px 4vw 30px;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;
+  padding-bottom:60px;
+}
+
+.footer-logo{
+  color:#ffe000;
+  font-size:30px;
+  font-weight:900;
+}
+
+.footer-column h4{
+  color:#ffe000;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.footer-column a{
+  display:block;
+  color:#ccc;
+  margin-bottom:12px;
+  font-size:14px;
+  transition:.3s;
+}
+
+.footer-column a:hover{
+  color:#ffe000;
+  transform:translateX(5px);
+}
+
+.footer-bottom{
+  border-top:1px solid #333;
+  padding-top:25px;
+  display:flex;
+  justify-content:space-between;
+  color:#888;
+  font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
-  .home-product-grid{
+  .header{
+    height:75px;
+    padding:0 18px;
+  }
+
+  .brand{
+    font-size:20px;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding:50px 18px;
+    gap:45px;
+  }
+
+  .hero h1{
+    font-size:70px;
+    letter-spacing:-4px;
+  }
+
+  .hero-text{
+    font-size:18px;
+  }
+
+  .hero-card img{
+    height:500px;
+  }
+
+  .drop-banner{
+    padding:25px 18px;
+  }
+
+  .drop-banner strong{
+    font-size:18px;
+  }
+
+  .products-section{
+    padding:70px 18px;
+  }
+
+  .products-heading h2{
+    font-size:65px;
+    letter-spacing:-4px;
+  }
+
+  .product-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    gap:12px;
+  }
+
+  .product-info{
+    padding:14px;
+  }
+
+  .product-info h3{
+    font-size:13px;
+  }
+
+  .product-btn{
+    padding:10px 12px;
+    font-size:10px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+    padding:80px 18px;
+    gap:50px;
+  }
+
+  .story h2{
+    font-size:70px;
+    letter-spacing:-4px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr 1fr;
   }
 
 }
 
-@media(max-width:600px){
+@media(max-width:500px){
 
-  .home-products{
-    padding:65px 18px;
+  .product-grid{
+    grid-template-columns:1fr;
   }
 
-  .home-products-heading{
-    align-items:flex-start;
+  .hero h1{
+    font-size:58px;
+  }
+
+  .hero-card img{
+    height:470px;
+  }
+
+  .footer-top{
+    grid-template-columns:1fr;
+  }
+
+  .footer-bottom{
     flex-direction:column;
-    gap:25px;
+    gap:10px;
   }
 
-  .home-products-heading h2{
-    font-size:46px;
-    letter-spacing:-2px;
-  }
+}
 
-  .home-product-info{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:6px;
-  }
+/* =========================
+   PAGE LOAD EFFECT
+========================= */
 
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:#ffe000;
+  z-index:9999;
+  pointer-events:none;
+  animation:pageLoader 1s ease forwards;
+}
+
+@keyframes pageLoader{
+  0%{
+    transform:translateY(0);
+  }
+  70%{
+    transform:translateY(0);
+  }
+  100%{
+    transform:translateY(-100%);
+  }
 }
 
 </style>
+</head>
 
 
-<script>
+<body>
 
-function saveHomeProduct(name,price,image){
 
-  localStorage.setItem(
-    "selectedProduct",
-    JSON.stringify({
-      name:name,
-      price:"₹"+price,
-      image:image
-    })
-  );
+<!-- =========================
+     HEADER
+========================= -->
 
-}
+<header class="header">
 
-</script>
-<section id="story" class="story">
+  <a class="brand" href="index.html">
+    MAINSTREAM™
+  </a>
 
-  <div class="story-title">
-    <p class="eyebrow">OUR STORY</p>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+    <a href="#new">NEW DROP</a>
+    <a href="#story">OUR STORY</a>
+  </nav>
 
-    <h2>
-      BUILT FOR<br>
-      THE MAINSTREAM.
-    </h2>
+  <div class="header-icons">
+
+    <button onclick="window.location.href='shop.html'">
+      ⌕
+    </button>
+
+    <button onclick="alert('Account page coming soon!')">
+      ♙
+    </button>
+
+    <button onclick="window.location.href='cart.html'">
+      🛒
+    </button>
+
   </div>
 
-  <div class="story-copy">
+</header>
 
-    <p>
-      MAINSTREAM™ is a streetwear label built around confidence,
-      individuality and clean design. We make pieces that feel
-      effortless but never ordinary.
+
+<main>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <div class="hero-copy">
+
+    <p class="eyebrow">
+      MAINSTREAM™ / 2026 COLLECTION
     </p>
 
-    <a href="#contact">DISCOVER MORE →</a>
+    <h1>
+      WEAR<br>
+      THE MAIN.
+    </h1>
+
+    <p class="hero-text">
+      Premium streetwear made for people who move
+      different. Clean silhouettes. Bold details.
+      Your everyday uniform.
+    </p>
+
+    <a class="cta" href="shop.html">
+      SHOP NOW
+      <span>→</span>
+    </a>
+
+  </div>
+
+
+  <div class="hero-art">
+
+    <div class="hero-card">
+
+      <img
+        id="heroImage"
+        src="max.jpg"
+        alt="MAINSTREAM Max T-Shirt"
+      >
+
+      <div class="hero-tag">
+
+        NEW DROP<br>
+
+        <strong id="heroCounter">
+          01 / 07
+        </strong>
+
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
+
+<!-- =========================
+     NEW DROP BANNER
+========================= -->
+
+<section id="new" class="drop-banner">
+
+  <div>
+
+    <span>
+      NEW DROP
+    </span>
+
+    <strong>
+      THE MAINSTREAM RACING EDIT
+    </strong>
+
+  </div>
+
+  <a href="#shop">
+    EXPLORE →
+  </a>
+
+</section>
+
+
+<!-- =========================
+     PRODUCTS
+========================= -->
+
+<section id="shop" class="products-section">
+
+  <div class="products-heading">
+
+    <p class="eyebrow">
+      MAINSTREAM™ / NEW DROP
+    </p>
+
+    <h2>
+      THE RACING<br>
+      EDIT.
+    </h2>
+
+  </div>
+
+
+  <div class="product-grid">
+
+
+    <!-- MAX -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="max.jpg"
+          alt="Max Verstappen T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          MAX / 03 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- LEWIS -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="lewis.jpg"
+          alt="Lewis Hamilton T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          LEWIS / 44 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- CHARLES -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="charles.jpg"
+          alt="Charles Leclerc T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          CHARLES / 16 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- LANDO -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="lando.jpg"
+          alt="Lando Norris T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          LANDO / 01 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- OSCAR -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="oscar.jpg"
+          alt="Oscar Piastri T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          OSCAR / 81 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- GEORGE -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="george.jpg"
+          alt="George Russell T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          GEORGE / 63 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- KIMI -->
+
+    <div class="product-card">
+
+      <div class="product-image">
+
+        <img
+          src="kimi.jpg"
+          alt="Kimi Antonelli T-Shirt"
+        >
+
+      </div>
+
+      <div class="product-info">
+
+        <h3>
+          KIMI / 12 TEE
+        </h3>
+
+        <div class="price">
+          ₹999
+        </div>
+
+        <a
+          href="shop.html"
+          class="product-btn"
+        >
+          SHOP NOW →
+        </a>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     STORY
+========================= -->
+
+<section id="story" class="story">
+
+  <div>
+
+    <p class="eyebrow">
+      OUR STORY
+    </p>
+
+    <h2>
+      BUILT FOR<br>
+      THE MAIN.
+    </h2>
+
+  </div>
+
+
+  <div class="story-copy">
+
+    <p>
+      MAINSTREAM™ is a streetwear label built around
+      individuality, movement and clean design.
+      We make pieces that feel effortless but never
+      ordinary.
+    </p>
+
+    <a href="shop.html">
+      DISCOVER THE COLLECTION →
+    </a>
+
+  </div>
+
+</section>
+
+
 </main>
 
 
-<footer id="contact">
+<!-- =========================
+     FOOTER
+========================= -->
 
-  <div class="footer-brand">
-    MAINSTREAM<span>™</span>
-    <p>WEAR THE MAIN.</p>
+<footer>
+
+  <div class="footer-top">
+
+    <div>
+      <div class="footer-logo">
+        MAINSTREAM™
+      </div>
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        SHOP
+      </h4>
+
+      <a href="shop.html">
+        All Products
+      </a>
+
+      <a href="shop.html">
+        New Drop
+      </a>
+
+      <a href="cart.html">
+        Cart
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        CUSTOMER CARE
+      </h4>
+
+      <a href="#">
+        Shipping
+      </a>
+
+      <a href="#">
+        Returns
+      </a>
+
+      <a href="#">
+        Contact
+      </a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>
+        MAINSTREAM
+      </h4>
+
+      <a href="#story">
+        Our Story
+      </a>
+
+      <a href="#">
+        Instagram
+      </a>
+
+      <a href="#">
+        Privacy
+      </a>
+
+    </div>
+
   </div>
 
-  <div>
-    <h4>SHOP</h4>
-    <a href="#shop">New Drop</a>
-    <a href="#shop">T-Shirts</a>
-    <a href="#shop">All Products</a>
-  </div>
 
-  <div>
-    <h4>HELP</h4>
-    <a href="#">Shipping</a>
-    <a href="#">Returns</a>
-    <a href="#">Contact</a>
-  </div>
+  <div class="footer-bottom">
 
-  <div>
-    <h4>FOLLOW</h4>
-    <a href="#">Instagram</a>
-    <a href="#">TikTok</a>
-    <a href="#">Pinterest</a>
-  </div>
+    <span>
+      © 2026 MAINSTREAM™
+    </span>
 
-  <p class="copyright">
-    © 2026 MAINSTREAM™. All rights reserved.
-  </p>
+    <span>
+      WEAR THE MAIN.
+    </span>
+
+  </div>
 
 </footer>
 
 
+<!-- =========================
+     HERO IMAGE ANIMATION
+========================= -->
+
 <script>
+
 const heroImages = [
-  "product-1.jpg",
-  "product-2.jpg",
-  "product-3.jpg",
-  "product-4.jpg",
-  "product-5.jpg"
+
+  "max.jpg",
+  "lewis.jpg",
+  "charles.jpg",
+  "lando.jpg",
+  "oscar.jpg",
+  "george.jpg",
+  "kimi.jpg"
+
 ];
 
-const heroCard = document.querySelector(".hero-card");
-const currentImage = heroCard.querySelector("img");
+let heroIndex = 0;
 
-heroCard.style.position = "relative";
-heroCard.style.overflow = "hidden";
+const heroImage =
+  document.getElementById("heroImage");
 
-currentImage.style.opacity = "1";
-currentImage.style.transition = "opacity 0.6s ease";
+const heroCounter =
+  document.getElementById("heroCounter");
 
-let current = 0;
-const heroCounter = document.getElementById("heroCounter");
 
-setInterval(() => {
-  currentImage.style.opacity = "0";
+setInterval(function(){
 
-  setTimeout(() => {
-    current = (current + 1) % heroImages.length;
+  heroImage.style.opacity = "0";
 
-    currentImage.src = heroImages[current];
+  setTimeout(function(){
+
+    heroIndex =
+      (heroIndex + 1) %
+      heroImages.length;
+
+    heroImage.src =
+      heroImages[heroIndex];
 
     heroCounter.textContent =
-      String(current + 1).padStart(2, "0") + " / 05";
+      String(heroIndex + 1).padStart(2,"0")
+      + " / 07";
 
-    currentImage.style.opacity = "1";
-  }, 600);
+    heroImage.style.opacity = "1";
 
-}, 3000);
+  },600);
 
-document.querySelectorAll(".add").forEach(button => {
+},3500);
 
-  button.addEventListener("click", () => {
-
-    button.textContent = "ADDED ✓";
-
-    setTimeout(() => {
-      button.textContent = "ADD TO CART";
-    }, 1200);
-
-  });
-
-});
 </script>
+
 
 </body>
 </html>
