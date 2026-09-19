@@ -1025,6 +1025,56 @@ body::before{
         grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     }
 }
+   /* FINAL MOBILE HOME PRODUCT FIX */
+
+.products-section{
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    padding:70px 30px !important;
+}
+
+.products-section .product-grid{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:12px !important;
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+}
+
+.products-section .product-card{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+}
+
+.products-section .product-card:nth-child(n+5){
+    display:none !important;
+}
+
+.products-section .product-image,
+.products-section .product-image img{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+    display:block !important;
+}
+
+@media(max-width:500px){
+    .products-section{
+        padding:60px 15px !important;
+    }
+
+    .products-section .product-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        width:100% !important;
+    }
+}
 </style>
 </head>
 
