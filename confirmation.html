@@ -1,432 +1,857 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Order Confirmed — MAINSTREAM™</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Confirmed | MAINSTREAM™</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f7f5ef;
-  color:#111;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f5ef;
+    color:#111;
+}
+
+/* HEADER */
+
+header{
+    height:80px;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+}
+
+.logo{
+    height:42px;
+    width:auto;
 }
 
 .nav{
-  height:72px;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  padding:0 4%;
-  border-bottom:1px solid #ddd;
-  gap:40px;
+    display:flex;
+    align-items:center;
+    gap:28px;
 }
 
-.brand img{
-  width:145px;
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:1.5px;
 }
 
-.nav nav{
-  display:flex;
-  gap:30px;
-  flex:1;
-  justify-content:center;
+.nav a:last-child{
+    color:#f5d547;
 }
 
-.nav nav a{
-  color:#111;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.cart-btn{
-  background:#ffd21c;
-  border:0;
-  padding:12px 20px;
-  font-weight:bold;
-}
+/* MAIN */
 
 .confirmation{
-  max-width:850px;
-  margin:70px auto;
-  padding:0 20px;
-  text-align:center;
+    width:92%;
+    max-width:900px;
+    margin:55px auto 80px;
+    text-align:center;
 }
 
-.check{
-  width:80px;
-  height:80px;
-  margin:0 auto 25px;
-  border-radius:50%;
-  background:#ffd21c;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  font-weight:bold;
+/* CHECK */
+
+.check-circle{
+    width:135px;
+    height:135px;
+    margin:0 auto 35px;
+    border-radius:50%;
+    background:#f5d547;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:75px;
+    font-weight:bold;
 }
 
-h1{
-  font-size:38px;
-  margin:0 0 12px;
+/* TITLE */
+
+.confirmation h1{
+    font-size:48px;
+    letter-spacing:3px;
+    margin-bottom:18px;
 }
 
-.message{
-  color:#666;
-  font-size:14px;
-  margin-bottom:40px;
+.subtitle{
+    font-size:19px;
+    color:#666;
+    line-height:1.5;
+    margin-bottom:45px;
 }
+
+/* ORDER BOX */
 
 .order-box{
-  background:#fff;
-  border:1px solid #ddd;
-  padding:30px;
-  text-align:left;
+    background:white;
+    border:1px solid #ddd;
+    text-align:left;
+    padding:35px;
 }
 
 .order-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #ddd;
-  padding-bottom:20px;
-  margin-bottom:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding-bottom:22px;
+    border-bottom:1px solid #ddd;
 }
 
 .order-header h2{
-  margin:0;
-  font-size:18px;
+    font-size:24px;
+    letter-spacing:1px;
 }
 
 .order-number{
-  font-size:12px;
-  color:#666;
+    color:#666;
+    font-size:14px;
 }
 
-.item{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  padding:15px 0;
-  border-bottom:1px solid #eee;
+/* ITEMS */
+
+.order-items{
+    margin-top:10px;
 }
 
-.item img{
-  width:75px;
-  height:90px;
-  object-fit:contain;
-  background:#eee;
+.order-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid #eee;
 }
 
-.item-info{
-  flex:1;
+.order-image{
+    width:85px;
+    height:100px;
+    background:#f3f3f3;
+    overflow:hidden;
+    flex-shrink:0;
 }
 
-.item-info h3{
-  margin:0 0 7px;
-  font-size:14px;
+.order-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.item-info p{
-  margin:3px 0;
-  color:#777;
-  font-size:12px;
+.order-info{
+    flex:1;
 }
 
-.total{
-  display:flex;
-  justify-content:space-between;
-  padding-top:22px;
-  font-size:18px;
-  font-weight:bold;
+.order-info h3{
+    font-size:16px;
+    margin-bottom:8px;
+    letter-spacing:.5px;
 }
 
-.actions{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:35px;
+.order-info p{
+    color:#777;
+    font-size:13px;
+    margin:4px 0;
 }
 
-.actions a{
-  padding:14px 25px;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:bold;
+.order-price{
+    font-size:17px;
+    font-weight:bold;
 }
 
-.shop{
-  background:#ffd21c;
-  color:#111;
+/* TOTAL */
+
+.total-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-top:25px;
+    padding-top:25px;
+
+    border-top:2px solid #111;
 }
 
-.home{
-  background:#111;
-  color:#fff;
+.total-row span{
+    font-size:20px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
 
-.note{
-  margin-top:30px;
-  font-size:12px;
-  color:#777;
-  line-height:1.6;
+.total-price{
+    font-size:25px;
 }
 
-@media(max-width:800px){
+/* PAYMENT */
 
-  .nav{
-    height:64px;
-    padding:0 18px;
-  }
+.payment-info{
+    margin-top:22px;
+    padding:18px;
+    background:#f7f5ef;
+    font-size:14px;
+    color:#555;
+}
 
-  .brand img{
-    width:115px;
-  }
+.payment-info strong{
+    color:#111;
+}
 
-  .nav nav{
-    display:none;
-  }
+/* BUTTONS */
 
-  .cart-btn{
-    margin-left:auto;
-    padding:10px 14px;
-    font-size:11px;
-  }
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+}
 
-  .confirmation{
-    margin:40px auto;
-  }
-
-  h1{
-    font-size:29px;
-  }
-
-  .order-box{
-    padding:20px;
-  }
-
-  .actions{
-    flex-direction:column;
-  }
-
-  .actions a{
+.buttons a{
+    flex:1;
+    text-decoration:none;
     text-align:center;
-  }
+    padding:17px 20px;
+
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
 }
+
+.shop-btn{
+    background:#f5d547;
+    color:#111;
+}
+
+.home-btn{
+    background:#111;
+    color:white;
+}
+
+/* DEMO NOTE */
+
+.demo-note{
+    margin-top:45px;
+    color:#777;
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    header{
+        height:70px;
+        padding:0 20px;
+    }
+
+    .logo{
+        height:34px;
+    }
+
+    .nav{
+        gap:15px;
+    }
+
+    .nav a{
+        font-size:10px;
+    }
+
+    .confirmation{
+        width:94%;
+        margin:40px auto 60px;
+    }
+
+    .check-circle{
+        width:105px;
+        height:105px;
+        font-size:58px;
+        margin-bottom:28px;
+    }
+
+    .confirmation h1{
+        font-size:34px;
+        letter-spacing:2px;
+    }
+
+    .subtitle{
+        font-size:16px;
+        margin-bottom:30px;
+    }
+
+    .order-box{
+        padding:20px;
+    }
+
+    .order-header{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:8px;
+    }
+
+    .order-header h2{
+        font-size:20px;
+    }
+
+    .order-item{
+        gap:12px;
+    }
+
+    .order-image{
+        width:70px;
+        height:85px;
+    }
+
+    .order-info h3{
+        font-size:13px;
+    }
+
+    .order-info p{
+        font-size:11px;
+    }
+
+    .order-price{
+        font-size:14px;
+    }
+
+    .total-row span{
+        font-size:17px;
+    }
+
+    .total-price{
+        font-size:21px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header class="nav">
 
-  <a class="brand" href="index.html">
-    <img src="mainstream-logo.png" alt="MAINSTREAM™">
-  </a>
+<!-- HEADER -->
 
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="shop.html">SHOP</a>
-    <a href="index.html#new">NEW DROP</a>
-    <a href="index.html#story">ABOUT</a>
-    <a href="index.html#contact">CONTACT</a>
-  </nav>
+<header>
 
-  <button class="cart-btn" onclick="goCart()">
-    CART <span id="cartCount">0</span>
-  </button>
+<a href="index.html">
+<img
+src="mainstream-logo.png"
+class="logo"
+alt="MAINSTREAM">
+</a>
+
+<nav class="nav">
+
+<a href="index.html">HOME</a>
+
+<a href="shop.html">SHOP</a>
+
+<a href="cart.html">CART</a>
+
+</nav>
 
 </header>
 
 
+<!-- CONFIRMATION -->
+
 <main class="confirmation">
 
-  <div class="check">
-    ✓
-  </div>
 
-  <h1>
-    ORDER CONFIRMED
-  </h1>
-
-  <p class="message">
-    Thank you for shopping with MAINSTREAM™.
-    Your order has been successfully placed.
-  </p>
+<div class="check-circle">
+✓
+</div>
 
 
-  <section class="order-box">
-
-    <div class="order-header">
-
-      <h2>
-        ORDER DETAILS
-      </h2>
-
-      <span class="order-number" id="orderNumber">
-        ORDER #MS000000
-      </span>
-
-    </div>
+<h1>
+ORDER CONFIRMED
+</h1>
 
 
-    <div id="items"></div>
+<p class="subtitle">
+Thank you for shopping with MAINSTREAM™.<br>
+Your order has been successfully placed.
+</p>
 
 
-    <div class="total">
-
-      <span>
-        TOTAL
-      </span>
-
-      <strong id="total">
-        ₹0
-      </strong>
-
-    </div>
-
-  </section>
+<div class="order-box">
 
 
-  <div class="actions">
+<div class="order-header">
 
-    <a class="shop" href="shop.html">
-      CONTINUE SHOPPING
-    </a>
+<h2>
+ORDER DETAILS
+</h2>
 
-    <a class="home" href="index.html">
-      BACK TO HOME
-    </a>
+<div class="order-number">
+ORDER #<span id="orderNumber"></span>
+</div>
 
-  </div>
+</div>
 
 
-  <p class="note">
-    This is a demo order confirmation.
-    No real payment has been processed.
-  </p>
+<div
+class="order-items"
+id="orderItems">
+</div>
+
+
+<div class="total-row">
+
+<span>
+TOTAL
+</span>
+
+<span
+class="total-price"
+id="orderTotal">
+₹0
+</span>
+
+</div>
+
+
+<div class="payment-info">
+
+PAYMENT METHOD:
+<strong id="paymentMethod">
+—
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div class="buttons">
+
+<a
+href="shop.html"
+class="shop-btn">
+CONTINUE SHOPPING
+</a>
+
+<a
+href="index.html"
+class="home-btn">
+BACK TO HOME
+</a>
+
+</div>
+
+
+<p class="demo-note">
+
+This is a demo order confirmation.
+No real payment has been processed.
+
+</p>
+
 
 </main>
 
 
 <script>
 
-const cart =
-  JSON.parse(
-    localStorage.getItem("mainstreamCart")
-  ) || [];
+/* ==============================
+   GET PRICE
+============================== */
+
+function getPrice(price){
+
+    if(typeof price === "number"){
+        return price;
+    }
+
+    return parseInt(
+        String(price)
+        .replace(/[^\d]/g,"")
+    ) || 0;
+}
 
 
-/* CART COUNT */
+/* ==============================
+   GET ORDER
+============================== */
 
-const count =
-  cart.reduce(
-    (total,item) =>
-      total + item.quantity,
-    0
-  );
+function getOrder(){
 
-document.getElementById("cartCount")
-  .textContent = count;
+    try{
 
+        const savedOrder =
+            JSON.parse(
+                localStorage.getItem(
+                    "mainstreamOrder"
+                )
+            );
 
-/* ORDER NUMBER */
+        if(
+            savedOrder &&
+            Array.isArray(savedOrder.items) &&
+            savedOrder.items.length > 0
+        ){
 
-const randomNumber =
-  Math.floor(
-    100000 + Math.random() * 900000
-  );
-
-document.getElementById("orderNumber")
-  .textContent =
-    "ORDER #MS" + randomNumber;
-
-
-/* ITEMS */
-
-const items =
-  document.getElementById("items");
-
-let total = 0;
+            return savedOrder;
+        }
 
 
-if(cart.length === 0){
+        /* BUY NOW FALLBACK */
 
-  items.innerHTML =
-    "<p>Your order details are unavailable.</p>";
+        const buyNow =
+            JSON.parse(
+                localStorage.getItem(
+                    "mainstreamBuyNow"
+                )
+            );
 
-}else{
 
-  items.innerHTML =
-    cart.map(item => {
+        if(buyNow){
 
-      const price =
-        parseInt(
-          item.price.replace(/[^\d]/g,"")
+            const items =
+                Array.isArray(buyNow)
+                ? buyNow
+                : [buyNow];
+
+
+            return {
+
+                items:items,
+
+                payment:
+                    localStorage.getItem(
+                        "mainstreamPaymentMethod"
+                    ) || "Demo Payment",
+
+                total:items.reduce(
+                    function(sum,item){
+
+                        return sum +
+                            getPrice(item.price) *
+                            (Number(item.quantity) || 1);
+
+                    },
+                    0
+                )
+
+            };
+
+        }
+
+
+        /* NORMAL CART FALLBACK */
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "mainstreamCart"
+                )
+            ) || [];
+
+
+        return {
+
+            items:cart,
+
+            payment:
+                localStorage.getItem(
+                    "mainstreamPaymentMethod"
+                ) || "Demo Payment",
+
+            total:cart.reduce(
+                function(sum,item){
+
+                    return sum +
+                        getPrice(item.price) *
+                        (Number(item.quantity) || 1);
+
+                },
+                0
+            )
+
+        };
+
+
+    }catch(error){
+
+        return {
+            items:[],
+            payment:"Demo Payment",
+            total:0
+        };
+
+    }
+
+}
+
+
+/* ==============================
+   GENERATE ORDER NUMBER
+============================== */
+
+function getOrderNumber(){
+
+    let number =
+        localStorage.getItem(
+            "mainstreamOrderNumber"
         );
 
-      total +=
-        price * item.quantity;
 
-      return `
+    if(!number){
 
-        <div class="item">
+        number =
+            "MS" +
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
 
-          <img
-            src="${item.image}"
-            alt="${item.name}"
-          >
+        localStorage.setItem(
+            "mainstreamOrderNumber",
+            number
+        );
 
-          <div class="item-info">
+    }
 
-            <h3>
-              ${item.name}
-            </h3>
 
-            <p>
-              MAINSTREAM™
-            </p>
-
-            <p>
-              Quantity: ${item.quantity}
-            </p>
-
-          </div>
-
-          <strong>
-            ₹${price * item.quantity}
-          </strong>
-
-        </div>
-
-      `;
-
-    }).join("");
+    return number;
 
 }
 
 
-document.getElementById("total")
-  .textContent = "₹" + total;
+/* ==============================
+   DISPLAY ORDER
+============================== */
+
+function renderOrder(){
+
+    const order =
+        getOrder();
 
 
-/* CLEAR CART AFTER ORDER */
+    const itemsContainer =
+        document.getElementById(
+            "orderItems"
+        );
 
-localStorage.removeItem("mainstreamCart");
+
+    const totalElement =
+        document.getElementById(
+            "orderTotal"
+        );
 
 
-function goCart(){
+    const paymentElement =
+        document.getElementById(
+            "paymentMethod"
+        );
 
-  window.location.href =
-    "cart.html";
+
+    const orderNumberElement =
+        document.getElementById(
+            "orderNumber"
+        );
+
+
+    orderNumberElement.textContent =
+        getOrderNumber();
+
+
+    paymentElement.textContent =
+        formatPaymentMethod(
+            order.payment
+        );
+
+
+    itemsContainer.innerHTML = "";
+
+
+    let total = 0;
+
+
+    if(
+        !order.items ||
+        order.items.length === 0
+    ){
+
+        itemsContainer.innerHTML = `
+
+            <div
+            style="
+            padding:30px 0;
+            color:#777;
+            text-align:center;
+            ">
+
+            Order details are unavailable.
+
+            </div>
+
+        `;
+
+        totalElement.textContent =
+            "₹0";
+
+        return;
+
+    }
+
+
+    order.items.forEach(
+        function(item){
+
+            const price =
+                getPrice(item.price);
+
+
+            const quantity =
+                Number(item.quantity) || 1;
+
+
+            const itemTotal =
+                price * quantity;
+
+
+            total += itemTotal;
+
+
+            const itemElement =
+                document.createElement(
+                    "div"
+                );
+
+
+            itemElement.className =
+                "order-item";
+
+
+            itemElement.innerHTML = `
+
+                <div class="order-image">
+
+                    <img
+                    src="${item.image || 'mainstream-logo.png'}"
+                    alt="${item.name || 'Product'}"
+                    onerror="
+                    this.src='mainstream-logo.png'
+                    ">
+
+                </div>
+
+
+                <div class="order-info">
+
+                    <h3>
+                    ${item.name || "PRODUCT"}
+                    </h3>
+
+                    <p>
+                    SIZE:
+                    ${item.size || "M"}
+                    </p>
+
+                    <p>
+                    QUANTITY:
+                    ${quantity}
+                    </p>
+
+                    <p>
+                    UNIT PRICE:
+                    ₹${price.toLocaleString("en-IN")}
+                    </p>
+
+                </div>
+
+
+                <div class="order-price">
+
+                    ₹${itemTotal.toLocaleString("en-IN")}
+
+                </div>
+
+            `;
+
+
+            itemsContainer.appendChild(
+                itemElement
+            );
+
+        }
+    );
+
+
+    totalElement.textContent =
+        "₹" +
+        total.toLocaleString(
+            "en-IN"
+        );
 
 }
+
+
+/* ==============================
+   PAYMENT NAME
+============================== */
+
+function formatPaymentMethod(method){
+
+    if(!method){
+        return "Demo Payment";
+    }
+
+
+    if(method === "card"){
+        return "Credit / Debit Card";
+    }
+
+
+    if(method === "upi"){
+        return "UPI";
+    }
+
+
+    if(method === "cod"){
+        return "Cash on Delivery";
+    }
+
+
+    return method;
+
+}
+
+
+/* ==============================
+   START
+============================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderOrder();
+
+    }
+);
 
 </script>
 
+
 </body>
-</html>
+  </html>
