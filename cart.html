@@ -672,23 +672,14 @@ function removeItem(index){
 ========================= */
 
 function checkout(){
-
     const cart = getCart();
 
-
     if(cart.length === 0){
-
         alert("Your cart is empty.");
-
         return;
-
     }
 
-
-    alert(
-        "Checkout is coming soon."
-    );
-
+    window.location.href = "shipping.html";
 }
 
 
