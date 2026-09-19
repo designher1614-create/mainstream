@@ -1318,17 +1318,26 @@ function addToCart(name,price,image){
 
 function updateCart(){
 
-const count =
-cart.reduce(
-(total,item)=>total + item.quantity,
-0
-);
+    const cart =
+        JSON.parse(
+            localStorage.getItem("mainstreamCart")
+        ) || [];
 
-document.getElementById("cartCount").textContent =
-count;
+    const count =
+        cart.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 0),
+            0
+        );
 
-renderCart();
+    const cartCount =
+        document.getElementById("cartCount");
 
+    if(cartCount){
+        cartCount.textContent = count;
+    }
+
+    renderCart();
 }
 
 
