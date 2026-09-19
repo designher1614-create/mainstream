@@ -815,7 +815,10 @@ let currentView =
 
 
 function showImage(type,button){
-
+    
+frontThumb.src = currentProduct.front;
+backThumb.src = currentProduct.back;
+    
     currentView = type;
 
     document
