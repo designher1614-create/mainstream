@@ -819,10 +819,7 @@ let currentView =
 
 
 function showImage(type,button){
-    
-frontThumb.src = currentProduct.front;
-backThumb.src = currentProduct.back;
-    
+
     currentView = type;
 
     document
@@ -833,8 +830,6 @@ backThumb.src = currentProduct.back;
 
     button.classList.add("active");
 
-    mainImage.className = "main-photo " + type;
-
     if(type === "front"){
         mainImage.src = currentProduct.front;
     }
@@ -844,7 +839,7 @@ backThumb.src = currentProduct.back;
     }
 
     else if(type === "combined"){
-        mainImage.src = currentProduct.front;
+        mainImage.src = currentProduct.combined;
     }
 
     else if(type === "sizechart"){
