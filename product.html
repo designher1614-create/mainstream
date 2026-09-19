@@ -528,47 +528,150 @@ header{
 
 
     <!-- ================= COLOR ================= -->
+<script>
 
-    <div class="option-title">
-        COLOR
-    </div>
+/* ================= PRODUCT COLOUR FILTER ================= */
 
+let selectedColor = "Black";
 
-    <div class="color-options">
+const colorMap = {
+    Black: {
+        r: 17,
+        g: 17,
+        b: 17
+    },
 
+    White: {
+        r: 235,
+        g: 235,
+        b: 235
+    },
 
-        <button
-            class="color-option color-black active"
-            onclick="selectColor('Black',this)"
-            aria-label="Black">
-        </button>
-
-
-        <button
-            class="color-option color-white"
-            onclick="selectColor('White',this)"
-            aria-label="White">
-        </button>
-
-
-        <button
-            class="color-option color-beige"
-            onclick="selectColor('Beige',this)"
-            aria-label="Beige">
-        </button>
+    Beige: {
+        r: 225,
+        g: 211,
+        b: 185
+    }
+};
 
 
-    </div>
+function selectColor(color, button){
+
+    selectedColor = color;
+
+    document.getElementById(
+        "selectedColor"
+    ).textContent = color;
 
 
-    <div class="selected-color">
+    document
+        .querySelectorAll(".color-option")
+        .forEach(function(item){
 
-        Selected Colour:
-        <span id="selectedColor">
-            Black
-        </span>
+            item.classList.remove("active");
 
-    </div>
+        });
+
+
+    button.classList.add("active");
+
+
+    applyDressColor(color);
+
+}
+
+
+/* ================= CHANGE DRESS COLOUR ================= */
+
+function applyDressColor(color){
+
+    const img =
+        document.getElementById(
+            "mainProductImage"
+        );
+
+
+    if(color === "Black"){
+
+        img.style.filter = "none";
+
+        return;
+
+    }
+
+
+    if(color === "White"){
+
+        img.style.filter =
+            "brightness(1.8) grayscale(1) contrast(.75)";
+
+        return;
+
+    }
+
+
+    if(color === "Beige"){
+
+        img.style.filter =
+            "sepia(.45) saturate(.65) brightness(1.35) contrast(.85)";
+
+        return;
+
+    }
+
+}
+
+
+/* ================= RESET FILTER WHEN IMAGE CHANGES ================= */
+
+function changeImage(index){
+
+    const image =
+        document.getElementById(
+            "mainProductImage"
+        );
+
+    const thumbnails =
+        document.querySelectorAll(
+            ".thumbnail"
+        );
+
+
+    image.classList.add("change");
+
+
+    setTimeout(function(){
+
+        image.src =
+            productImages[index];
+
+        currentImage = index;
+
+
+        image.onload = function(){
+
+            image.classList.remove("change");
+
+            applyDressColor(selectedColor);
+
+        };
+
+    },180);
+
+
+    thumbnails.forEach(function(item){
+
+        item.classList.remove("active");
+
+    });
+
+
+    thumbnails[index]
+        .classList.add("active");
+
+}
+
+</script>
 
 
     <!-- ================= SIZE ================= -->
