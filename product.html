@@ -983,9 +983,21 @@ function addToCart(){
 
 function buyNow(){
 
-    window.location.href =
-        "shipping.html";
-    }
+    const buyNowProduct = {
+        name: currentProduct.name,
+        price: "₹999",
+        image: currentProduct.front,
+        size: selectedSize,
+        quantity: quantity
+    };
+
+    localStorage.setItem(
+        "mainstreamBuyNow",
+        JSON.stringify(buyNowProduct)
+    );
+
+    window.location.href = "shipping.html";
+}
 
 
 /* ================= CART COUNT ================= */
