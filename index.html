@@ -1,1 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAINSTREAM™ — Wear The Main</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f5f0;
+    color:#111;
+    overflow-x:hidden;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:78px;
+    background:#fff;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+}
+
+.logo{
+    width:190px;
+    max-width:45vw;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.icon-btn{
+    border:0;
+    background:none;
+    font-size:25px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    transform:scale(1.15);
+}
+
+.cart-btn{
+    background:#ffd900;
+    border:2px solid #111;
+    padding:12px 18px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.cart-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:4px 4px 0 #111;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:calc(100vh - 78px);
+    display:grid;
+    grid-template-columns:45% 55%;
+    align-items:center;
+    gap:20px;
+    padding:70px 5%;
+}
+
+.hero-content{
+    animation:heroText .9s ease both;
+}
+
+.hero-small{
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:4px;
+    margin-bottom:20px;
+}
+
+.hero-title{
+    font-size:clamp(60px,8vw,125px);
+    line-height:.82;
+    font-weight:900;
+    letter-spacing:-6px;
+    margin-bottom:35px;
+}
+
+.hero-description{
+    max-width:540px;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:35px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#ffd900;
+    color:#111;
+    border:2px solid #111;
+    padding:18px 34px;
+    text-decoration:none;
+    font-weight:900;
+    letter-spacing:1px;
+    transition:.35s;
+}
+
+.shop-btn:hover{
+    transform:translate(5px,-5px);
+    box-shadow:7px 7px 0 #111;
+}
+
+.hero-visual{
+    position:relative;
+    overflow:hidden;
+    animation:heroImage 1s ease both;
+}
+
+.hero-image-wrap{
+    position:relative;
+    overflow:hidden;
+    background:#ddd;
+}
+
+.hero-image{
+    width:100%;
+    display:block;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    transition:opacity .45s ease, transform .8s ease;
+}
+
+.hero-image.next{
+    animation:heroNext .65s ease;
+}
+
+.hero-image.prev{
+    animation:heroPrev .65s ease;
+}
+
+.hero-counter{
+    position:absolute;
+    right:20px;
+    bottom:20px;
+    background:#111;
+    color:#fff;
+    padding:10px 15px;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.swipe-hint{
+    position:absolute;
+    left:20px;
+    bottom:20px;
+    background:#fff;
+    padding:10px 15px;
+    font-size:12px;
+    font-weight:800;
+}
+
+/* ================= NEW DROP ================= */
+
+.drop-banner{
+    margin:0 5% 90px;
+    background:#111;
+    color:#fff;
+    padding:50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+}
+
+.drop-banner::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:2px solid #ffd900;
+    border-radius:50%;
+    right:-50px;
+    top:-50px;
+    animation:spin 12s linear infinite;
+}
+
+.drop-title{
+    font-size:clamp(35px,5vw,70px);
+    font-weight:900;
+}
+
+.drop-text{
+    color:#ffd900;
+    font-weight:800;
+    letter-spacing:3px;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-section{
+    padding:30px 5% 100px;
+}
+
+.section-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:45px;
+}
+
+.section-label{
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:4px;
+}
+
+.section-title{
+    font-size:clamp(38px,5vw,70px);
+    font-weight:900;
+    letter-spacing:-3px;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:25px;
+}
+
+.product-card{
+    background:#fff;
+    overflow:hidden;
+    position:relative;
+    opacity:0;
+    transform:translateY(45px);
+    transition:
+        opacity .7s ease,
+        transform .7s ease,
+        box-shadow .4s ease;
+}
+
+.product-card.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:10px 10px 0 #111;
+}
+
+.product-image{
+    width:100%;
+    aspect-ratio:1 / 1;
+    overflow:hidden;
+    background:#e8e8e8;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-info{
+    padding:25px;
+}
+
+.product-name{
+    font-size:22px;
+    font-weight:900;
+    margin-bottom:10px;
+}
+
+.product-price{
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.product-actions{
+    display:flex;
+    gap:10px;
+}
+
+.product-btn{
+    flex:1;
+    padding:15px 10px;
+    background:#ffd900;
+    border:2px solid #111;
+    color:#111;
+    text-decoration:none;
+    text-align:center;
+    font-size:12px;
+    font-weight:900;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.product-btn:hover{
+    background:#111;
+    color:#fff;
+}
+
+/* ================= VIEW ALL ================= */
+
+.view-all{
+    text-align:center;
+    margin-top:60px;
+}
+
+.view-all a{
+    display:inline-block;
+    background:#111;
+    color:#fff;
+    padding:20px 45px;
+    text-decoration:none;
+    font-weight:900;
+    letter-spacing:2px;
+    border:2px solid #111;
+    transition:.35s;
+}
+
+.view-all a:hover{
+    background:#ffd900;
+    color:#111;
+    transform:translateY(-5px);
+    box-shadow:7px 7px 0 #111;
+}
+
+/* ================= STORY ================= */
+
+.story{
+    margin:0 5% 100px;
+    background:#ffd900;
+    padding:70px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+}
+
+.story h2{
+    font-size:clamp(45px,6vw,85px);
+    line-height:.9;
+    font-weight:900;
+}
+
+.story p{
+    font-size:18px;
+    line-height:1.8;
+    align-self:end;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:70px 5% 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-logo{
+    width:210px;
+    background:#ffd900;
+    padding:10px;
+}
+
+.footer-title{
+    color:#ffd900;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+
+footer a{
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+footer a:hover{
+    color:#ffd900;
+    transform:translateX(5px);
+}
+
+.footer-bottom{
+    border-top:1px solid #444;
+    margin-top:60px;
+    padding-top:25px;
+    font-size:12px;
+    color:#aaa;
+}
+
+/* ================= SEARCH ================= */
+
+.search-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(17,17,17,.96);
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.search-overlay.active{
+    display:flex;
+}
+
+.search-box{
+    width:min(700px,100%);
+}
+
+.search-close{
+    float:right;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:35px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.search-input{
+    width:100%;
+    background:transparent;
+    border:0;
+    border-bottom:3px solid #ffd900;
+    color:#fff;
+    font-size:35px;
+    padding:20px 0;
+    outline:none;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes heroText{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes heroImage{
+    from{
+        opacity:0;
+        transform:translateX(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+}
+
+@keyframes heroNext{
+    0%{
+        opacity:0;
+        transform:translateX(70px) scale(1.03);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
+}
+
+@keyframes heroPrev{
+    0%{
+        opacity:0;
+        transform:translateX(-70px) scale(1.03);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    header{
+        height:68px;
+        padding:0 20px;
+    }
+
+    .logo{
+        width:170px;
+    }
+
+    .header-right{
+        gap:12px;
+    }
+
+    .icon-btn{
+        font-size:21px;
+    }
+
+    .cart-btn{
+        padding:10px 12px;
+        font-size:12px;
+    }
+
+    .hero{
+        display:flex;
+        flex-direction:column;
+        padding:55px 20px 50px;
+        min-height:auto;
+        gap:40px;
+    }
+
+    .hero-content{
+        width:100%;
+    }
+
+    .hero-title{
+        font-size:70px;
+        letter-spacing:-5px;
+    }
+
+    .hero-description{
+        font-size:16px;
+    }
+
+    .hero-visual{
+        width:100%;
+    }
+
+    .drop-banner{
+        margin:0 20px 60px;
+        padding:35px 25px;
+        display:block;
+    }
+
+    .drop-title{
+        margin-bottom:12px;
+    }
+
+    .products-section{
+        padding:20px 20px 70px;
+    }
+
+    .section-top{
+        display:block;
+    }
+
+    .section-label{
+        margin-bottom:10px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+    }
+
+    .product-image{
+        aspect-ratio:1 / 1;
+    }
+
+    .product-info{
+        padding:15px 12px;
+    }
+
+    .product-name{
+        font-size:14px;
+    }
+
+    .product-price{
+        font-size:15px;
+        margin-bottom:12px;
+    }
+
+    .product-actions{
+        display:block;
+    }
+
+    .product-btn{
+        display:block;
+        width:100%;
+        margin-top:7px;
+        padding:12px 5px;
+        font-size:10px;
+    }
+
+    .view-all{
+        margin-top:40px;
+    }
+
+    .view-all a{
+        padding:17px 25px;
+        font-size:12px;
+    }
+
+    .story{
+        margin:0 20px 70px;
+        padding:40px 25px;
+        display:block;
+    }
+
+    .story h2{
+        margin-bottom:30px;
+    }
+
+    .story p{
+        font-size:16px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+        gap:35px;
+    }
+
+    .footer-brand{
+        grid-column:1/-1;
+    }
+}
+
+@media(max-width:430px){
+
+    .hero-title{
+        font-size:60px;
+    }
+
+    .product-name{
+        font-size:13px;
+    }
+
+    .product-price{
+        font-size:14px;
+    }
+
+    .product-btn{
+        font-size:9px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="index.html">
+        <img src="mainstream-logo.png" class="logo" alt="MAINSTREAM">
+    </a>
+
+    <div class="header-right">
+
+        <button class="icon-btn" onclick="openSearch()" aria-label="Search">
+            ⌕
+        </button>
+
+        <button class="icon-btn" onclick="window.location.href='shop.html'" aria-label="Shop">
+            ♡
+        </button>
+
+        <button class="cart-btn" onclick="window.location.href='cart.html'">
+            CART <span id="cartCount">0</span>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            MAINSTREAM™ / NEW SEASON
+        </div>
+
+        <h1 class="hero-title">
+            WEAR<br>
+            THE<br>
+            MAIN.
+        </h1>
+
+        <p class="hero-description">
+            Built for the ones who don't follow the crowd.
+            MAINSTREAM™ brings racing culture, streetwear
+            and everyday attitude together.
+        </p>
+
+        <a href="shop.html" class="shop-btn">
+            SHOP NOW →
+        </a>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="hero-image-wrap">
+
+            <img
+                id="heroImage"
+                class="hero-image"
+                src="max-front.png"
+                alt="MAINSTREAM product"
+            >
+
+            <div class="hero-counter" id="heroCounter">
+                01 / 07
+            </div>
+
+            <div class="swipe-hint">
+                ← SWIPE →
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NEW DROP ================= -->
+
+<section class="drop-banner">
+
+    <div>
+
+        <div class="drop-text">
+            MAINSTREAM™ / 2026
+        </div>
+
+        <div class="drop-title">
+            THE NEW DROP.
+        </div>
+
+    </div>
+
+    <div class="drop-text">
+        07 RACERS / 01 ATTITUDE
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products-section" id="products">
+
+    <div class="section-top">
+
+        <div>
+            <div class="section-label">
+                SHOP THE COLLECTION
+            </div>
+
+            <h2 class="section-title">
+                NEW DROP
+            </h2>
+        </div>
+
+    </div>
+
+
+    <div class="product-grid">
+
+        <!-- MAX -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="max-front.png" alt="MAX / 03 TEE">
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    MAX / 03 TEE
+                </div>
+
+                <div class="product-price">
+                    ₹999
+                </div>
+
+                <div class="product-actions">
+
+                    <a
+                        href="product.html?product=max"
+                        class="product-btn"
+                        onclick="selectProduct('max')"
+                    >
+                        VIEW PRODUCT →
+                    </a>
+
+                    <button
+                        class="product-btn"
+                        onclick="addToCart('MAX / 03 TEE','max-front.png',999)"
+                    >
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEWIS -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="lewis-front.png" alt="LEWIS / 44 TEE">
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    LEWIS / 44 TEE
+                </div>
+
+                <div class="product-price">
+                    ₹999
+                </div>
+
+                <div class="product-actions">
+
+                    <a
+                        href="product.html?product=lewis"
+                        class="product-btn"
+                        onclick="selectProduct('lewis')"
+                    >
+                        VIEW PRODUCT →
+                    </a>
+
+                    <button
+                        class="product-btn"
+                        onclick="addToCart('LEWIS / 44 TEE','lewis-front.png',999)"
+                    >
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHARLES -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="charles-front.png" alt="CHARLES / 16 TEE">
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    CHARLES / 16 TEE
+                </div>
+
+                <div class="product-price">
+                    ₹999
+                </div>
+
+                <div class="product-actions">
+
+                    <a
+                        href="product.html?product=charles"
+                        class="product-btn"
+                        onclick="selectProduct('charles')"
+                    >
+                        VIEW PRODUCT →
+                    </a>
+
+                    <button
+                        class="product-btn"
+                        onclick="addToCart('CHARLES / 16 TEE','charles-front.png',999)"
+                    >
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LANDO -->
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <img src="lando-front.png" alt="LANDO / 01 TEE">
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    LANDO / 01 TEE
+                </div>
+
+                <div class="product-price">
+                    ₹999
+                </div>
+
+                <div class="product-actions">
+
+                    <a
+                        href="product.html?product=lando"
+                        class="product-btn"
+                        onclick="selectProduct('lando')"
+                    >
+                        VIEW PRODUCT →
+                    </a>
+
+                    <button
+                        class="product-btn"
+                        onclick="addToCart('LANDO / 01 TEE','lando-front.png',999)"
+                    >
+                        ADD TO CART
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VIEW ALL -->
+
+    <div class="view-all">
+
+        <a href="shop.html">
+            VIEW ALL PRODUCTS →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STORY ================= -->
+
+<section class="story">
+
+    <h2>
+        BUILT FOR<br>
+        THE MAIN.
+    </h2>
+
+    <p>
+        MAINSTREAM™ is a racing-inspired streetwear label
+        built around individuality, speed and everyday attitude.
+        Designed for people who create their own lane.
+    </p>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
+
+            <img
+                src="mainstream-logo.png"
+                class="footer-logo"
+                alt="MAINSTREAM"
+            >
+
+            <p style="margin-top:20px;line-height:1.7;color:#aaa;">
+                Racing culture.<br>
+                Streetwear.<br>
+                Everyday attitude.
+            </p>
+
+        </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                SHOP
+            </div>
+
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="shop.html">New Drop</a>
+
+        </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                CUSTOMER CARE
+            </div>
+
+            <a href="shipping.html">Shipping</a>
+            <a href="cart.html">Cart</a>
+            <a href="payment.html">Payment</a>
+
+        </div>
+
+
+        <div>
+
+            <div class="footer-title">
+                ABOUT
+            </div>
+
+            <a href="#story">Our Story</a>
+            <a href="shop.html">Collection</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+        © 2026 MAINSTREAM™. ALL RIGHTS RESERVED.
+    </div>
+
+</footer>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-overlay" id="searchOverlay">
+
+    <div class="search-box">
+
+        <button
+            class="search-close"
+            onclick="closeSearch()"
+        >
+            ×
+        </button>
+
+        <input
+            id="searchInput"
+            class="search-input"
+            type="text"
+            placeholder="SEARCH MAINSTREAM..."
+            onkeydown="handleSearch(event)"
+        >
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* ================= HERO SLIDER ================= */
+
+const heroImages = [
+    "max-front.png",
+    "lewis-front.png",
+    "charles-front.png",
+    "lando-front.png",
+    "oscar-front.png",
+    "george-front.png",
+    "kimi-front.png"
+];
+
+let heroIndex = 0;
+let heroTimer;
+let touchStartX = 0;
+
+const heroImage = document.getElementById("heroImage");
+const heroCounter = document.getElementById("heroCounter");
+
+
+function showHero(index,direction="next"){
+
+    heroIndex = (index + heroImages.length) % heroImages.length;
+
+heroImage.classList.remove("next","prev");
+
+void heroImage.offsetWidth;
+
+heroImage.classList.add(
+    direction === "next" ? "next" : "prev"
+);
+
+heroImage.src = heroImages[heroIndex];
+
+heroCounter.textContent =
+    String(heroIndex + 1).padStart(2,"0")
+    + " / "
+    + String(heroImages.length).padStart(2,"0");
+}
+
+
+function nextHero(){
+
+    showHero(heroIndex + 1,"next");
+
+    resetHeroTimer();
+
+}
+
+
+function previousHero(){
+
+    showHero(heroIndex - 1,"prev");
+
+    resetHeroTimer();
+
+}
+
+
+function resetHeroTimer(){
+
+    clearInterval(heroTimer);
+
+    heroTimer = setInterval(
+        () => showHero(heroIndex + 1,"next"),
+        4000
+    );
+
+}
+
+
+heroImage.addEventListener("touchstart",function(e){
+
+    touchStartX = e.touches[0].clientX;
+
+},{passive:true});
+
+
+heroImage.addEventListener("touchend",function(e){
+
+    const touchEndX = e.changedTouches[0].clientX;
+
+    const distance =
+        touchEndX - touchStartX;
+
+    if(Math.abs(distance) > 50){
+
+        if(distance < 0){
+
+            nextHero();
+
+        }else{
+
+            previousHero();
+
+        }
+
+    }
+
+},{passive:true});
+
+
+resetHeroTimer();
+
+
+/* ================= SCROLL ANIMATION ================= */
+
+const cards =
+    document.querySelectorAll(".product-card");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.15
+        }
+    );
+
+
+cards.forEach((card,index) => {
+
+    card.style.transitionDelay =
+        (index * 100) + "ms";
+
+    observer.observe(card);
+
+});
+
+
+/* ================= CART ================= */
+
+function getCart(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem("mainstreamCart")
+        ) || [];
+
+    }catch(e){
+
+        return [];
+
+    }
+
+}
+
+
+function saveCart(cart){
+
+    localStorage.setItem(
+        "mainstreamCart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function updateCartCount(){
+
+    const cart = getCart();
+
+    const count =
+        cart.reduce(
+            (total,item) =>
+            total + (item.quantity || 1),
+            0
+        );
+
+    document.getElementById("cartCount").textContent =
+        count;
+
+}
+
+
+function addToCart(name,image,price){
+
+    const cart = getCart();
+
+    const existing =
+        cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.quantity =
+            (existing.quantity || 1) + 1;
+
+    }else{
+
+        cart.push({
+
+            name:name,
+            image:image,
+            price:price,
+            quantity:1
+
+        });
+
+    }
+
+    saveCart(cart);
+
+    updateCartCount();
+
+    alert(name + " added to cart!");
+
+}
+
+
+/* ================= PRODUCT SELECTION ================= */
+
+const productData = {
+
+    max:{
+        name:"MAX / 03 TEE",
+        price:999,
+        front:"max-front.png",
+        back:"max-back.png",
+        main:"max-front.png",
+        size:"size-chart.png"
+    },
+
+    lewis:{
+        name:"LEWIS / 44 TEE",
+        price:999,
+        front:"lewis-front.png",
+        back:"lewis-back.png",
+        main:"lewis-front.png",
+        size:"size-chart.png"
+    },
+
+    charles:{
+        name:"CHARLES / 16 TEE",
+        price:999,
+        front:"charles-front.png",
+        back:"charles-back.png",
+        main:"charles-front.png",
+        size:"size-chart.png"
+    },
+
+    lando:{
+        name:"LANDO / 01 TEE",
+        price:999,
+        front:"lando-front.png",
+        back:"lando-back.png",
+        main:"lando-front.png",
+        size:"size-chart.png"
+    },
+
+    oscar:{
+        name:"OSCAR / 81 TEE",
+        price:999,
+        front:"oscar-front.png",
+        back:"oscar-back.png",
+        main:"oscar-front.png",
+        size:"size-chart.png"
+    },
+
+    george:{
+        name:"GEORGE / 63 TEE",
+        price:999,
+        front:"george-front.png",
+        back:"george-back.png",
+        main:"george-front.png",
+        size:"size-chart.png"
+    },
+
+    kimi:{
+        name:"KIMI / 12 TEE",
+        price:999,
+        front:"kimi-front.png",
+        back:"kimi-back.png",
+        main:"kimi-front.png",
+        size:"size-chart.png"
+    }
+
+};
+
+
+function selectProduct(id){
+
+    const product =
+        productData[id];
+
+    if(product){
+
+        localStorage.setItem(
+            "selectedProduct",
+            JSON.stringify(product)
+        );
+
+    }
+
+}
+
+
+/* ================= SEARCH ================= */
+
+function openSearch(){
+
+    document
+        .getElementById("searchOverlay")
+        .classList.add("active");
+
+    setTimeout(() => {
+
+        document
+            .getElementById("searchInput")
+            .focus();
+
+    },100);
+
+}
+
+
+function closeSearch(){
+
+    document
+        .getElementById("searchOverlay")
+        .classList.remove("active");
+
+}
+
+
+function handleSearch(event){
+
+    if(event.key === "Enter"){
+
+        const query =
+            event.target.value
+            .trim()
+            .toLowerCase();
+
+        if(query){
+
+            window.location.href =
+                "shop.html?search=" +
+                encodeURIComponent(query);
+
+        }
+
+    }
+
+}
+
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>
