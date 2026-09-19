@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MAINSTREAM™ Product</title>
 
 <style>
+
+/* ================= BASIC ================= */
 
 *{
     box-sizing:border-box;
@@ -42,7 +45,7 @@ header{
 
 .cart-btn{
     background:#ffd400;
-    border:none;
+    border:0;
     padding:22px 30px;
     font-size:18px;
     font-weight:800;
@@ -54,14 +57,16 @@ header{
 .page{
     max-width:1250px;
     margin:auto;
-    padding:55px 35px 80px;
+    padding:50px 35px 80px;
 }
 
 .breadcrumb{
     font-size:22px;
     color:#777;
-    margin-bottom:45px;
+    margin-bottom:40px;
 }
+
+/* ================= PRODUCT LAYOUT ================= */
 
 .product-layout{
     display:grid;
@@ -80,7 +85,7 @@ header{
     width:120px;
     display:flex;
     flex-direction:column;
-    gap:22px;
+    gap:18px;
 }
 
 .thumb{
@@ -102,7 +107,25 @@ header{
     object-fit:cover;
 }
 
+/* Front / Back thumbnail crop */
+
+.thumb.front img{
+    object-position:left center;
+}
+
+.thumb.back img{
+    object-position:right center;
+}
+
+/* Combined thumbnail */
+
 .thumb.combined img{
+    object-fit:contain;
+}
+
+/* Size chart */
+
+.thumb.sizechart img{
     object-fit:contain;
 }
 
@@ -114,55 +137,53 @@ header{
     background:#eee;
     overflow:hidden;
     position:relative;
-    touch-action:pan-y;
 }
 
 .main-photo{
-    position:absolute;
-    top:0;
-    left:0;
-    width:200%;
+    width:100%;
     height:100%;
-    max-width:none;
-    object-fit:fill;
-    transition:all .35s ease;
+    object-fit:cover;
+    display:block;
 }
+
+/* Front crop */
 
 .main-photo.front{
-    left:0;
+    object-position:left center;
 }
+
+/* Back crop */
 
 .main-photo.back{
-    left:-100%;
+    object-position:right center;
 }
 
+/* Combined */
+
 .main-photo.combined{
-    width:100%;
-    left:0;
     object-fit:contain;
 }
 
+/* Size chart */
+
 .main-photo.sizechart{
-    width:100%;
-    left:0;
     object-fit:contain;
 }
 
 .drag-label{
     position:absolute;
-    bottom:18px;
+    bottom:25px;
     left:50%;
     transform:translateX(-50%);
     background:#222;
     color:#fff;
-    padding:14px 28px;
-    border-radius:30px;
+    padding:16px 30px;
+    border-radius:40px;
     font-size:16px;
     white-space:nowrap;
-    z-index:5;
 }
 
-/* ================= INFO ================= */
+/* ================= PRODUCT INFO ================= */
 
 .product-info{
     padding-top:10px;
@@ -181,40 +202,16 @@ header{
     margin-bottom:45px;
 }
 
-/* ================= OPTIONS ================= */
+/* ================= SIZE ================= */
+
+.option-group{
+    margin-bottom:35px;
+}
 
 .option-title{
     font-size:18px;
     font-weight:800;
     margin-bottom:15px;
-    text-transform:uppercase;
-}
-
-.selected-text{
-    font-weight:400;
-    margin-left:8px;
-}
-
-.option-group{
-    margin-bottom:30px;
-}
-
-.color-options{
-    display:flex;
-    gap:12px;
-}
-
-.color-option{
-    border:2px solid #222;
-    background:#fff;
-    padding:14px 22px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.color-option.active{
-    background:#111;
-    color:#fff;
 }
 
 .size-options{
@@ -226,7 +223,7 @@ header{
 .size-option{
     min-width:60px;
     padding:14px 18px;
-    border:2px solid #222;
+    border:2px solid #111;
     background:#fff;
     font-weight:700;
     cursor:pointer;
@@ -273,7 +270,7 @@ header{
 .buy-now{
     width:100%;
     padding:20px;
-    border:none;
+    border:0;
     font-size:18px;
     font-weight:900;
     cursor:pointer;
@@ -298,7 +295,7 @@ header{
 /* ================= DETAILS ================= */
 
 .details{
-    margin-top:55px;
+    margin-top:50px;
     border-top:1px solid #ccc;
     padding-top:30px;
 }
@@ -309,9 +306,8 @@ header{
 }
 
 .details p{
-    font-size:16px;
-    line-height:1.7;
     color:#555;
+    line-height:1.7;
 }
 
 /* ================= MOBILE ================= */
@@ -375,6 +371,7 @@ header{
     .product-price{
         font-size:28px;
     }
+
 }
 
 @media(max-width:500px){
@@ -391,74 +388,141 @@ header{
     .product-name{
         font-size:34px;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
 
 <a href="index.html">
-<img src="mainstream-logo.png" class="logo">
+
+<img
+src="mainstream-logo.png"
+class="logo"
+alt="MAINSTREAM">
+
 </a>
 
-<button class="cart-btn" onclick="location.href='cart.html'">
+<button
+class="cart-btn"
+onclick="location.href='cart.html'">
+
 CART <span id="cartCount">0</span>
+
 </button>
 
 </header>
 
 
+<!-- ================= PAGE ================= -->
+
 <main class="page">
 
+
 <div class="breadcrumb">
+
 Home → Shop → Product
+
 </div>
 
 
 <div class="product-layout">
 
+
 <!-- ================= GALLERY ================= -->
 
 <section class="gallery">
 
+
 <div class="thumbnails">
 
-<div class="thumb active" onclick="showImage('front',this)">
-<img id="frontThumb" src="max.jpg">
-</div>
 
-<div class="thumb" onclick="showImage('back',this)">
-<img id="backThumb" src="max.jpg">
-</div>
+<!-- FRONT -->
 
-<div class="thumb combined" onclick="showImage('combined',this)">
-<img id="combinedThumb" src="max.jpg">
-</div>
+<div
+class="thumb front active"
+onclick="showImage('front',this)">
 
-<div class="thumb combined" onclick="showImage('sizechart',this)">
-<img src="size-chart.png">
-</div>
+<img
+id="frontThumb"
+src="max.jpg"
+alt="Front">
 
 </div>
 
 
-<div class="main-image-box" id="imageBox">
+<!-- BACK -->
+
+<div
+class="thumb back"
+onclick="showImage('back',this)">
+
+<img
+id="backThumb"
+src="max.jpg"
+alt="Back">
+
+</div>
+
+
+<!-- COMBINED -->
+
+<div
+class="thumb combined"
+onclick="showImage('combined',this)">
+
+<img
+id="combinedThumb"
+src="max.jpg"
+alt="Combined">
+
+</div>
+
+
+<!-- SIZE CHART -->
+
+<div
+class="thumb sizechart"
+onclick="showImage('sizechart',this)">
+
+<img
+src="size-chart.png"
+alt="Size Chart">
+
+</div>
+
+
+</div>
+
+
+<!-- MAIN IMAGE -->
+
+<div
+class="main-image-box"
+id="imageBox">
 
 <img
 id="mainProductImage"
 class="main-photo front"
 src="max.jpg"
-alt="MAX Product"
->
+alt="Product">
 
 <div class="drag-label">
+
 ↔ DRAG TO ROTATE
+
 </div>
 
 </div>
+
 
 </section>
 
@@ -467,149 +531,173 @@ alt="MAX Product"
 
 <section class="product-info">
 
-<h1 class="product-name" id="productName">
+
+<h1
+class="product-name"
+id="productName">
+
 MAX / 03 TEE
+
 </h1>
 
+
 <div class="product-price">
+
 ₹999
+
 </div>
 
 
-<!-- COLOR -->
+<!-- ================= SIZE ================= -->
 
 <div class="option-group">
 
 <div class="option-title">
-COLOUR:
-<span class="selected-text" id="selectedColor">
-Black
-</span>
-</div>
 
-<div class="color-options">
-
-<button
-class="color-option active"
-onclick="selectColor('Black',this)">
-Black
-</button>
-
-<button
-class="color-option"
-onclick="selectColor('White',this)">
-White
-</button>
-
-<button
-class="color-option"
-onclick="selectColor('Beige',this)">
-Beige
-</button>
+SIZE
 
 </div>
 
-</div>
-
-
-<!-- SIZE -->
-
-<div class="option-group">
-
-<div class="option-title">
-SIZE:
-<span class="selected-text" id="selectedSize">
-M
-</span>
-</div>
 
 <div class="size-options">
 
-<button class="size-option"
+
+<button
+class="size-option"
 onclick="selectSize('S',this)">
+
 S
+
 </button>
 
-<button class="size-option active"
+
+<button
+class="size-option active"
 onclick="selectSize('M',this)">
+
 M
+
 </button>
 
-<button class="size-option"
+
+<button
+class="size-option"
 onclick="selectSize('L',this)">
+
 L
+
 </button>
 
-<button class="size-option"
+
+<button
+class="size-option"
 onclick="selectSize('XL',this)">
+
 XL
+
 </button>
 
-<button class="size-option"
+
+<button
+class="size-option"
 onclick="selectSize('XXL',this)">
+
 XXL
+
 </button>
 
-</div>
 
 </div>
 
+</div>
 
-<!-- QUANTITY -->
+
+<!-- ================= QUANTITY ================= -->
 
 <div class="option-title">
+
 QUANTITY
+
 </div>
+
 
 <div class="quantity-box">
 
-<button onclick="changeQuantity(-1)">
+
+<button
+onclick="changeQuantity(-1)">
+
 −
+
 </button>
 
-<div class="quantity-number" id="quantity">
+
+<div
+class="quantity-number"
+id="quantity">
+
 1
+
 </div>
 
-<button onclick="changeQuantity(1)">
+
+<button
+onclick="changeQuantity(1)">
+
 +
+
 </button>
 
+
 </div>
 
 
-<!-- BUTTONS -->
+<!-- ================= BUTTONS ================= -->
 
 <div class="action-buttons">
+
 
 <button
 class="add-cart"
 onclick="addToCart()">
+
 ADD TO CART
+
 </button>
+
 
 <button
 class="buy-now"
 onclick="buyNow()">
+
 BUY NOW
+
 </button>
+
 
 </div>
 
 
-<!-- DETAILS -->
+<!-- ================= DETAILS ================= -->
 
 <div class="details">
 
-<h3>PRODUCT DETAILS</h3>
+<h3>
+
+PRODUCT DETAILS
+
+</h3>
 
 <p>
-Premium oversized tee designed for everyday streetwear.
-Made for a clean racing-inspired look with a comfortable
-oversized fit.
+
+Premium oversized tee designed for everyday
+streetwear with a racing-inspired look.
+Comfortable fit with a clean MAINSTREAM™ aesthetic.
+
 </p>
 
 </div>
+
 
 </section>
 
@@ -662,140 +750,134 @@ const products = {
 };
 
 
-/* ================= SELECT PRODUCT ================= */
+/* ================= GET PRODUCT ================= */
 
-const params = new URLSearchParams(window.location.search);
+const params =
+new URLSearchParams(
+window.location.search
+);
 
 const productKey =
-    params.get("product") || "max";
+params.get("product") || "max";
+
 
 const currentProduct =
-    products[productKey] || products.max;
+products[productKey] || products.max;
 
-document.getElementById("productName").textContent =
-    currentProduct.name;
 
-document.getElementById("frontThumb").src =
-    currentProduct.image;
+/* ================= SET PRODUCT ================= */
 
-document.getElementById("backThumb").src =
-    currentProduct.image;
+document.getElementById(
+"productName"
+).textContent =
+currentProduct.name;
 
-document.getElementById("combinedThumb").src =
-    currentProduct.image;
+
+document.getElementById(
+"frontThumb"
+).src =
+currentProduct.image;
+
+
+document.getElementById(
+"backThumb"
+).src =
+currentProduct.image;
+
+
+document.getElementById(
+"combinedThumb"
+).src =
+currentProduct.image;
+
 
 const mainImage =
-    document.getElementById("mainProductImage");
+document.getElementById(
+"mainProductImage"
+);
+
 
 mainImage.src =
-    currentProduct.image;
+currentProduct.image;
 
 
 /* ================= GALLERY ================= */
 
-let currentView = "front";
+let currentView =
+"front";
+
 
 function showImage(type,button){
 
     currentView = type;
 
+
     document
     .querySelectorAll(".thumb")
     .forEach(function(item){
 
-        item.classList.remove("active");
+        item.classList.remove(
+            "active"
+        );
 
     });
 
-    button.classList.add("active");
+
+    button.classList.add(
+        "active"
+    );
+
 
     mainImage.className =
         "main-photo " + type;
 
+
     mainImage.src =
         currentProduct.image;
 
-    applyDressColor(
-        selectedColor
-    );
-}
 
+    if(type === "sizechart"){
 
-/* ================= COLOR ================= */
+        mainImage.src =
+            "size-chart.png";
 
-let selectedColor = "Black";
-
-function selectColor(color,button){
-
-    selectedColor = color;
-
-    document.getElementById(
-        "selectedColor"
-    ).textContent = color;
-
-    document
-    .querySelectorAll(".color-option")
-    .forEach(function(item){
-
-        item.classList.remove("active");
-
-    });
-
-    button.classList.add("active");
-
-    applyDressColor(color);
-}
-
-
-function applyDressColor(color){
-
-    if(color === "Black"){
-
-        mainImage.style.filter =
-            "none";
-
-        return;
     }
 
-    if(color === "White"){
-
-        mainImage.style.filter =
-            "brightness(1.8) grayscale(1) contrast(.75)";
-
-        return;
-    }
-
-    if(color === "Beige"){
-
-        mainImage.style.filter =
-            "sepia(.45) saturate(.65) brightness(1.35) contrast(.85)";
-
-        return;
-    }
 }
 
 
 /* ================= SIZE ================= */
 
-let selectedSize = "M";
+let selectedSize =
+"M";
 
-function selectSize(size,button){
 
-    selectedSize = size;
+function selectSize(
+size,
+button
+){
 
-    document.getElementById(
-        "selectedSize"
-    ).textContent = size;
+    selectedSize =
+        size;
+
 
     document
-    .querySelectorAll(".size-option")
+    .querySelectorAll(
+        ".size-option"
+    )
     .forEach(function(item){
 
-        item.classList.remove("active");
+        item.classList.remove(
+            "active"
+        );
 
     });
 
-    button.classList.add("active");
+
+    button.classList.add(
+        "active"
+    );
+
 }
 
 
@@ -803,17 +885,26 @@ function selectSize(size,button){
 
 let quantity = 1;
 
-function changeQuantity(amount){
+
+function changeQuantity(
+amount
+){
 
     quantity += amount;
 
+
     if(quantity < 1){
+
         quantity = 1;
+
     }
+
 
     document.getElementById(
         "quantity"
-    ).textContent = quantity;
+    ).textContent =
+        quantity;
+
 }
 
 
@@ -822,9 +913,11 @@ function changeQuantity(amount){
 function getCart(){
 
     return JSON.parse(
+
         localStorage.getItem(
             "mainstreamCart"
         ) || "[]"
+
     );
 
 }
@@ -833,8 +926,11 @@ function getCart(){
 function saveCart(cart){
 
     localStorage.setItem(
+
         "mainstreamCart",
+
         JSON.stringify(cart)
+
     );
 
 }
@@ -842,32 +938,41 @@ function saveCart(cart){
 
 function addToCart(){
 
-    const cart = getCart();
+    const cart =
+        getCart();
+
 
     cart.push({
 
-        name:currentProduct.name,
+        name:
+            currentProduct.name,
 
-        price:999,
+        price:
+            999,
 
-        image:currentProduct.image,
+        image:
+            currentProduct.image,
 
-        color:selectedColor,
+        size:
+            selectedSize,
 
-        size:selectedSize,
-
-        quantity:quantity
+        quantity:
+            quantity
 
     });
 
+
     saveCart(cart);
 
+
     updateCartCount();
+
 
     alert(
         currentProduct.name +
         " added to cart"
     );
+
 }
 
 
@@ -877,8 +982,10 @@ function buyNow(){
 
     addToCart();
 
+
     window.location.href =
         "shipping.html";
+
 }
 
 
@@ -889,18 +996,27 @@ function updateCartCount(){
     const cart =
         getCart();
 
+
     let total = 0;
 
-    cart.forEach(function(item){
 
-        total +=
-            Number(item.quantity || 1);
+    cart.forEach(
+        function(item){
 
-    });
+            total +=
+                Number(
+                    item.quantity || 1
+                );
+
+        }
+    );
+
 
     document.getElementById(
         "cartCount"
-    ).textContent = total;
+    ).textContent =
+        total;
+
 }
 
 
@@ -908,10 +1024,11 @@ function updateCartCount(){
 
 let startX = 0;
 
+
 const imageBox =
-    document.getElementById(
-        "imageBox"
-    );
+document.getElementById(
+    "imageBox"
+);
 
 
 imageBox.addEventListener(
@@ -932,19 +1049,27 @@ imageBox.addEventListener(
         const endX =
             event.changedTouches[0].clientX;
 
+
         const difference =
             endX - startX;
 
-        if(Math.abs(difference) < 50){
+
+        if(
+            Math.abs(difference)
+            < 50
+        ){
 
             return;
+
         }
+
 
         if(difference < 0){
 
             nextGallery();
 
-        }else{
+        }
+        else{
 
             previousGallery();
 
@@ -958,20 +1083,37 @@ imageBox.addEventListener(
 
 function nextGallery(){
 
-    const views =
-        ["front","back","combined","sizechart"];
+    const views = [
+
+        "front",
+        "back",
+        "combined",
+        "sizechart"
+
+    ];
+
 
     let index =
-        views.indexOf(currentView);
+        views.indexOf(
+            currentView
+        );
+
 
     index++;
 
+
     if(index >= views.length){
+
         index = 0;
+
     }
 
+
     const buttons =
-        document.querySelectorAll(".thumb");
+        document.querySelectorAll(
+            ".thumb"
+        );
+
 
     showImage(
         views[index],
@@ -983,20 +1125,38 @@ function nextGallery(){
 
 function previousGallery(){
 
-    const views =
-        ["front","back","combined","sizechart"];
+    const views = [
+
+        "front",
+        "back",
+        "combined",
+        "sizechart"
+
+    ];
+
 
     let index =
-        views.indexOf(currentView);
+        views.indexOf(
+            currentView
+        );
+
 
     index--;
 
+
     if(index < 0){
-        index = views.length - 1;
+
+        index =
+            views.length - 1;
+
     }
 
+
     const buttons =
-        document.querySelectorAll(".thumb");
+        document.querySelectorAll(
+            ".thumb"
+        );
+
 
     showImage(
         views[index],
@@ -1011,6 +1171,7 @@ function previousGallery(){
 updateCartCount();
 
 </script>
+
 
 </body>
 </html>
