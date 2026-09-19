@@ -435,10 +435,19 @@ select:focus{
 
 <script>
 
+const buyNow =
+    JSON.parse(
+        localStorage.getItem("mainstreamBuyNow")
+    );
+
 const cart =
-  JSON.parse(
-    localStorage.getItem("mainstreamCart")
-  ) || [];
+    buyNow
+        ? [buyNow]
+        : (
+            JSON.parse(
+                localStorage.getItem("mainstreamCart")
+            ) || []
+        );
 
 
 const items =
