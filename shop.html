@@ -1966,7 +1966,30 @@ ADDED TO CART
 function addToWishlist(){
     window.location.href = "wishlist.html";
 }
-    
+function saveProductToWishlist(productKey){
+
+    let wishlist =
+        JSON.parse(
+            localStorage.getItem("mainstreamWishlist")
+        ) || [];
+
+    if(!wishlist.includes(productKey)){
+
+        wishlist.push(productKey);
+
+        localStorage.setItem(
+            "mainstreamWishlist",
+            JSON.stringify(wishlist)
+        );
+
+        alert("Added to Wishlist ❤️");
+
+    }else{
+
+        alert("Already in Wishlist ❤️");
+
+    }
+}    
     
 /* =====================================================
    CART STORAGE
