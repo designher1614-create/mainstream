@@ -618,8 +618,12 @@ let selectedUPI = "Google Pay";
 
 const cart =
   JSON.parse(
-    localStorage.getItem("mainstreamCart")
-  ) || [];
+    localStorage.getItem("mainstreamCart") || "[]"
+  );
+
+if(cart.length === 0){
+    alert("Your cart is empty. Please return to cart.");
+}
 
 
 /* CALCULATE TOTAL */
