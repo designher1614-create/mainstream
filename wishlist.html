@@ -1,1 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Wishlist | MAINSTREAM™</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f5ef;
+    color:#111;
+}
+
+header{
+    height:80px;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+}
+
+.logo{
+    height:42px;
+    width:auto;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.nav a.active{
+    color:#f5d547;
+}
+
+.title{
+    text-align:center;
+    padding:55px 20px 35px;
+}
+
+.title h1{
+    font-size:32px;
+    letter-spacing:3px;
+}
+
+.title p{
+    margin-top:10px;
+    color:#777;
+    font-size:13px;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding-bottom:70px;
+}
+
+.wishlist-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.wishlist-item{
+    background:white;
+    border:1px solid #ddd;
+}
+
+.product-image{
+    width:100%;
+    aspect-ratio:1/1;
+    overflow:hidden;
+    background:#eee;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-info h3{
+    font-size:17px;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.product-info p{
+    color:#777;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.price{
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:18px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+}
+
+.cart-btn,
+.remove-btn{
+    flex:1;
+    padding:13px 8px;
+    border:none;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.cart-btn{
+    background:#111;
+    color:white;
+}
+
+.remove-btn{
+    background:#f5d547;
+    color:#111;
+}
+
+.empty{
+    text-align:center;
+    background:white;
+    border:1px solid #ddd;
+    padding:80px 20px;
+}
+
+.empty h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.empty p{
+    color:#777;
+    margin-bottom:25px;
+}
+
+.shop-btn{
+    display:inline-block;
+    background:#111;
+    color:white;
+    text-decoration:none;
+    padding:14px 25px;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+@media(max-width:600px){
+
+    header{
+        height:70px;
+        padding:0 20px;
+    }
+
+    .logo{
+        height:34px;
+    }
+
+    .nav{
+        gap:15px;
+    }
+
+    .nav a{
+        font-size:10px;
+    }
+
+    .title{
+        padding:40px 15px 25px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .wishlist-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .product-info{
+        padding:12px;
+    }
+
+    .product-info h3{
+        font-size:13px;
+    }
+
+    .product-info p{
+        font-size:10px;
+    }
+
+    .price{
+        font-size:15px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .cart-btn,
+    .remove-btn{
+        padding:11px 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html">
+<img src="mainstream-logo.png" class="logo" alt="MAINSTREAM">
+</a>
+
+<nav class="nav">
+<a href="index.html">HOME</a>
+<a href="shop.html">SHOP</a>
+<a href="wishlist.html" class="active">♡ WISHLIST</a>
+<a href="cart.html">CART</a>
+</nav>
+
+</header>
+
+<section class="title">
+
+<h1>YOUR WISHLIST</h1>
+
+<p>Save your favourite MAINSTREAM™ products</p>
+
+</section>
+
+<main class="container">
+
+<div id="wishlistContainer"></div>
+
+</main>
+
+<script>
+
+const wishlistProducts = {
+
+max:{
+name:"MAX / 03 TEE",
+category:"RED BULL COLLECTION",
+price:999,
+image:"max.jpg"
+},
+
+lewis:{
+name:"LEWIS / 44 TEE",
+category:"RACING COLLECTION",
+price:999,
+image:"lewis.jpg"
+},
+
+charles:{
+name:"CHARLES / 16 TEE",
+category:"FERRARI COLLECTION",
+price:999,
+image:"charles.jpg"
+},
+
+lando:{
+name:"LANDO / 01 TEE",
+category:"MCLAREN COLLECTION",
+price:999,
+image:"lando.jpg"
+},
+
+oscar:{
+name:"OSCAR / 81 TEE",
+category:"MCLAREN COLLECTION",
+price:999,
+image:"oscar.jpg"
+},
+
+george:{
+name:"GEORGE / 63 TEE",
+category:"MERCEDES COLLECTION",
+price:999,
+image:"george.jpg"
+},
+
+kimi:{
+name:"KIMI / 12 TEE",
+category:"RACING COLLECTION",
+price:999,
+image:"kimi.jpg"
+}
+
+};
+
+
+function getWishlist(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem("mainstreamWishlist")
+        ) || [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+
+function saveWishlist(wishlist){
+
+    localStorage.setItem(
+        "mainstreamWishlist",
+        JSON.stringify(wishlist)
+    );
+
+}
+
+
+function addToCart(product){
+
+    let cart = [];
+
+    try{
+
+        cart =
+            JSON.parse(
+                localStorage.getItem("mainstreamCart")
+            ) || [];
+
+    }catch(error){
+
+        cart = [];
+
+    }
+
+
+    const existing =
+        cart.find(
+            item => item.name === product.name
+        );
+
+
+    if(existing){
+
+        existing.quantity =
+            Number(existing.quantity || 1) + 1;
+
+    }else{
+
+        cart.push({
+
+            name:product.name,
+
+            price:"₹" + product.price,
+
+            image:product.image,
+
+            size:"M",
+
+            quantity:1
+
+        });
+
+    }
+
+
+    localStorage.setItem(
+        "mainstreamCart",
+        JSON.stringify(cart)
+    );
+
+
+    alert(
+        product.name +
+        " added to cart 🛒"
+    );
+
+}
+
+
+function removeFromWishlist(key){
+
+    let wishlist = getWishlist();
+
+    wishlist =
+        wishlist.filter(
+            item => item !== key
+        );
+
+    saveWishlist(wishlist);
+
+    renderWishlist();
+
+}
+
+
+function renderWishlist(){
+
+    const container =
+        document.getElementById(
+            "wishlistContainer"
+        );
+
+    const wishlist =
+        getWishlist();
+
+
+    if(wishlist.length === 0){
+
+        container.innerHTML = `
+
+        <div class="empty">
+
+            <h2>Your wishlist is empty</h2>
+
+            <p>
+                Save your favourite products here.
+            </p>
+
+            <a
+                href="shop.html"
+                class="shop-btn">
+                CONTINUE SHOPPING
+            </a>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const grid =
+        document.createElement("div");
+
+    grid.className =
+        "wishlist-grid";
+
+
+    wishlist.forEach(function(key){
+
+        const product =
+            wishlistProducts[key];
+
+        if(!product){
+            return;
+        }
+
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "wishlist-item";
+
+
+        item.innerHTML = `
+
+        <div class="product-image">
+
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+                onerror="this.src='mainstream-logo.png'">
+
+        </div>
+
+        <div class="product-info">
+
+            <h3>${product.name}</h3>
+
+            <p>${product.category}</p>
+
+            <div class="price">
+                ₹${product.price.toLocaleString("en-IN")}
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="cart-btn"
+                    onclick="addToCart(wishlistProducts['${key}'])">
+                    ADD TO CART
+                </button>
+
+                <button
+                    class="remove-btn"
+                    onclick="removeFromWishlist('${key}')">
+                    REMOVE
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        grid.appendChild(item);
+
+    });
+
+
+    container.innerHTML = "";
+
+    container.appendChild(grid);
+
+}
+
+
+renderWishlist();
+
+</script>
+
+</body>
+</html>
