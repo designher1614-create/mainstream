@@ -818,38 +818,31 @@ function showImage(type,button){
 
     currentView = type;
 
-
     document
     .querySelectorAll(".thumb")
     .forEach(function(item){
-
-        item.classList.remove(
-            "active"
-        );
-
+        item.classList.remove("active");
     });
 
+    button.classList.add("active");
 
-    button.classList.add(
-        "active"
-    );
+    mainImage.className = "main-photo " + type;
 
-
-    mainImage.className =
-        "main-photo " + type;
-
-
-    mainImage.src =
-        currentProduct.image;
-
-
-    if(type === "sizechart"){
-
-        mainImage.src =
-            "size-chart.png";
-
+    if(type === "front"){
+        mainImage.src = currentProduct.front;
     }
 
+    else if(type === "back"){
+        mainImage.src = currentProduct.back;
+    }
+
+    else if(type === "combined"){
+        mainImage.src = currentProduct.front;
+    }
+
+    else if(type === "sizechart"){
+        mainImage.src = "size-chart.png";
+    }
 }
 
 
