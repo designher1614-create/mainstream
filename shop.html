@@ -1273,28 +1273,46 @@ updateCart();
 
 function addToCart(name,price,image){
 
-const existing =
-cart.find(item => item.name === name);
+    let cart =
+        JSON.parse(
+            localStorage.getItem("mainstreamCart")
+        ) || [];
 
-if(existing){
+    const existing =
+        cart.find(item => item.name === name);
 
-existing.quantity++;
+    if(existing){
 
-}else{
+        existing.quantity++;
 
-cart.push({
-name:name,
-price:price,
-image:image,
-quantity:1
-});
+    }else{
 
-}
+        cart.push({
 
-saveCart();
+            name:name,
 
-openCart();
+            price:"₹999",
 
+            image:image,
+
+            size:"M",
+
+            quantity:1
+
+        });
+
+    }
+
+    localStorage.setItem(
+        "mainstreamCart",
+        JSON.stringify(cart)
+    );
+
+    updateCart();
+
+    alert(
+        name + " added to cart"
+    );
 }
 
 
