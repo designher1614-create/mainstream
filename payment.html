@@ -643,19 +643,26 @@ Please select a payment method.
 ========================= */
 
 function getCart(){
-
     try{
+
+        const buyNow =
+            JSON.parse(
+                localStorage.getItem("mainstreamBuyNow")
+            );
+
+        if(buyNow){
+            return Array.isArray(buyNow)
+                ? buyNow
+                : [buyNow];
+        }
 
         return JSON.parse(
             localStorage.getItem("mainstreamCart")
         ) || [];
 
     }catch(error){
-
         return [];
-
     }
-
 }
 
 
