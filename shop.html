@@ -1460,23 +1460,21 @@ window.location.href="cart.html";
 
 function viewProduct(name,price,image){
 
-const product={
+    const productMap = {
+        "MAX / 03 TEE":"max",
+        "LEWIS / 44 TEE":"lewis",
+        "CHARLES / 16 TEE":"charles",
+        "LANDO / 01 TEE":"lando",
+        "OSCAR / 81 TEE":"oscar",
+        "GEORGE / 63 TEE":"george",
+        "KIMI / 12 TEE":"kimi"
+    };
 
-name:name,
-price:price,
-image:image
+    const productId = productMap[name];
 
-};
-
-localStorage.setItem(
-"selectedProduct",
-JSON.stringify(product)
-);
-
-window.location.href="product.html";
-
+    window.location.href =
+        "product.html?product=" + productId;
 }
-
 
 /* =========================
    SEARCH
