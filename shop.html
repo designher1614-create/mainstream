@@ -1934,31 +1934,11 @@ ADDED TO CART
 
 
 <script>
-function showWishlistMessage(){
-    alert("Added to Wishlist ❤️");
+function addToWishlist(){
+    alert("Wishlist feature coming soon ❤️");
 }
-    function addToWishlist(){
-    let wishlist =
-        JSON.parse(localStorage.getItem("mainstreamWishlist")) || [];
-
-    const product = {
-        name: "MAINSTREAM PRODUCT"
-    };
-
-    const exists =
-        wishlist.some(item => item.name === product.name);
-
-    if(!exists){
-        wishlist.push(product);
-        localStorage.setItem(
-            "mainstreamWishlist",
-            JSON.stringify(wishlist)
-        );
-        alert("Added to Wishlist ❤️");
-    }else{
-        alert("Already in Wishlist ❤️");
-    }
-    }
+    
+    
 /* =====================================================
    CART STORAGE
 ===================================================== */
